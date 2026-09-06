@@ -1,668 +1,566 @@
 /* =========================================================
-   MR GAMING PRO
-   JAVASCRIPT
+MR GAMING PRO
+JAVASCRIPT
 ========================================================= */
 
-
 /* =========================================================
-   VIBRATION
+VIBRATION
 ========================================================= */
 
 function vibrate(duration = 20) {
 
-    try {
+try {
 
-        if (
-            "vibrate" in navigator
-        ) {
-
-            navigator.vibrate(duration);
-
-        }
-
-    } catch (error) {
-
-        console.log(
-            "Vibration non disponible."
-        );
-
+    if ("vibrate" in navigator) {
+        navigator.vibrate(duration);
     }
+
+} catch (error) {
+
+    console.log("Vibration non disponible.");
 
 }
 
-
+}
 
 /* =========================================================
-   ÉVÉNEMENTS
-=========================================================
-
-   POUR AJOUTER UN ÉVÉNEMENT :
-
-   Copie simplement un bloc { ... }
-
-   et modifie les informations.
-
+ÉVÉNEMENTS
 ========================================================= */
 
 const EVENTS = [
 
-    {
+{
+    title:
+        "FC Mobile — NUMERO",
 
-        title:
-            "Tournoi Gaming MR GAMING PRO",
+    date:
+        "NOUVEL ÉVÉNEMENT",
 
-        date:
-            "Date à définir",
+    description:
+        "Découvre l'événement NUMERO sur FC Mobile avec de nouveaux joueurs, récompenses et contenus exclusifs.",
 
-        description:
-            "Participe au prochain tournoi gaming organisé par MR GAMING PRO.",
+    image:
+        "https://i.ibb.co/RTNdyZWR/unnamed.webp",
 
-        image:
-            "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1200&q=80",
+    status:
+        "NOUVEAU",
 
-        status:
-            "À VENIR",
+    statusClass:
+        "live",
 
-        statusClass:
-            "",
+    link:
+        "https://play.google.com/store/apps/details?id=com.ea.gp.fifamobile",
 
-        link:
-            "https://t.me/mprogamings",
+    button:
+        "Voir sur Google Play"
 
-        button:
-            "Participer"
-
-    },
+},
 
 
-    /*
-    ========================================================
-    EXEMPLE D'UN DEUXIÈME ÉVÉNEMENT
-    ========================================================
+{
+    title:
+        "Tournoi Gaming MR GAMING PRO",
 
-    {
+    date:
+        "Date à définir",
 
-        title:
-            "Tournoi eFootball",
+    description:
+        "Participe au prochain tournoi gaming organisé par MR GAMING PRO.",
 
-        date:
-            "20 Septembre 2026",
+    image:
+        "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1200&q=80",
 
-        description:
-            "Affronte les meilleurs joueurs lors de notre tournoi.",
+    status:
+        "À VENIR",
 
-        image:
-            "TON-IMAGE-ICI",
+    statusClass:
+        "",
 
-        status:
-            "EN COURS",
+    link:
+        "https://t.me/mprogamings",
 
-        statusClass:
-            "live",
+    button:
+        "Participer"
 
-        link:
-            "https://t.me/mprogamings",
-
-        button:
-            "Participer"
-
-    }
-
-    */
+}
 
 ];
 
-
-
 /* =========================================================
-   AFFICHER LES ÉVÉNEMENTS
+AFFICHER LES ÉVÉNEMENTS
 ========================================================= */
 
 function renderEvents() {
 
-    const container =
-        document.getElementById(
-            "events-container"
-        );
+const container =
+    document.getElementById("events-container");
 
 
-    if (!container) {
-
-        return;
-
-    }
+if (!container) {
+    return;
+}
 
 
-    container.innerHTML = "";
+container.innerHTML = "";
 
 
-    if (EVENTS.length === 0) {
+if (EVENTS.length === 0) {
 
-        container.innerHTML = `
+    container.innerHTML = `
 
-            <div class="event-card">
-
-                <div class="event-content">
-
-                    <h3>
-                        Aucun événement
-                    </h3>
-
-                    <p>
-                        Aucun événement n'est actuellement disponible.
-                    </p>
-
-                </div>
-
-            </div>
-
-        `;
-
-        return;
-
-    }
-
-
-    EVENTS.forEach((event) => {
-
-
-        const article =
-            document.createElement("article");
-
-
-        article.className =
-            "event-card animate-on-scroll";
-
-
-        article.innerHTML = `
-
-            <div class="event-image">
-
-                <img
-                    src="${event.image}"
-                    alt="${event.title}"
-                    loading="lazy"
-                >
-
-                <span
-                    class="event-status ${event.statusClass || ""}"
-                >
-
-                    ${event.status}
-
-                </span>
-
-            </div>
-
+        <div class="event-card">
 
             <div class="event-content">
 
-                <div class="event-date">
-
-                    <i class="fa-regular fa-calendar"></i>
-
-                    ${event.date}
-
-                </div>
-
-
                 <h3>
-                    ${event.title}
+                    Aucun événement
                 </h3>
 
-
                 <p>
-                    ${event.description}
+                    Aucun événement n'est actuellement disponible.
                 </p>
-
-
-                <a
-                    href="${event.link}"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="card-button event-button"
-                >
-
-                    <i class="fa-solid fa-arrow-right"></i>
-
-                    ${event.button}
-
-                </a>
 
             </div>
 
-        `;
+        </div>
 
+    `;
 
-        container.appendChild(article);
-
-
-    });
-
-
-    initScrollAnimations();
-
-
-    document
-        .querySelectorAll(".event-button")
-        .forEach((button) => {
-
-            button.addEventListener(
-                "click",
-                () => vibrate(30)
-            );
-
-        });
+    return;
 
 }
 
 
+EVENTS.forEach((event) => {
+
+    const article =
+        document.createElement("article");
+
+
+    article.className =
+        "event-card animate-on-scroll";
+
+
+    article.innerHTML = `
+
+        <div class="event-image">
+
+            <img
+                src="${event.image}"
+                alt="${event.title}"
+                loading="lazy"
+            >
+
+            <span
+                class="event-status ${event.statusClass || ""}"
+            >
+                ${event.status}
+            </span>
+
+        </div>
+
+
+        <div class="event-content">
+
+            <div class="event-date">
+
+                <i class="fa-regular fa-calendar"></i>
+
+                ${event.date}
+
+            </div>
+
+
+            <h3>
+                ${event.title}
+            </h3>
+
+
+            <p>
+                ${event.description}
+            </p>
+
+
+            <a
+                href="${event.link}"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="card-button event-button"
+            >
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+                ${event.button}
+
+            </a>
+
+        </div>
+
+    `;
+
+
+    container.appendChild(article);
+
+});
+
+
+initScrollAnimations();
+
+
+document
+    .querySelectorAll(".event-button")
+    .forEach((button) => {
+
+        button.addEventListener(
+            "click",
+            () => vibrate(30)
+        );
+
+    });
+
+}
 
 /* =========================================================
-   NAVIGATION
+NAVIGATION
 ========================================================= */
 
 function navigateTo(
-    sectionId,
-    button = null
+sectionId,
+button = null
 ) {
 
-    vibrate(20);
+vibrate(20);
 
 
-    const section =
-        document.getElementById(
-            sectionId
-        );
+const section =
+    document.getElementById(sectionId);
 
 
-    if (!section) {
-
-        return;
-
-    }
+if (!section) {
+    return;
+}
 
 
-    section.scrollIntoView({
+section.scrollIntoView({
 
-        behavior: "smooth",
+    behavior: "smooth",
 
-        block: "start"
+    block: "start"
+
+});
+
+
+document
+    .querySelectorAll(".nav-item")
+    .forEach((item) => {
+
+        item.classList.remove("active");
 
     });
 
 
-    document
-        .querySelectorAll(".nav-item")
-        .forEach((item) => {
+if (button) {
 
-            item.classList.remove(
-                "active"
-            );
+    button.classList.add("active");
 
-        });
+} else {
 
-
-    if (button) {
-
-        button.classList.add(
-            "active"
+    const navButton =
+        document.querySelector(
+            `.nav-item[data-target="${sectionId}"]`
         );
 
-    } else {
 
-        const navButton =
-            document.querySelector(
-                `.nav-item[data-target="${sectionId}"]`
-            );
+    if (navButton) {
 
-
-        if (navButton) {
-
-            navButton.classList.add(
-                "active"
-            );
-
-        }
+        navButton.classList.add("active");
 
     }
 
 }
 
-
+}
 
 /* =========================================================
-   BOUTON SCROLL
+BOUTON SCROLL
 ========================================================= */
 
-function scrollToSection(
-    sectionId
-) {
+function scrollToSection(sectionId) {
 
-    navigateTo(sectionId);
+navigateTo(sectionId);
 
 }
 
-
-
 /* =========================================================
-   NAVIGATION ACTIVE
+NAVIGATION ACTIVE
 ========================================================= */
 
 function updateActiveNavigation() {
 
-    const sections =
-        document.querySelectorAll(
-            "section[id]"
+const sections =
+    document.querySelectorAll("section[id]");
+
+
+let current = "accueil";
+
+
+sections.forEach((section) => {
+
+    const rect =
+        section.getBoundingClientRect();
+
+
+    if (
+        rect.top <= 180 &&
+        rect.bottom >= 180
+    ) {
+
+        current = section.id;
+
+    }
+
+});
+
+
+document
+    .querySelectorAll(".nav-item")
+    .forEach((button) => {
+
+        button.classList.toggle(
+            "active",
+            button.dataset.target === current
         );
-
-
-    let current =
-        "accueil";
-
-
-    sections.forEach((section) => {
-
-        const rect =
-            section.getBoundingClientRect();
-
-
-        if (
-            rect.top <= 180 &&
-            rect.bottom >= 180
-        ) {
-
-            current =
-                section.id;
-
-        }
 
     });
 
-
-    document
-        .querySelectorAll(".nav-item")
-        .forEach((button) => {
-
-            button.classList.toggle(
-
-                "active",
-
-                button.dataset.target === current
-
-            );
-
-        });
-
 }
 
-
-
 /* =========================================================
-   ANIMATION DES CARTES
+ANIMATION DES CARTES
 ========================================================= */
 
 function initScrollAnimations() {
 
-    const elements =
-        document.querySelectorAll(
-            ".animate-on-scroll"
-        );
+const elements =
+    document.querySelectorAll(".animate-on-scroll");
 
 
-    if (!("IntersectionObserver" in window)) {
-
-        elements.forEach((element) => {
-
-            element.classList.add(
-                "visible"
-            );
-
-        });
-
-        return;
-
-    }
-
-
-    const observer =
-        new IntersectionObserver(
-
-            (entries) => {
-
-                entries.forEach((entry) => {
-
-                    if (
-                        entry.isIntersecting
-                    ) {
-
-                        entry.target.classList.add(
-                            "visible"
-                        );
-
-                        observer.unobserve(
-                            entry.target
-                        );
-
-                    }
-
-                });
-
-            },
-
-            {
-                threshold: 0.12
-            }
-
-        );
-
+if (!("IntersectionObserver" in window)) {
 
     elements.forEach((element) => {
 
-        observer.observe(element);
+        element.classList.add("visible");
+
+    });
+
+    return;
+
+}
+
+
+const observer =
+    new IntersectionObserver(
+
+        (entries) => {
+
+            entries.forEach((entry) => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add("visible");
+
+                    observer.unobserve(entry.target);
+
+                }
+
+            });
+
+        },
+
+        {
+            threshold: 0.12
+        }
+
+    );
+
+
+elements.forEach((element) => {
+
+    observer.observe(element);
+
+});
+
+}
+
+/* =========================================================
+LIENS EXTERNES
+========================================================= */
+
+function prepareExternalLinks() {
+
+document
+    .querySelectorAll('a[target="_blank"]')
+    .forEach((link) => {
+
+        link.setAttribute(
+            "rel",
+            "noopener noreferrer"
+        );
 
     });
 
 }
 
-
-
 /* =========================================================
-   LIENS EXTERNES
-========================================================= */
-
-function prepareExternalLinks() {
-
-    document
-        .querySelectorAll(
-            'a[target="_blank"]'
-        )
-        .forEach((link) => {
-
-            link.setAttribute(
-                "rel",
-                "noopener noreferrer"
-            );
-
-        });
-
-}
-
-
-
-/* =========================================================
-   EFFET TOUCH MOBILE
+EFFET TOUCH MOBILE
 ========================================================= */
 
 function initTouchEffect() {
 
-    document
-        .querySelectorAll(
-            ".service-card, .event-card, .social-card, .contact-card, .platform-card"
-        )
-        .forEach((card) => {
+document
+    .querySelectorAll(
+        ".service-card, .event-card, .social-card, .contact-card, .platform-card"
+    )
+    .forEach((card) => {
+
+        card.addEventListener(
+            "touchstart",
+            () => {
+
+                card.style.transform =
+                    "scale(.97)";
+
+            },
+            {
+                passive: true
+            }
+        );
 
 
-            card.addEventListener(
-                "touchstart",
-                () => {
+        card.addEventListener(
+            "touchend",
+            () => {
 
-                    card.style.transform =
-                        "scale(.97)";
+                card.style.transform = "";
 
-                },
-                {
-                    passive: true
-                }
-            );
+            },
+            {
+                passive: true
+            }
+        );
 
-
-            card.addEventListener(
-                "touchend",
-                () => {
-
-                    card.style.transform =
-                        "";
-
-                },
-                {
-                    passive: true
-                }
-            );
-
-        });
+    });
 
 }
 
-
-
 /* =========================================================
-   VIBRATION GLOBALE DES BOUTONS
+VIBRATION GLOBALE DES BOUTONS
 ========================================================= */
 
 function initButtonVibration() {
 
-    document
-        .querySelectorAll(
-            "button, .card-button, .social-card, .contact-card, .footer-socials a"
-        )
-        .forEach((element) => {
+document
+    .querySelectorAll(
+        "button, .card-button, .social-card, .contact-card, .footer-socials a"
+    )
+    .forEach((element) => {
 
-            element.addEventListener(
-                "click",
-                () => {
+        element.addEventListener(
+            "click",
+            () => {
 
-                    vibrate(18);
+                vibrate(18);
 
-                }
-            );
+            }
+        );
 
-        });
+    });
 
 }
 
-
-
 /* =========================================================
-   VIBRATION AU LANCEMENT
+VIBRATION AU LANCEMENT
 ========================================================= */
 
 function startupVibration() {
 
-    setTimeout(() => {
+setTimeout(() => {
 
-        vibrate([40, 50, 70]);
+    vibrate([40, 50, 70]);
 
-    }, 100);
+}, 100);
 
 }
 
-
-
 /* =========================================================
-   CHARGEMENT
+CHARGEMENT
 ========================================================= */
 
 window.addEventListener(
-    "load",
-    () => {
+"load",
+() => {
+
+    renderEvents();
+
+    startupVibration();
 
 
-        /* Afficher les événements */
+    setTimeout(() => {
 
-        renderEvents();
-
-
-        /* Vibration */
-
-        startupVibration();
+        const loading =
+            document.getElementById("loading-screen");
 
 
-        /* Fermer loading */
+        if (loading) {
 
-        setTimeout(() => {
+            loading.classList.add("hide");
 
-            const loading =
-                document.getElementById(
-                    "loading-screen"
-                );
+        }
 
 
-            if (loading) {
+        vibrate(35);
 
-                loading.classList.add(
-                    "hide"
-                );
+    }, 2500);
 
-            }
+}
 
-
-            vibrate(35);
-
-
-        }, 2500);
-
-
-    }
 );
 
-
-
 /* =========================================================
-   DOM READY
+DOM READY
 ========================================================= */
 
 document.addEventListener(
-    "DOMContentLoaded",
-    () => {
+"DOMContentLoaded",
+() => {
 
-        initScrollAnimations();
+    initScrollAnimations();
 
-        prepareExternalLinks();
+    prepareExternalLinks();
 
-        initTouchEffect();
+    initTouchEffect();
 
-        initButtonVibration();
+    initButtonVibration();
 
-        updateActiveNavigation();
+    updateActiveNavigation();
 
-    }
+}
+
 );
 
-
-
 /* =========================================================
-   SCROLL
+SCROLL
 ========================================================= */
 
 window.addEventListener(
-    "scroll",
-    () => {
+"scroll",
+() => {
 
-        updateActiveNavigation();
+    updateActiveNavigation();
 
-    },
-    {
-        passive: true
-    }
+},
+{
+    passive: true
+}
+
 );
