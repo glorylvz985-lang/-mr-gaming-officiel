@@ -1,566 +1,376 @@
-/* =========================================================
-MR GAMING PRO
-JAVASCRIPT
-========================================================= */
+/* =====================================================
+   MR GAMING PRO — SCRIPT
+===================================================== */
 
-/* =========================================================
-VIBRATION
-========================================================= */
 
-function vibrate(duration = 20) {
+/* =====================================================
+   CHARGEMENT
+===================================================== */
 
-try {
+window.addEventListener("load", () => {
 
-    if ("vibrate" in navigator) {
-        navigator.vibrate(duration);
+  setTimeout(() => {
+
+    const loader = document.getElementById("loader");
+
+    if (loader) {
+      loader.classList.add("hide");
     }
 
-} catch (error) {
-
-    console.log("Vibration non disponible.");
-
-}
-
-}
-
-/* =========================================================
-ÉVÉNEMENTS
-========================================================= */
-
-const EVENTS = [
-
-{
-    title:
-        "FC Mobile — NUMERO",
-
-    date:
-        "NOUVEL ÉVÉNEMENT",
-
-    description:
-        "Découvre l'événement NUMERO sur FC Mobile avec de nouveaux joueurs, récompenses et contenus exclusifs.",
-
-    image:
-        "https://i.ibb.co/RTNdyZWR/unnamed.webp",
-
-    status:
-        "NOUVEAU",
-
-    statusClass:
-        "live",
-
-    link:
-        "https://play.google.com/store/apps/details?id=com.ea.gp.fifamobile",
-
-    button:
-        "Voir sur Google Play"
-
-},
-
-
-{
-    title:
-        "Tournoi Gaming MR GAMING PRO",
-
-    date:
-        "Date à définir",
-
-    description:
-        "Participe au prochain tournoi gaming organisé par MR GAMING PRO.",
-
-    image:
-        "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1200&q=80",
-
-    status:
-        "À VENIR",
-
-    statusClass:
-        "",
-
-    link:
-        "https://t.me/mprogamings",
-
-    button:
-        "Participer"
-
-}
-
-];
-
-/* =========================================================
-AFFICHER LES ÉVÉNEMENTS
-========================================================= */
-
-function renderEvents() {
-
-const container =
-    document.getElementById("events-container");
-
-
-if (!container) {
-    return;
-}
-
-
-container.innerHTML = "";
-
-
-if (EVENTS.length === 0) {
-
-    container.innerHTML = `
-
-        <div class="event-card">
-
-            <div class="event-content">
-
-                <h3>
-                    Aucun événement
-                </h3>
-
-                <p>
-                    Aucun événement n'est actuellement disponible.
-                </p>
-
-            </div>
-
-        </div>
-
-    `;
-
-    return;
-
-}
-
-
-EVENTS.forEach((event) => {
-
-    const article =
-        document.createElement("article");
-
-
-    article.className =
-        "event-card animate-on-scroll";
-
-
-    article.innerHTML = `
-
-        <div class="event-image">
-
-            <img
-                src="${event.image}"
-                alt="${event.title}"
-                loading="lazy"
-            >
-
-            <span
-                class="event-status ${event.statusClass || ""}"
-            >
-                ${event.status}
-            </span>
-
-        </div>
-
-
-        <div class="event-content">
-
-            <div class="event-date">
-
-                <i class="fa-regular fa-calendar"></i>
-
-                ${event.date}
-
-            </div>
-
-
-            <h3>
-                ${event.title}
-            </h3>
-
-
-            <p>
-                ${event.description}
-            </p>
-
-
-            <a
-                href="${event.link}"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="card-button event-button"
-            >
-
-                <i class="fa-solid fa-arrow-right"></i>
-
-                ${event.button}
-
-            </a>
-
-        </div>
-
-    `;
-
-
-    container.appendChild(article);
+  }, 900);
 
 });
 
 
-initScrollAnimations();
+/* =====================================================
+   NAVIGATION ENTRE LES RUBRIQUES
+   UNE SEULE PAGE VISIBLE À LA FOIS
+===================================================== */
 
+function showPage(pageName) {
 
-document
-    .querySelectorAll(".event-button")
-    .forEach((button) => {
+  const pages = document.querySelectorAll(".page");
+  const navItems = document.querySelectorAll(".nav-item");
 
-        button.addEventListener(
-            "click",
-            () => vibrate(30)
-        );
+  pages.forEach(page => {
+    page.classList.remove("active-page");
+  });
 
-    });
+  const selectedPage =
+    document.getElementById("page-" + pageName);
 
-}
+  if (selectedPage) {
+    selectedPage.classList.add("active-page");
+  }
 
-/* =========================================================
-NAVIGATION
-========================================================= */
+  navItems.forEach(item => {
 
-function navigateTo(
-sectionId,
-button = null
-) {
+    item.classList.remove("active");
 
-vibrate(20);
-
-
-const section =
-    document.getElementById(sectionId);
-
-
-if (!section) {
-    return;
-}
-
-
-section.scrollIntoView({
-
-    behavior: "smooth",
-
-    block: "start"
-
-});
-
-
-document
-    .querySelectorAll(".nav-item")
-    .forEach((item) => {
-
-        item.classList.remove("active");
-
-    });
-
-
-if (button) {
-
-    button.classList.add("active");
-
-} else {
-
-    const navButton =
-        document.querySelector(
-            `.nav-item[data-target="${sectionId}"]`
-        );
-
-
-    if (navButton) {
-
-        navButton.classList.add("active");
-
+    if (item.dataset.page === pageName) {
+      item.classList.add("active");
     }
 
+  });
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+
+  history.replaceState(null, "", "#" + pageName);
 }
 
-}
 
-/* =========================================================
-BOUTON SCROLL
-========================================================= */
+/* =====================================================
+   PAGE AU DÉMARRAGE
+===================================================== */
 
-function scrollToSection(sectionId) {
+function loadInitialPage() {
 
-navigateTo(sectionId);
+  const hash = window.location.hash.replace("#", "");
 
-}
+  const allowedPages = [
+    "accueil",
+    "services",
+    "evenements",
+    "plateformes",
+    "reseaux"
+  ];
 
-/* =========================================================
-NAVIGATION ACTIVE
-========================================================= */
-
-function updateActiveNavigation() {
-
-const sections =
-    document.querySelectorAll("section[id]");
-
-
-let current = "accueil";
-
-
-sections.forEach((section) => {
-
-    const rect =
-        section.getBoundingClientRect();
-
-
-    if (
-        rect.top <= 180 &&
-        rect.bottom >= 180
-    ) {
-
-        current = section.id;
-
-    }
-
-});
-
-
-document
-    .querySelectorAll(".nav-item")
-    .forEach((button) => {
-
-        button.classList.toggle(
-            "active",
-            button.dataset.target === current
-        );
-
-    });
+  if (allowedPages.includes(hash)) {
+    showPage(hash);
+  } else {
+    showPage("accueil");
+  }
 
 }
 
-/* =========================================================
-ANIMATION DES CARTES
-========================================================= */
-
-function initScrollAnimations() {
-
-const elements =
-    document.querySelectorAll(".animate-on-scroll");
+document.addEventListener("DOMContentLoaded", loadInitialPage);
 
 
-if (!("IntersectionObserver" in window)) {
+/* =====================================================
+   NOTIFICATIONS FIREBASE
+===================================================== */
 
-    elements.forEach((element) => {
+const FIREBASE_CONFIG = {
 
-        element.classList.add("visible");
+  apiKey:
+    "AIzaSyBT7dEFq2FnyE1od-7ZReg6SwOlkMUbw0E",
 
-    });
+  authDomain:
+    "globoost.firebaseapp.com",
+
+  projectId:
+    "globoost",
+
+  storageBucket:
+    "globoost.firebasestorage.app",
+
+  messagingSenderId:
+    "386284505924",
+
+  appId:
+    "1:386284505924:web:ff47d077addeef77252511",
+
+  measurementId:
+    "G-4BC7Q37JH1"
+
+};
+
+
+const FCM_VAPID_KEY =
+  "BBrtZEQfPWxPIQBScNgttFUa7_34haM3leS2MbznWN2RCPP3fzSZHx6Qd1_LzbwjBpwLzerJxbQAhRBxk6ocHdk";
+
+
+const NOTIFICATION_TOKEN_KEY =
+  "mrGamingNotificationToken";
+
+
+/* =====================================================
+   CHARGER FIREBASE SEULEMENT AU CLIC
+===================================================== */
+
+let firebaseStarted = false;
+
+
+async function enableNotifications() {
+
+  const button =
+    document.getElementById("enable-notifications");
+
+  if (!button) return;
+
+
+  /* Navigateur compatible ? */
+
+  if (!("Notification" in window)) {
+
+    alert(
+      "Les notifications ne sont pas prises en charge par ce navigateur."
+    );
 
     return;
+  }
 
-}
+
+  /* HTTPS obligatoire */
+
+  if (
+    location.protocol !== "https:" &&
+    location.hostname !== "localhost"
+  ) {
+
+    alert(
+      "Les notifications nécessitent un site HTTPS."
+    );
+
+    return;
+  }
 
 
-const observer =
-    new IntersectionObserver(
+  try {
 
-        (entries) => {
+    button.disabled = true;
 
-            entries.forEach((entry) => {
+    button.innerHTML =
+      '<i class="fa-solid fa-spinner fa-spin"></i>';
 
-                if (entry.isIntersecting) {
 
-                    entry.target.classList.add("visible");
+    /* Permission */
 
-                    observer.unobserve(entry.target);
+    const permission =
+      await Notification.requestPermission();
 
-                }
 
-            });
+    if (permission !== "granted") {
 
-        },
+      alert(
+        "Les notifications n'ont pas été autorisées."
+      );
 
-        {
-            threshold: 0.12
-        }
+      button.disabled = false;
 
+      button.innerHTML =
+        '<i class="fa-solid fa-bell"></i><span class="notification-dot"></span>';
+
+      return;
+    }
+
+
+    /* Import Firebase */
+
+    const {
+      initializeApp
+    } = await import(
+      "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js"
     );
 
 
-elements.forEach((element) => {
+    const {
+      getMessaging,
+      getToken,
+      onMessage
+    } = await import(
+      "https://www.gstatic.com/firebasejs/12.19.0/firebase-messaging.js"
+    );
 
-    observer.observe(element);
+
+    const app =
+      initializeApp(FIREBASE_CONFIG);
+
+
+    const messaging =
+      getMessaging(app);
+
+
+    /* Service Worker */
+
+    const registration =
+      await navigator.serviceWorker.register(
+        "/firebase-messaging-sw.js"
+      );
+
+
+    /* Token FCM */
+
+    const token =
+      await getToken(messaging, {
+
+        vapidKey: FCM_VAPID_KEY,
+
+        serviceWorkerRegistration:
+          registration
+
+      });
+
+
+    if (token) {
+
+      localStorage.setItem(
+        NOTIFICATION_TOKEN_KEY,
+        token
+      );
+
+      console.log(
+        "FCM TOKEN :",
+        token
+      );
+
+      button.classList.add("enabled");
+
+      button.innerHTML =
+        '<i class="fa-solid fa-bell"></i>';
+
+      alert(
+        "Notifications activées avec succès !"
+      );
+
+    } else {
+
+      throw new Error(
+        "Impossible de récupérer le token FCM."
+      );
+
+    }
+
+
+    /* Notifications lorsque le site est ouvert */
+
+    onMessage(messaging, payload => {
+
+      console.log(
+        "Notification reçue :",
+        payload
+      );
+
+
+      const title =
+        payload.notification?.title ||
+        "MR GAMING PRO";
+
+
+      const body =
+        payload.notification?.body ||
+        "Une nouvelle actualité est disponible !";
+
+
+      /* Notification locale si permission */
+
+      if (Notification.permission === "granted") {
+
+        new Notification(title, {
+
+          body: body,
+
+          icon:
+            "https://i.ibb.co/Fq3Rn0N1/c536964c08ca2bee74c4a8b26f03926d.webp"
+
+        });
+
+      }
+
+    });
+
+
+    firebaseStarted = true;
+
+
+  } catch (error) {
+
+    console.error(
+      "Erreur notifications :",
+      error
+    );
+
+    alert(
+      "Impossible d'activer les notifications. Vérifie que le fichier firebase-messaging-sw.js est bien à la racine du site."
+    );
+
+
+    button.disabled = false;
+
+    button.innerHTML =
+      '<i class="fa-solid fa-bell"></i><span class="notification-dot"></span>';
+
+  }
+
+}
+
+
+/* =====================================================
+   BOUTON NOTIFICATION
+===================================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  const button =
+    document.getElementById("enable-notifications");
+
+  if (!button) return;
+
+
+  button.addEventListener(
+    "click",
+    enableNotifications
+  );
+
+
+  /* Déjà activées ? */
+
+  const savedToken =
+    localStorage.getItem(
+      NOTIFICATION_TOKEN_KEY
+    );
+
+
+  if (
+    savedToken &&
+    Notification.permission === "granted"
+  ) {
+
+    button.classList.add("enabled");
+
+  }
 
 });
-
-}
-
-/* =========================================================
-LIENS EXTERNES
-========================================================= */
-
-function prepareExternalLinks() {
-
-document
-    .querySelectorAll('a[target="_blank"]')
-    .forEach((link) => {
-
-        link.setAttribute(
-            "rel",
-            "noopener noreferrer"
-        );
-
-    });
-
-}
-
-/* =========================================================
-EFFET TOUCH MOBILE
-========================================================= */
-
-function initTouchEffect() {
-
-document
-    .querySelectorAll(
-        ".service-card, .event-card, .social-card, .contact-card, .platform-card"
-    )
-    .forEach((card) => {
-
-        card.addEventListener(
-            "touchstart",
-            () => {
-
-                card.style.transform =
-                    "scale(.97)";
-
-            },
-            {
-                passive: true
-            }
-        );
-
-
-        card.addEventListener(
-            "touchend",
-            () => {
-
-                card.style.transform = "";
-
-            },
-            {
-                passive: true
-            }
-        );
-
-    });
-
-}
-
-/* =========================================================
-VIBRATION GLOBALE DES BOUTONS
-========================================================= */
-
-function initButtonVibration() {
-
-document
-    .querySelectorAll(
-        "button, .card-button, .social-card, .contact-card, .footer-socials a"
-    )
-    .forEach((element) => {
-
-        element.addEventListener(
-            "click",
-            () => {
-
-                vibrate(18);
-
-            }
-        );
-
-    });
-
-}
-
-/* =========================================================
-VIBRATION AU LANCEMENT
-========================================================= */
-
-function startupVibration() {
-
-setTimeout(() => {
-
-    vibrate([40, 50, 70]);
-
-}, 100);
-
-}
-
-/* =========================================================
-CHARGEMENT
-========================================================= */
-
-window.addEventListener(
-"load",
-() => {
-
-    renderEvents();
-
-    startupVibration();
-
-
-    setTimeout(() => {
-
-        const loading =
-            document.getElementById("loading-screen");
-
-
-        if (loading) {
-
-            loading.classList.add("hide");
-
-        }
-
-
-        vibrate(35);
-
-    }, 2500);
-
-}
-
-);
-
-/* =========================================================
-DOM READY
-========================================================= */
-
-document.addEventListener(
-"DOMContentLoaded",
-() => {
-
-    initScrollAnimations();
-
-    prepareExternalLinks();
-
-    initTouchEffect();
-
-    initButtonVibration();
-
-    updateActiveNavigation();
-
-}
-
-);
-
-/* =========================================================
-SCROLL
-========================================================= */
-
-window.addEventListener(
-"scroll",
-() => {
-
-    updateActiveNavigation();
-
-},
-{
-    passive: true
-}
-
-);
