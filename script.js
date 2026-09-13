@@ -1,6 +1,5 @@
 /* =====================================================
-   MR GAMING PRO
-   SCRIPT COMPLET
+   MR GAMING PRO — SCRIPT COMPLET
 ===================================================== */
 
 
@@ -9,17 +8,13 @@
 ========================= */
 
 window.addEventListener("load", () => {
-
   setTimeout(() => {
-
     const loader = document.getElementById("loader");
 
     if (loader) {
       loader.classList.add("hide");
     }
-
   }, 1000);
-
 });
 
 
@@ -28,25 +23,20 @@ window.addEventListener("load", () => {
 ========================= */
 
 function vibrate() {
-
   if ("vibrate" in navigator) {
     navigator.vibrate(35);
   }
-
 }
 
 
-/* Tous les boutons */
-
 document.addEventListener("click", (event) => {
+  const element = event.target.closest(
+    "button, .social-card, .customer-service a"
+  );
 
-  const button =
-    event.target.closest("button, .social-card, .customer-service a");
-
-  if (button) {
+  if (element) {
     vibrate();
   }
-
 });
 
 
@@ -56,30 +46,19 @@ document.addEventListener("click", (event) => {
 
 function showPage(pageName) {
 
-  const pages =
-    document.querySelectorAll(".page");
-
-  const navItems =
-    document.querySelectorAll(".nav-item");
-
+  const pages = document.querySelectorAll(".page");
+  const navItems = document.querySelectorAll(".nav-item");
 
   pages.forEach(page => {
-
     page.classList.remove("active-page");
-
   });
-
 
   const selectedPage =
     document.getElementById("page-" + pageName);
 
-
   if (selectedPage) {
-
     selectedPage.classList.add("active-page");
-
   }
-
 
   navItems.forEach(item => {
 
@@ -91,19 +70,16 @@ function showPage(pageName) {
 
   });
 
-
   window.scrollTo({
     top: 0,
     behavior: "smooth"
   });
-
 
   history.replaceState(
     null,
     "",
     "#" + pageName
   );
-
 }
 
 
@@ -116,7 +92,6 @@ function loadInitialPage() {
   const hash =
     window.location.hash.replace("#", "");
 
-
   const allowedPages = [
     "accueil",
     "services",
@@ -125,19 +100,12 @@ function loadInitialPage() {
     "reseaux"
   ];
 
-
   if (allowedPages.includes(hash)) {
-
     showPage(hash);
-
   } else {
-
     showPage("accueil");
-
   }
-
 }
-
 
 document.addEventListener(
   "DOMContentLoaded",
@@ -157,7 +125,6 @@ function openEvent() {
     "FC Mobile — Numéro Légendaire\n\n" +
     "L'événement est disponible sur MR GAMING PRO."
   );
-
 }
 
 
@@ -166,12 +133,6 @@ function openEvent() {
 ========================= */
 
 let deferredPrompt = null;
-
-
-/*
-  On récupère la demande d'installation
-  lorsqu'elle est proposée par Chrome.
-*/
 
 window.addEventListener(
   "beforeinstallprompt",
@@ -184,15 +145,9 @@ window.addEventListener(
     console.log(
       "Installation de MR GAMING PRO disponible."
     );
-
   }
 );
 
-
-/*
-  Installation lorsque Chrome accepte
-  l'installation de l'application.
-*/
 
 async function installApp() {
 
@@ -204,25 +159,19 @@ async function installApp() {
     );
 
     return;
-
   }
-
 
   deferredPrompt.prompt();
 
-
   const result =
     await deferredPrompt.userChoice;
-
 
   console.log(
     "Installation :",
     result.outcome
   );
 
-
   deferredPrompt = null;
-
 }
 
 
@@ -235,19 +184,19 @@ window.addEventListener(
     );
 
     deferredPrompt = null;
-
   }
 );
 
 
-/* =========================
-   FIREBASE NOTIFICATIONS
-========================= */
+/* =====================================================
+   FIREBASE CLOUD MESSAGING
+   CONFIGURATION FIREBASE MISE À JOUR
+===================================================== */
 
 const FIREBASE_CONFIG = {
 
   apiKey:
-    "AIzaSyBT7dEFq2FNyE1od-7ZReg6SwOlkMUbw0E",
+    "AIzaSyBT7dBeqf2NyE1od-7ZREg6SwOlkMUbw0E",
 
   authDomain:
     "globoost.firebaseapp.com",
@@ -262,28 +211,34 @@ const FIREBASE_CONFIG = {
     "386284505924",
 
   appId:
-    "1:386284505924:web:ff47d077addeef77252511",
+    "1:386284505924:web:00ebb826dc8fc60d252511",
 
   measurementId:
-    "G-4BC7Q37JH1"
-
+    "G-B3KKJGWGN6"
 };
 
+
+/* =========================
+   CLÉ VAPID
+========================= */
 
 const FCM_VAPID_KEY =
   "BBrtZEQfPWxPIQBScNgttFUa7_34haM3leS2MbznWN2RCPP3fzSZHx6Qd1_LzbwjBpwLzerJxbQAhRBxk6ocHdk";
 
 
+/* =========================
+   TOKEN
+========================= */
+
 const NOTIFICATION_TOKEN_KEY =
   "mrGamingNotificationToken";
-
 
 let firebaseStarted = false;
 
 
-/* =========================
-   ACTIVER NOTIFICATIONS
-========================= */
+/* =====================================================
+   ACTIVER LES NOTIFICATIONS
+===================================================== */
 
 async function enableNotifications() {
 
@@ -292,9 +247,10 @@ async function enableNotifications() {
       "enable-notifications"
     );
 
-
   if (!button) return;
 
+
+  /* Vérification navigateur */
 
   if (!("Notification" in window)) {
 
@@ -303,9 +259,10 @@ async function enableNotifications() {
     );
 
     return;
-
   }
 
+
+  /* Vérification HTTPS */
 
   if (
     location.protocol !== "https:" &&
@@ -317,7 +274,6 @@ async function enableNotifications() {
     );
 
     return;
-
   }
 
 
@@ -325,13 +281,23 @@ async function enableNotifications() {
 
     button.disabled = true;
 
-
     button.innerHTML =
       '<i class="fa-solid fa-spinner fa-spin"></i>';
 
 
-    const permission =
-      await Notification.requestPermission();
+    /* =========================
+       PERMISSION
+    ========================= */
+
+    let permission =
+      Notification.permission;
+
+
+    if (permission !== "granted") {
+
+      permission =
+        await Notification.requestPermission();
+    }
 
 
     if (permission !== "granted") {
@@ -340,18 +306,19 @@ async function enableNotifications() {
         "Les notifications n'ont pas été autorisées."
       );
 
-
       button.disabled = false;
-
 
       button.innerHTML =
         '<i class="fa-solid fa-bell"></i>' +
         '<span class="notification-dot"></span>';
 
       return;
-
     }
 
+
+    /* =========================
+       FIREBASE
+    ========================= */
 
     const {
       initializeApp
@@ -369,27 +336,47 @@ async function enableNotifications() {
     );
 
 
+    /* Initialisation Firebase */
+
     const app =
       initializeApp(
         FIREBASE_CONFIG
       );
 
 
+    /* Messaging */
+
     const messaging =
       getMessaging(app);
 
 
+    /* =========================
+       SERVICE WORKER
+    ========================= */
+
     const registration =
       await navigator.serviceWorker.register(
-        "/firebase-messaging-sw.js"
+        "/firebase-messaging-sw.js",
+        {
+          scope: "/"
+        }
       );
 
 
     console.log(
-      "Service Worker enregistré :",
+      "Firebase Service Worker enregistré :",
       registration
     );
 
+
+    /* Attendre que le SW soit prêt */
+
+    await navigator.serviceWorker.ready;
+
+
+    /* =========================
+       TOKEN FCM
+    ========================= */
 
     const token =
       await getToken(
@@ -407,11 +394,12 @@ async function enableNotifications() {
     if (!token) {
 
       throw new Error(
-        "Impossible de récupérer le token FCM."
+        "Firebase n'a pas retourné de token."
       );
-
     }
 
+
+    /* Sauvegarde du token */
 
     localStorage.setItem(
       NOTIFICATION_TOKEN_KEY,
@@ -425,10 +413,15 @@ async function enableNotifications() {
     );
 
 
+    /* =========================
+       INTERFACE ACTIVÉE
+    ========================= */
+
     button.classList.add(
       "enabled"
     );
 
+    button.disabled = false;
 
     button.innerHTML =
       '<i class="fa-solid fa-bell"></i>';
@@ -458,11 +451,13 @@ async function enableNotifications() {
 
         const title =
           payload.notification?.title ||
+          payload.data?.title ||
           "MR GAMING PRO";
 
 
         const body =
           payload.notification?.body ||
+          payload.data?.body ||
           "Une nouvelle actualité est disponible !";
 
 
@@ -477,10 +472,18 @@ async function enableNotifications() {
               body: body,
 
               icon:
-                "https://i.ibb.co/Fq3Rn0N1/c536964c08ca2bee74c4a8b26f03926d.webp"
+                "https://i.ibb.co/Fq3Rn0N1/c536964c08ca2bee74c4a8b26f03926d.webp",
+
+              badge:
+                "https://i.ibb.co/Fq3Rn0N1/c536964c08ca2bee74c4a8b26f03926d.webp",
+
+              vibrate: [
+                200,
+                100,
+                200
+              ]
             }
           );
-
         }
 
       }
@@ -490,33 +493,90 @@ async function enableNotifications() {
   } catch (error) {
 
     console.error(
-      "Erreur notifications :",
+      "ERREUR FIREBASE NOTIFICATIONS :",
       error
-    );
-
-
-    alert(
-      "Impossible d'activer les notifications.\n\n" +
-      "Erreur : " +
-      error.message
     );
 
 
     button.disabled = false;
 
-
     button.innerHTML =
       '<i class="fa-solid fa-bell"></i>' +
       '<span class="notification-dot"></span>';
 
-  }
 
+    let message =
+      error?.message ||
+      "Erreur inconnue";
+
+
+    if (
+      error?.code ===
+      "messaging/permission-blocked"
+    ) {
+
+      message =
+        "Les notifications sont bloquées pour ce site dans Chrome.";
+
+    }
+
+
+    if (
+      error?.code ===
+      "messaging/unsupported-browser"
+    ) {
+
+      message =
+        "Ce navigateur ne prend pas en charge les notifications Firebase.";
+
+    }
+
+
+    if (
+      error?.code ===
+      "messaging/invalid-vapid-key"
+    ) {
+
+      message =
+        "La clé VAPID Firebase est incorrecte.";
+
+    }
+
+
+    if (
+      error?.code ===
+      "messaging/failed-service-worker-registration"
+    ) {
+
+      message =
+        "Le Service Worker Firebase ne peut pas être enregistré.";
+
+    }
+
+
+    if (
+      error?.code ===
+      "messaging/token-subscribe-failed"
+    ) {
+
+      message =
+        "Firebase n'arrive pas à créer l'abonnement aux notifications.";
+
+    }
+
+
+    alert(
+      "Impossible d'activer les notifications.\n\n" +
+      "Erreur : " +
+      message
+    );
+  }
 }
 
 
-/* =========================
-   INITIALISATION
-========================= */
+/* =====================================================
+   INITIALISATION NOTIFICATIONS
+===================================================== */
 
 document.addEventListener(
   "DOMContentLoaded",
@@ -537,6 +597,10 @@ document.addEventListener(
     );
 
 
+    /* =========================
+       TOKEN DÉJÀ SAUVEGARDÉ
+    ========================= */
+
     const savedToken =
       localStorage.getItem(
         NOTIFICATION_TOKEN_KEY
@@ -546,14 +610,22 @@ document.addEventListener(
     if (
       savedToken &&
       "Notification" in window &&
-      Notification.permission === "granted"
+      Notification.permission ===
+      "granted"
     ) {
 
       button.classList.add(
         "enabled"
       );
 
+      button.innerHTML =
+        '<i class="fa-solid fa-bell"></i>';
     }
 
   }
 );
+
+
+/* =====================================================
+   FIN MR GAMING PRO
+===================================================== */
