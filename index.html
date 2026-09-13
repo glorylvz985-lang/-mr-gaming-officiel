@@ -1,760 +1,539 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>MR GAMING PRO — Plateforme Gaming</title>
+  <title>MR GAMING PRO</title>
 
-    <meta name="description"
-          content="MR GAMING PRO — Plateforme Gaming">
+  <meta name="theme-color" content="#ff008c">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="MR GAMING PRO">
 
-    <meta name="theme-color"
-          content="#09000f">
+  <meta name="google-site-verification"
+        content="I-3uXsYYj9YB4lAAH1a_YCoVmEcMRwstVJE4vLmCDio">
 
-    <!-- Google Search Console -->
-    <meta name="google-site-verification"
-          content="I-3uXsYYj9YB4lAAH1a_YCoVmEcMRwstVJE4vLmCDio">
+  <meta name="monetag"
+        content="ec910b0475bc20b341babaa9d62f172a">
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="icon"
+        href="https://i.ibb.co/Fq3Rn0N1/c536964c08ca2bee74c4a8b26f03926d.webp">
 
-    <!-- CSS -->
-    <link rel="stylesheet"
-          href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- =====================================================
-     LOADING
-===================================================== -->
+  <!-- FOND LUMINEUX -->
+  <div class="bg-orb orb-1"></div>
+  <div class="bg-orb orb-2"></div>
+  <div class="bg-orb orb-3"></div>
 
-<div id="loading-screen">
-
-    <div class="loading-content">
-
-        <div class="loading-logo-box">
-
-            <img
-                id="loading-logo"
-                src="https://i.ibb.co/Fq3Rn0N1/c536964c08ca2bee74c4a8b26f03926d.webp"
-                alt="MR GAMING PRO">
-
-            <div id="loading-fallback">
-                <i class="fa-solid fa-gamepad"></i>
-            </div>
-
-        </div>
-
-        <h1>MR GAMING PRO</h1>
-
-        <p>Plateforme Gaming</p>
-
-        <div class="loading-bar">
-            <span></span>
-        </div>
-
+  <!-- CHARGEMENT -->
+  <div id="loader">
+    <div class="loader-box">
+      <img
+        src="https://i.ibb.co/Fq3Rn0N1/c536964c08ca2bee74c4a8b26f03926d.webp"
+        alt="MR GAMING PRO">
+      <div class="loader-ring"></div>
+      <h2>MR GAMING PRO</h2>
+      <p>Chargement...</p>
     </div>
+  </div>
 
-</div>
-
-
-<!-- =====================================================
-     HEADER
-===================================================== -->
-
-<header class="top-header">
+  <!-- HEADER FLOTTANT -->
+  <header class="top-bar">
 
     <div class="brand">
+      <img
+        src="https://i.ibb.co/Fq3Rn0N1/c536964c08ca2bee74c4a8b26f03926d.webp"
+        alt="Logo">
+      <div>
+        <strong>MR GAMING PRO</strong>
+        <span>PLATEFORME GAMING</span>
+      </div>
+    </div>
 
-        <div class="brand-logo-box">
+    <button
+      id="enable-notifications"
+      class="notification-button"
+      type="button"
+      aria-label="Notifications">
 
-            <img
-                id="brand-logo"
-                src="https://i.ibb.co/Fq3Rn0N1/c536964c08ca2bee74c4a8b26f03926d.webp"
-                alt="MR GAMING PRO">
+      <i class="fa-solid fa-bell"></i>
+      <span class="notification-dot"></span>
+    </button>
 
-            <div id="brand-fallback">
-                <i class="fa-solid fa-gamepad"></i>
-            </div>
+  </header>
 
+
+  <!-- CONTENU -->
+
+  <main>
+
+    <!-- ACCUEIL -->
+    <section id="page-accueil" class="page active-page">
+
+      <div class="floating-hero">
+
+        <div class="hero-logo">
+          <img
+            src="https://i.ibb.co/Fq3Rn0N1/c536964c08ca2bee74c4a8b26f03926d.webp"
+            alt="MR GAMING PRO">
+        </div>
+
+        <div class="hero-content">
+
+          <div class="status">
+            <span></span>
+            PLATEFORME EN LIGNE
+          </div>
+
+          <h1>
+            BIENVENUE SUR
+            <b>MR GAMING PRO</b>
+          </h1>
+
+          <p>
+            Ton espace gaming pour découvrir des jeux,
+            services, événements, plateformes et actualités.
+          </p>
+
+          <div class="hero-buttons">
+
+            <button
+              class="main-button"
+              onclick="showPage('services')">
+
+              <i class="fa-solid fa-gamepad"></i>
+              Explorer les services
+
+            </button>
+
+            <button
+              class="secondary-button"
+              onclick="showPage('evenements')">
+
+              <i class="fa-solid fa-bolt"></i>
+              Événements
+
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="floating-notice">
+
+        <div class="notice-icon">
+          <i class="fa-solid fa-bullhorn"></i>
         </div>
 
         <div>
-            <strong>MR GAMING PRO</strong>
-            <span>Plateforme Gaming</span>
+          <h3>Actualités gaming</h3>
+          <p>
+            Reste connecté à MR GAMING PRO pour découvrir
+            les nouveautés, jeux et événements.
+          </p>
         </div>
 
-    </div>
+      </div>
+
+    </section>
 
 
-    <!-- Notification -->
+    <!-- SERVICES -->
+    <section id="page-services" class="page">
+
+      <div class="section-title">
+        <span>MR GAMING PRO</span>
+        <h2>Nos services</h2>
+        <p>Tout ce qu'il te faut pour ton expérience gaming.</p>
+      </div>
+
+      <div class="floating-grid services-grid">
+
+        <div class="floating-card service-card">
+          <div class="card-icon">
+            <i class="fa-solid fa-download"></i>
+          </div>
+          <h3>Installation de jeux</h3>
+          <p>Installation et configuration de tes jeux.</p>
+        </div>
+
+        <div class="floating-card service-card">
+          <div class="card-icon">
+            <i class="fa-solid fa-mobile-screen"></i>
+          </div>
+          <h3>Applications</h3>
+          <p>Installation d'applications et outils gaming.</p>
+        </div>
+
+        <div class="floating-card service-card">
+          <div class="card-icon">
+            <i class="fa-solid fa-gamepad"></i>
+          </div>
+          <h3>Jeux Android</h3>
+          <p>Découvre des jeux compatibles avec Android.</p>
+        </div>
+
+        <div class="floating-card service-card">
+          <div class="card-icon">
+            <i class="fa-solid fa-microchip"></i>
+          </div>
+          <h3>Émulateurs</h3>
+          <p>Configuration d'émulateurs et jeux rétro.</p>
+        </div>
+
+        <div class="floating-card service-card">
+          <div class="card-icon">
+            <i class="fa-solid fa-desktop"></i>
+          </div>
+          <h3>Jeux PC</h3>
+          <p>Découvre et configure tes jeux PC.</p>
+        </div>
+
+        <div class="floating-card service-card">
+          <div class="card-icon">
+            <i class="fa-solid fa-sliders"></i>
+          </div>
+          <h3>Configuration gaming</h3>
+          <p>Optimisation de ton appareil pour jouer.</p>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- EVENEMENTS -->
+    <section id="page-evenements" class="page">
+
+      <div class="section-title">
+        <span>MR GAMING PRO</span>
+        <h2>Événements</h2>
+        <p>Les événements gaming à ne pas manquer.</p>
+      </div>
+
+      <div class="events-container">
+
+        <article class="event-card">
+
+          <img
+            src="https://i.ibb.co/RTNdyZWR/unnamed.webp"
+            alt="FC Mobile">
+
+          <div class="event-content">
+
+            <div class="event-badge">
+              ÉVÉNEMENT
+            </div>
+
+            <h3>FC Mobile — Numéro Légendaire</h3>
+
+            <p>
+              Découvre l'événement et les nouveautés
+              disponibles sur FC Mobile.
+            </p>
+
+            <button
+              class="event-button"
+              onclick="openEvent()">
+
+              Voir l'événement
+              <i class="fa-solid fa-arrow-right"></i>
+
+            </button>
+
+          </div>
+
+        </article>
+
+
+        <article class="event-card generic-event">
+
+          <div class="event-placeholder">
+            <i class="fa-solid fa-trophy"></i>
+          </div>
+
+          <div class="event-content">
+
+            <div class="event-badge">
+              À VENIR
+            </div>
+
+            <h3>Tournoi Gaming</h3>
+
+            <p>
+              De nouveaux événements et tournois
+              seront bientôt disponibles.
+            </p>
+
+          </div>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- PLATEFORMES -->
+    <section id="page-plateformes" class="page">
+
+      <div class="section-title">
+        <span>GAMING</span>
+        <h2>Plateformes</h2>
+        <p>Découvre les différentes plateformes supportées.</p>
+      </div>
+
+      <div class="floating-grid platforms-grid">
+
+        <div class="platform-card">
+          <i class="fa-brands fa-android"></i>
+          <strong>Android</strong>
+          <small>Mobile</small>
+        </div>
+
+        <div class="platform-card">
+          <i class="fa-brands fa-windows"></i>
+          <strong>PC</strong>
+          <small>Windows</small>
+        </div>
+
+        <div class="platform-card">
+          <i class="fa-solid fa-gamepad"></i>
+          <strong>PSP</strong>
+          <small>PlayStation Portable</small>
+        </div>
+
+        <div class="platform-card">
+          <i class="fa-solid fa-gamepad"></i>
+          <strong>PS Vita</strong>
+          <small>Portable</small>
+        </div>
+
+        <div class="platform-card">
+          <i class="fa-brands fa-playstation"></i>
+          <strong>PS3</strong>
+          <small>PlayStation</small>
+        </div>
+
+        <div class="platform-card">
+          <i class="fa-brands fa-playstation"></i>
+          <strong>PS5</strong>
+          <small>PlayStation</small>
+        </div>
+
+        <div class="platform-card">
+          <i class="fa-brands fa-xbox"></i>
+          <strong>Xbox</strong>
+          <small>Microsoft</small>
+        </div>
+
+        <div class="platform-card">
+          <i class="fa-solid fa-gamepad"></i>
+          <strong>Switch</strong>
+          <small>Nintendo</small>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- RÉSEAUX -->
+    <section id="page-reseaux" class="page">
+
+      <div class="section-title">
+        <span>COMMUNAUTÉ</span>
+        <h2>Nos réseaux</h2>
+        <p>Rejoins la communauté MR GAMING PRO.</p>
+      </div>
+
+      <div class="social-floating">
+
+        <a
+          href="https://youtube.com/@mgamingofficielle"
+          target="_blank"
+          class="social-card youtube">
+
+          <div class="social-icon">
+            <i class="fa-brands fa-youtube"></i>
+          </div>
+
+          <div>
+            <strong>YouTube</strong>
+            <small>MR GAMING PRO</small>
+          </div>
+
+          <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+        </a>
+
+
+        <a
+          href="https://t.me/mprogamings"
+          target="_blank"
+          class="social-card telegram">
+
+          <div class="social-icon">
+            <i class="fa-brands fa-telegram"></i>
+          </div>
+
+          <div>
+            <strong>Telegram</strong>
+            <small>Canal officiel</small>
+          </div>
+
+          <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+        </a>
+
+
+        <a
+          href="https://www.tiktok.com/@m.rgaming.tuto"
+          target="_blank"
+          class="social-card tiktok">
+
+          <div class="social-icon">
+            <i class="fa-brands fa-tiktok"></i>
+          </div>
+
+          <div>
+            <strong>TikTok</strong>
+            <small>@m.rgaming.tuto</small>
+          </div>
+
+          <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+        </a>
+
+
+        <a
+          href="https://wa.me/243971605626"
+          target="_blank"
+          class="social-card whatsapp">
+
+          <div class="social-icon">
+            <i class="fa-brands fa-whatsapp"></i>
+          </div>
+
+          <div>
+            <strong>WhatsApp</strong>
+            <small>Nous contacter</small>
+          </div>
+
+          <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+        </a>
+
+      </div>
+
+
+      <div class="customer-service">
+
+        <div class="customer-icon">
+          <i class="fa-solid fa-headset"></i>
+        </div>
+
+        <div>
+          <span>SERVICE CLIENT</span>
+          <h3>Besoin d'aide ?</h3>
+          <p>Contacte directement notre service client.</p>
+        </div>
+
+        <a
+          href="https://t.me/Dylan_gamers"
+          target="_blank">
+
+          Contacter
+
+        </a>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- NAVIGATION FLOTTANTE -->
+  <nav class="floating-nav">
 
     <button
-        id="enable-notifications"
-        class="notification-button"
-        type="button"
-        title="Activer les notifications"
-        aria-label="Activer les notifications">
+      class="nav-item active"
+      data-page="accueil"
+      onclick="showPage('accueil')">
 
-        <i class="fa-solid fa-bell"></i>
-
-        <span class="notification-dot"></span>
+      <i class="fa-solid fa-house"></i>
+      <span>Accueil</span>
 
     </button>
 
-</header>
+    <button
+      class="nav-item"
+      data-page="services"
+      onclick="showPage('services')">
 
+      <i class="fa-solid fa-gamepad"></i>
+      <span>Services</span>
 
-<!-- =====================================================
-     CONTENU
-===================================================== -->
+    </button>
 
-<main>
+    <button
+      class="nav-item"
+      data-page="evenements"
+      onclick="showPage('evenements')">
 
+      <i class="fa-solid fa-bolt"></i>
+      <span>Événements</span>
 
-<!-- =====================================================
-     ACCUEIL
-===================================================== -->
+    </button>
 
-<section
-    id="accueil"
-    class="page-section active-section">
+    <button
+      class="nav-item"
+      data-page="plateformes"
+      onclick="showPage('plateformes')">
 
-    <div class="hero-card">
+      <i class="fa-solid fa-layer-group"></i>
+      <span>Plateformes</span>
 
-        <div class="hero-badge">
-            <i class="fa-solid fa-bolt"></i>
-            MR GAMING PRO
-        </div>
+    </button>
 
-        <h1>
-            Ton univers<br>
-            <span>Gaming</span>
-        </h1>
+    <button
+      class="nav-item"
+      data-page="reseaux"
+      onclick="showPage('reseaux')">
 
-        <p>
-            Découvre nos services, événements,
-            plateformes et réseaux gaming.
-        </p>
+      <i class="fa-solid fa-share-nodes"></i>
+      <span>Réseaux</span>
 
-        <div class="hero-buttons">
+    </button>
 
-            <a
-                href="#services"
-                class="primary-button">
+  </nav>
 
-                <i class="fa-solid fa-gamepad"></i>
 
-                Découvrir les services
-
-            </a>
-
-            <a
-                href="#evenements"
-                class="secondary-button">
-
-                <i class="fa-solid fa-calendar-days"></i>
-
-                Événements
-
-            </a>
-
-        </div>
-
-    </div>
-
-
-    <div class="notice-card">
-
-        <div class="notice-icon">
-            <i class="fa-solid fa-circle-info"></i>
-        </div>
-
-        <div>
-
-            <h3>Bienvenue sur MR GAMING PRO</h3>
-
-            <p>
-                Retrouvez ici nos services gaming,
-                événements et différentes plateformes.
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     SERVICES
-===================================================== -->
-
-<section
-    id="services"
-    class="page-section">
-
-    <div class="section-title">
-
-        <span>MR GAMING PRO</span>
-
-        <h2>
-            <i class="fa-solid fa-screwdriver-wrench"></i>
-            Services
-        </h2>
-
-        <p>
-            Nos services gaming
-        </p>
-
-    </div>
-
-
-    <div class="services-grid">
-
-        <div class="service-card">
-
-            <div class="service-icon">
-                <i class="fa-solid fa-download"></i>
-            </div>
-
-            <h3>Installation de jeux</h3>
-
-            <p>
-                Installation et configuration
-                de jeux sur téléphone et PC.
-            </p>
-
-        </div>
-
-
-        <div class="service-card">
-
-            <div class="service-icon">
-                <i class="fa-solid fa-mobile-screen-button"></i>
-            </div>
-
-            <h3>Installation d'applications</h3>
-
-            <p>
-                Installation et configuration
-                d'applications gaming.
-            </p>
-
-        </div>
-
-
-        <div class="service-card">
-
-            <div class="service-icon">
-                <i class="fa-solid fa-gamepad"></i>
-            </div>
-
-            <h3>Jeux Android</h3>
-
-            <p>
-                Jeux Android et optimisation
-                pour une meilleure expérience.
-            </p>
-
-        </div>
-
-
-        <div class="service-card">
-
-            <div class="service-icon">
-                <i class="fa-solid fa-compact-disc"></i>
-            </div>
-
-            <h3>Émulateurs</h3>
-
-            <p>
-                Configuration d'émulateurs
-                et aide au réglage.
-            </p>
-
-        </div>
-
-
-        <div class="service-card">
-
-            <div class="service-icon">
-                <i class="fa-solid fa-desktop"></i>
-            </div>
-
-            <h3>Jeux PC</h3>
-
-            <p>
-                Installation et configuration
-                de jeux PC.
-            </p>
-
-        </div>
-
-
-        <div class="service-card">
-
-            <div class="service-icon">
-                <i class="fa-solid fa-sliders"></i>
-            </div>
-
-            <h3>Configuration gaming</h3>
-
-            <p>
-                Optimisation et configuration
-                de ton environnement gaming.
-            </p>
-
-        </div>
-
-    </div>
-
-
-    <a
-        class="client-button"
-        href="https://t.me/Dylan_gamers"
-        target="_blank"
-        rel="noopener">
-
-        <i class="fa-brands fa-telegram"></i>
-
-        Service client
-
-    </a>
-
-</section>
-
-
-<!-- =====================================================
-     EVENEMENTS
-===================================================== -->
-
-<section
-    id="evenements"
-    class="page-section">
-
-    <div class="section-title">
-
-        <span>MR GAMING PRO</span>
-
-        <h2>
-            <i class="fa-solid fa-calendar-days"></i>
-            Événements
-        </h2>
-
-        <p>
-            Découvre les événements gaming
-        </p>
-
-    </div>
-
-
-    <div class="events-list">
-
-
-        <!-- ÉVÉNEMENT 1 -->
-
-        <article class="event-card">
-
-            <div class="event-image">
-
-                <div class="event-placeholder">
-
-                    <i class="fa-solid fa-trophy"></i>
-
-                    <span>TOURNOI GAMING</span>
-
-                </div>
-
-                <div class="event-label">
-                    À VENIR
-                </div>
-
-            </div>
-
-
-            <div class="event-content">
-
-                <span class="event-category">
-                    GAMING EVENT
-                </span>
-
-                <h3>
-                    Tournoi Gaming
-                </h3>
-
-                <p>
-                    Un événement gaming sera bientôt
-                    disponible sur MR GAMING PRO.
-                </p>
-
-                <button
-                    class="event-button"
-                    type="button"
-                    onclick="showEventMessage('Tournoi Gaming')">
-
-                    <i class="fa-solid fa-arrow-right"></i>
-
-                    Voir les informations
-
-                </button>
-
-            </div>
-
-        </article>
-
-
-        <!-- ÉVÉNEMENT 2 -->
-
-        <article class="event-card">
-
-            <div class="event-image">
-
-                <img
-                    src="https://i.ibb.co/RTNdyZWR/unnamed.webp"
-                    alt="FC Mobile — Numéro Légendaire">
-
-                <div class="event-label">
-                    EVENT
-                </div>
-
-            </div>
-
-
-            <div class="event-content">
-
-                <span class="event-category">
-                    FC MOBILE
-                </span>
-
-                <h3>
-                    Numéro Légendaire
-                </h3>
-
-                <p>
-                    Découvre les prochaines informations
-                    concernant cet événement FC Mobile.
-                </p>
-
-                <button
-                    class="event-button"
-                    type="button"
-                    onclick="showEventMessage('FC Mobile — Numéro Légendaire')">
-
-                    <i class="fa-solid fa-arrow-right"></i>
-
-                    Voir les informations
-
-                </button>
-
-            </div>
-
-        </article>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     PLATEFORMES
-===================================================== -->
-
-<section
-    id="plateformes"
-    class="page-section">
-
-    <div class="section-title">
-
-        <span>MR GAMING PRO</span>
-
-        <h2>
-            <i class="fa-solid fa-layer-group"></i>
-            Plateformes
-        </h2>
-
-        <p>
-            Les plateformes prises en charge
-        </p>
-
-    </div>
-
-
-    <div class="platform-grid">
-
-        <div class="platform-card">
-            <i class="fa-brands fa-android"></i>
-            <strong>Android</strong>
-            <span>Mobile</span>
-        </div>
-
-        <div class="platform-card">
-            <i class="fa-solid fa-desktop"></i>
-            <strong>PC</strong>
-            <span>Windows</span>
-        </div>
-
-        <div class="platform-card">
-            <i class="fa-solid fa-gamepad"></i>
-            <strong>PSP</strong>
-            <span>Portable</span>
-        </div>
-
-        <div class="platform-card">
-            <i class="fa-solid fa-gamepad"></i>
-            <strong>PS Vita</strong>
-            <span>Portable</span>
-        </div>
-
-        <div class="platform-card">
-            <i class="fa-brands fa-playstation"></i>
-            <strong>PS3</strong>
-            <span>Console</span>
-        </div>
-
-        <div class="platform-card">
-            <i class="fa-brands fa-playstation"></i>
-            <strong>PS5</strong>
-            <span>Console</span>
-        </div>
-
-        <div class="platform-card">
-            <i class="fa-solid fa-gamepad"></i>
-            <strong>Xbox</strong>
-            <span>Console</span>
-        </div>
-
-        <div class="platform-card">
-            <i class="fa-solid fa-gamepad"></i>
-            <strong>Switch</strong>
-            <span>Console</span>
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     RÉSEAUX
-===================================================== -->
-
-<section
-    id="reseaux"
-    class="page-section">
-
-    <div class="section-title">
-
-        <span>MR GAMING PRO</span>
-
-        <h2>
-            <i class="fa-solid fa-share-nodes"></i>
-            Nos réseaux
-        </h2>
-
-        <p>
-            Rejoins la communauté
-        </p>
-
-    </div>
-
-
-    <div class="social-grid">
-
-
-        <a
-            href="https://youtube.com/@mgamingofficielle"
-            target="_blank"
-            rel="noopener"
-            class="social-card">
-
-            <div class="social-icon youtube">
-                <i class="fa-brands fa-youtube"></i>
-            </div>
-
-            <div>
-                <strong>YouTube</strong>
-                <span>MR GAMING PRO</span>
-            </div>
-
-            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-
-        </a>
-
-
-        <a
-            href="https://t.me/mprogamings"
-            target="_blank"
-            rel="noopener"
-            class="social-card">
-
-            <div class="social-icon telegram">
-                <i class="fa-brands fa-telegram"></i>
-            </div>
-
-            <div>
-                <strong>Telegram</strong>
-                <span>Canal officiel</span>
-            </div>
-
-            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-
-        </a>
-
-
-        <a
-            href="https://www.tiktok.com/@m.rgaming.tuto"
-            target="_blank"
-            rel="noopener"
-            class="social-card">
-
-            <div class="social-icon tiktok">
-                <i class="fa-brands fa-tiktok"></i>
-            </div>
-
-            <div>
-                <strong>TikTok</strong>
-                <span>@m.rgaming.tuto</span>
-            </div>
-
-            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-
-        </a>
-
-
-        <a
-            href="https://wa.me/243971605626"
-            target="_blank"
-            rel="noopener"
-            class="social-card">
-
-            <div class="social-icon whatsapp">
-                <i class="fa-brands fa-whatsapp"></i>
-            </div>
-
-            <div>
-                <strong>WhatsApp</strong>
-                <span>Nous contacter</span>
-            </div>
-
-            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-
-        </a>
-
-
-        <a
-            href="https://luniaia.lovable.app/"
-            target="_blank"
-            rel="noopener"
-            class="social-card">
-
-            <div class="social-icon lunia">
-                <i class="fa-solid fa-robot"></i>
-            </div>
-
-            <div>
-                <strong>Lunia IA</strong>
-                <span>Assistant IA</span>
-            </div>
-
-            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-
-        </a>
-
-    </div>
-
-</section>
-
-</main>
-
-
-<!-- =====================================================
-     NAVIGATION BASSE
-===================================================== -->
-
-<nav class="bottom-navigation">
-
-    <a
-        href="#accueil"
-        class="nav-item active"
-        data-section="accueil">
-
-        <i class="fa-solid fa-house"></i>
-        <span>Accueil</span>
-
-    </a>
-
-
-    <a
-        href="#services"
-        class="nav-item"
-        data-section="services">
-
-        <i class="fa-solid fa-screwdriver-wrench"></i>
-        <span>Services</span>
-
-    </a>
-
-
-    <a
-        href="#evenements"
-        class="nav-item"
-        data-section="evenements">
-
-        <i class="fa-solid fa-calendar-days"></i>
-        <span>Événements</span>
-
-    </a>
-
-
-    <a
-        href="#plateformes"
-        class="nav-item"
-        data-section="plateformes">
-
-        <i class="fa-solid fa-layer-group"></i>
-        <span>Plateformes</span>
-
-    </a>
-
-
-    <a
-        href="#reseaux"
-        class="nav-item"
-        data-section="reseaux">
-
-        <i class="fa-solid fa-share-nodes"></i>
-        <span>Réseaux</span>
-
-    </a>
-
-</nav>
-
-
-<!-- =====================================================
-     FOOTER
-===================================================== -->
-
-<footer>
-
+  <footer>
     <strong>MR GAMING PRO</strong>
-
-    <p>
-        Plateforme Gaming
-    </p>
-
-    <small>
-        © 2026 MR GAMING PRO — Tous droits réservés.
-    </small>
-
-</footer>
+    <span>© 2026 — Tous droits réservés</span>
+  </footer>
 
 
-<!-- JS -->
-<script src="script.js"></script>
+  <script src="script.js"></script>
 
 </body>
 </html>
