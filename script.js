@@ -8,23 +8,18 @@
 ===================================================== */
 
 window.addEventListener("load", () => {
-
   setTimeout(() => {
-
     const loader = document.getElementById("loader");
 
     if (loader) {
       loader.classList.add("hide");
     }
-
   }, 900);
-
 });
 
 
 /* =====================================================
-   NAVIGATION ENTRE LES RUBRIQUES
-   UNE SEULE PAGE VISIBLE À LA FOIS
+   NAVIGATION
 ===================================================== */
 
 function showPage(pageName) {
@@ -68,7 +63,8 @@ function showPage(pageName) {
 
 function loadInitialPage() {
 
-  const hash = window.location.hash.replace("#", "");
+  const hash =
+    window.location.hash.replace("#", "");
 
   const allowedPages = [
     "accueil",
@@ -83,14 +79,16 @@ function loadInitialPage() {
   } else {
     showPage("accueil");
   }
-
 }
 
-document.addEventListener("DOMContentLoaded", loadInitialPage);
+document.addEventListener(
+  "DOMContentLoaded",
+  loadInitialPage
+);
 
 
 /* =====================================================
-   NOTIFICATIONS FIREBASE
+   FIREBASE
 ===================================================== */
 
 const FIREBASE_CONFIG = {
@@ -128,33 +126,32 @@ const NOTIFICATION_TOKEN_KEY =
 
 
 /* =====================================================
-   CHARGER FIREBASE SEULEMENT AU CLIC
+   NOTIFICATIONS
 ===================================================== */
-
-let firebaseStarted = false;
-
 
 async function enableNotifications() {
 
   const button =
-    document.getElementById("enable-notifications");
+    document.getElementById(
+      "enable-notifications"
+    );
 
   if (!button) return;
 
 
-  /* Navigateur compatible ? */
+  /* Navigateur */
 
   if (!("Notification" in window)) {
 
     alert(
-      "Les notifications ne sont pas prises en charge par ce navigateur."
+      "Ton navigateur ne prend pas en charge les notifications."
     );
 
     return;
   }
 
 
-  /* HTTPS obligatoire */
+  /* HTTPS */
 
   if (
     location.protocol !== "https:" &&
@@ -162,7 +159,7 @@ async function enableNotifications() {
   ) {
 
     alert(
-      "Les notifications nécessitent un site HTTPS."
+      "Les notifications nécessitent HTTPS."
     );
 
     return;
@@ -177,28 +174,65 @@ async function enableNotifications() {
       '<i class="fa-solid fa-spinner fa-spin"></i>';
 
 
-    /* Permission */
+    /* ================================================
+       PERMISSION
+    ================================================ */
 
-    const permission =
-      await Notification.requestPermission();
+    let permission =
+      Notification.permission;
+
+
+    if (permission === "default") {
+
+      permission =
+        await Notification.requestPermission();
+
+    }
 
 
     if (permission !== "granted") {
 
-      alert(
-        "Les notifications n'ont pas été autorisées."
+      throw new Error(
+        "Permission refusée par le navigateur."
       );
 
-      button.disabled = false;
-
-      button.innerHTML =
-        '<i class="fa-solid fa-bell"></i><span class="notification-dot"></span>';
-
-      return;
     }
 
 
-    /* Import Firebase */
+    /* ================================================
+       SERVICE WORKER
+    ================================================ */
+
+    if (!("serviceWorker" in navigator)) {
+
+      throw new Error(
+        "Les Service Workers ne sont pas disponibles."
+      );
+
+    }
+
+
+    const registration =
+      await navigator.serviceWorker.register(
+        "/firebase-messaging-sw.js",
+        {
+          scope: "/"
+        }
+      );
+
+
+    console.log(
+      "Service Worker enregistré :",
+      registration
+    );
+
+
+    await navigator.serviceWorker.ready;
+
+
+    /* ================================================
+       FIREBASE
+    ================================================ */
 
     const {
       initializeApp
@@ -224,114 +258,155 @@ async function enableNotifications() {
       getMessaging(app);
 
 
-    /* Service Worker */
-
-    const registration =
-      await navigator.serviceWorker.register(
-        "/firebase-messaging-sw.js"
-      );
-
-
-    /* Token FCM */
+    /* ================================================
+       TOKEN FCM
+    ================================================ */
 
     const token =
-      await getToken(messaging, {
+      await getToken(
+        messaging,
+        {
+          vapidKey:
+            FCM_VAPID_KEY,
 
-        vapidKey: FCM_VAPID_KEY,
-
-        serviceWorkerRegistration:
-          registration
-
-      });
-
-
-    if (token) {
-
-      localStorage.setItem(
-        NOTIFICATION_TOKEN_KEY,
-        token
+          serviceWorkerRegistration:
+            registration
+        }
       );
 
-      console.log(
-        "FCM TOKEN :",
-        token
-      );
 
-      button.classList.add("enabled");
-
-      button.innerHTML =
-        '<i class="fa-solid fa-bell"></i>';
-
-      alert(
-        "Notifications activées avec succès !"
-      );
-
-    } else {
+    if (!token) {
 
       throw new Error(
-        "Impossible de récupérer le token FCM."
+        "Firebase n'a pas retourné de token FCM."
       );
 
     }
 
 
-    /* Notifications lorsque le site est ouvert */
+    /* ================================================
+       SAUVEGARDE
+    ================================================ */
 
-    onMessage(messaging, payload => {
-
-      console.log(
-        "Notification reçue :",
-        payload
-      );
-
-
-      const title =
-        payload.notification?.title ||
-        "MR GAMING PRO";
+    localStorage.setItem(
+      NOTIFICATION_TOKEN_KEY,
+      token
+    );
 
 
-      const body =
-        payload.notification?.body ||
-        "Une nouvelle actualité est disponible !";
+    console.log(
+      "================================"
+    );
+
+    console.log(
+      "MR GAMING PRO — FCM TOKEN"
+    );
+
+    console.log(token);
+
+    console.log(
+      "================================"
+    );
 
 
-      /* Notification locale si permission */
+    /* ================================================
+       SUCCÈS
+    ================================================ */
 
-      if (Notification.permission === "granted") {
+    button.classList.add(
+      "enabled"
+    );
 
-        new Notification(title, {
+    button.disabled = false;
 
-          body: body,
+    button.innerHTML =
+      '<i class="fa-solid fa-bell"></i>';
 
-          icon:
-            "https://i.ibb.co/Fq3Rn0N1/c536964c08ca2bee74c4a8b26f03926d.webp"
 
-        });
+    alert(
+      "Notifications activées avec succès !"
+    );
+
+
+    /* ================================================
+       MESSAGE QUAND LE SITE EST OUVERT
+    ================================================ */
+
+    onMessage(
+      messaging,
+      function(payload) {
+
+        console.log(
+          "Notification reçue :",
+          payload
+        );
+
+
+        const title =
+          payload.notification?.title ||
+          "MR GAMING PRO";
+
+
+        const body =
+          payload.notification?.body ||
+          "Une nouvelle actualité est disponible !";
+
+
+        if (
+          Notification.permission ===
+          "granted"
+        ) {
+
+          new Notification(
+            title,
+            {
+              body: body,
+
+              icon:
+                "https://i.ibb.co/Fq3Rn0N1/c536964c08ca2bee74c4a8b26f03926d.webp"
+            }
+          );
+
+        }
 
       }
-
-    });
-
-
-    firebaseStarted = true;
+    );
 
 
   } catch (error) {
 
     console.error(
-      "Erreur notifications :",
+      "================================"
+    );
+
+    console.error(
+      "MR GAMING PRO — ERREUR NOTIFICATION"
+    );
+
+    console.error(
       error
     );
 
-    alert(
-      "Impossible d'activer les notifications. Vérifie que le fichier firebase-messaging-sw.js est bien à la racine du site."
+    console.error(
+      "================================"
     );
 
 
     button.disabled = false;
 
     button.innerHTML =
-      '<i class="fa-solid fa-bell"></i><span class="notification-dot"></span>';
+      '<i class="fa-solid fa-bell"></i>' +
+      '<span class="notification-dot"></span>';
+
+
+    /* AFFICHER LA VRAIE ERREUR */
+
+    alert(
+      "Erreur notifications :\n\n" +
+      (error.message ||
+       error.name ||
+       String(error))
+    );
 
   }
 
@@ -339,38 +414,47 @@ async function enableNotifications() {
 
 
 /* =====================================================
-   BOUTON NOTIFICATION
+   BOUTON
 ===================================================== */
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener(
+  "DOMContentLoaded",
+  () => {
 
-  const button =
-    document.getElementById("enable-notifications");
+    const button =
+      document.getElementById(
+        "enable-notifications"
+      );
 
-  if (!button) return;
-
-
-  button.addEventListener(
-    "click",
-    enableNotifications
-  );
+    if (!button) return;
 
 
-  /* Déjà activées ? */
-
-  const savedToken =
-    localStorage.getItem(
-      NOTIFICATION_TOKEN_KEY
+    button.addEventListener(
+      "click",
+      enableNotifications
     );
 
 
-  if (
-    savedToken &&
-    Notification.permission === "granted"
-  ) {
+    /* Vérification locale */
 
-    button.classList.add("enabled");
+    const savedToken =
+      localStorage.getItem(
+        NOTIFICATION_TOKEN_KEY
+      );
+
+
+    if (
+      savedToken &&
+      "Notification" in window &&
+      Notification.permission ===
+      "granted"
+    ) {
+
+      button.classList.add(
+        "enabled"
+      );
+
+    }
 
   }
-
-});
+);
