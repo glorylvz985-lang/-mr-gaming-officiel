@@ -1,7 +1,6 @@
 /* =====================================================
    MR GAMING PRO — STYLE ORIGINAL
    + AUTHENTIFICATION
-   + RESPONSIVE (Android · iPhone · Tablette · PC)
 ===================================================== */
 
 :root {
@@ -30,7 +29,6 @@
 
 html {
   scroll-behavior: smooth;
-  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -76,18 +74,21 @@ body {
 .orb-1 {
   top: 10%;
   left: -100px;
+
   background: var(--pink);
 }
 
 .orb-2 {
   top: 45%;
   right: -100px;
+
   background: var(--violet);
 }
 
 .orb-3 {
   bottom: -100px;
   left: 40%;
+
   background: var(--pink2);
 }
 
@@ -159,18 +160,24 @@ body {
 
 .loader-box h2 {
   font-family: "Orbitron", sans-serif;
+
   font-size: 18px;
+
   color: white;
 }
 
 .loader-box p {
   margin-top: 5px;
+
   color: var(--muted);
+
   font-size: 10px;
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 
@@ -180,6 +187,7 @@ body {
 
 .top-bar {
   width: 100%;
+
   max-width: 1100px;
 
   margin: 0 auto 20px;
@@ -187,6 +195,7 @@ body {
   padding: 12px 14px;
 
   display: flex;
+
   align-items: center;
   justify-content: space-between;
 
@@ -199,43 +208,56 @@ body {
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
 
-  box-shadow: 0 10px 35px rgba(0,0,0,.25);
+  box-shadow:
+    0 10px 35px rgba(0,0,0,.25);
 }
 
 .brand {
   display: flex;
+
   align-items: center;
+
   gap: 10px;
 }
 
 .brand img {
   width: 42px;
   height: 42px;
+
   border-radius: 13px;
+
   object-fit: cover;
 }
 
 .brand div {
   display: flex;
+
   flex-direction: column;
 }
 
 .brand strong {
   font-family: "Orbitron", sans-serif;
+
   font-size: 12px;
+
   color: white;
 }
 
 .brand span {
   margin-top: 2px;
+
   font-size: 8px;
+
   letter-spacing: 1px;
+
   color: var(--pink2);
 }
 
 .header-actions {
   display: flex;
+
   align-items: center;
+
   gap: 8px;
 }
 
@@ -251,18 +273,23 @@ body {
   position: relative;
 
   border: 1px solid var(--border);
+
   border-radius: 15px;
 
   background: rgba(255,0,140,.08);
+
   color: white;
 
   cursor: pointer;
+
   transition: .25s;
 }
 
 .notification-button:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(255,0,140,.25);
+
+  box-shadow:
+    0 8px 25px rgba(255,0,140,.25);
 }
 
 .notification-button i {
@@ -271,6 +298,7 @@ body {
 
 .notification-dot {
   position: absolute;
+
   top: 9px;
   right: 10px;
 
@@ -280,7 +308,9 @@ body {
   border-radius: 50%;
 
   background: var(--pink);
-  box-shadow: 0 0 8px var(--pink);
+
+  box-shadow:
+    0 0 8px var(--pink);
 }
 
 
@@ -293,9 +323,11 @@ body {
   height: 45px;
 
   border: 1px solid var(--border);
+
   border-radius: 15px;
 
   background: rgba(255,0,140,.08);
+
   color: white;
 
   font-size: 17px;
@@ -303,6 +335,7 @@ body {
   cursor: pointer;
 
   display: flex;
+
   align-items: center;
   justify-content: center;
 
@@ -311,7 +344,9 @@ body {
 
 .account-button:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(255,0,140,.25);
+
+  box-shadow:
+    0 8px 25px rgba(255,0,140,.25);
 }
 
 .account-button i {
@@ -326,11 +361,13 @@ body {
 main {
   width: 100%;
   max-width: 1100px;
+
   margin: 0 auto;
 }
 
 .page {
   display: none;
+
   animation: pageIn .35s ease;
 }
 
@@ -339,8 +376,15 @@ main {
 }
 
 @keyframes pageIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 
@@ -350,27 +394,34 @@ main {
 
 .floating-hero {
   width: 100%;
+
   min-height: 390px;
 
   padding: 35px;
 
   display: flex;
+
   align-items: center;
+
   gap: 35px;
 
   background:
-    linear-gradient(135deg,
+    linear-gradient(
+      135deg,
       rgba(255,0,140,.09),
-      rgba(139,0,255,.08)),
+      rgba(139,0,255,.08)
+    ),
     var(--glass);
 
   border: 1px solid var(--border);
+
   border-radius: 30px;
 
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
 
-  box-shadow: 0 25px 70px rgba(0,0,0,.35);
+  box-shadow:
+    0 25px 70px rgba(0,0,0,.35);
 }
 
 .hero-logo {
@@ -385,19 +436,24 @@ main {
   border-radius: 45px;
 
   background:
-    linear-gradient(135deg,
+    linear-gradient(
+      135deg,
       rgba(255,0,140,.16),
-      rgba(139,0,255,.16));
+      rgba(139,0,255,.16)
+    );
 
   border: 1px solid rgba(255,0,140,.2);
 
-  box-shadow: 0 0 40px rgba(255,0,140,.12);
+  box-shadow:
+    0 0 40px rgba(255,0,140,.12);
 }
 
 .hero-logo img {
   width: 125px;
   height: 125px;
+
   object-fit: cover;
+
   border-radius: 32px;
 }
 
@@ -407,56 +463,77 @@ main {
 
 .status {
   display: inline-flex;
+
   align-items: center;
+
   gap: 7px;
 
   margin-bottom: 13px;
 
   font-size: 9px;
+
   color: var(--pink2);
+
   letter-spacing: 1px;
 }
 
 .status span {
   width: 7px;
   height: 7px;
+
   border-radius: 50%;
+
   background: #00ff88;
-  box-shadow: 0 0 10px #00ff88;
+
+  box-shadow:
+    0 0 10px #00ff88;
 }
 
 .hero-content h1 {
   max-width: 700px;
 
   font-family: "Orbitron", sans-serif;
+
   font-size: clamp(25px, 4vw, 48px);
+
   line-height: 1.15;
+
   color: white;
 }
 
 .hero-content h1 b {
   color: var(--pink2);
-  text-shadow: 0 0 25px rgba(255,0,140,.35);
+
+  text-shadow:
+    0 0 25px rgba(255,0,140,.35);
 }
 
 .hero-content p {
   max-width: 600px;
+
   margin-top: 15px;
+
   color: var(--muted);
+
   font-size: 13px;
+
   line-height: 1.8;
 }
 
 .hero-buttons {
   display: flex;
+
   flex-wrap: wrap;
+
   gap: 10px;
+
   margin-top: 25px;
 }
 
 .main-button,
 .secondary-button {
   min-height: 45px;
+
   padding: 0 18px;
 
   border-radius: 14px;
@@ -464,6 +541,7 @@ main {
   cursor: pointer;
 
   font-family: "Poppins", sans-serif;
+
   font-size: 10px;
 
   transition: .25s;
@@ -471,14 +549,25 @@ main {
 
 .main-button {
   border: 0;
+
   color: white;
-  background: linear-gradient(135deg, var(--pink), var(--violet));
-  box-shadow: 0 10px 25px rgba(255,0,140,.2);
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--pink),
+      var(--violet)
+    );
+
+  box-shadow:
+    0 10px 25px rgba(255,0,140,.2);
 }
 
 .secondary-button {
   border: 1px solid var(--border);
+
   background: rgba(255,255,255,.04);
+
   color: white;
 }
 
@@ -494,14 +583,19 @@ main {
 
 .floating-notice {
   margin-top: 15px;
+
   padding: 18px;
 
   display: flex;
+
   align-items: center;
+
   gap: 15px;
 
   background: var(--glass);
+
   border: 1px solid var(--border);
+
   border-radius: 22px;
 
   backdrop-filter: blur(15px);
@@ -511,6 +605,7 @@ main {
 .notice-icon {
   width: 45px;
   height: 45px;
+
   flex-shrink: 0;
 
   display: grid;
@@ -518,18 +613,23 @@ main {
 
   border-radius: 14px;
 
-  background: rgba(255,0,140,.12);
+  background:
+    rgba(255,0,140,.12);
+
   color: var(--pink2);
 }
 
 .floating-notice h3 {
   font-size: 12px;
+
   color: white;
 }
 
 .floating-notice p {
   margin-top: 3px;
+
   font-size: 9px;
+
   color: var(--muted);
 }
 
@@ -540,25 +640,33 @@ main {
 
 .section-title {
   margin: 25px 0;
+
   text-align: center;
 }
 
 .section-title span {
   font-size: 8px;
+
   color: var(--pink2);
+
   letter-spacing: 2px;
 }
 
 .section-title h2 {
   margin-top: 5px;
+
   font-family: "Orbitron", sans-serif;
+
   font-size: 26px;
+
   color: white;
 }
 
 .section-title p {
   margin-top: 5px;
+
   font-size: 10px;
+
   color: var(--muted);
 }
 
@@ -569,7 +677,10 @@ main {
 
 .floating-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
   gap: 15px;
 }
 
@@ -582,7 +693,9 @@ main {
   padding: 22px;
 
   background: var(--glass);
+
   border: 1px solid var(--border);
+
   border-radius: 22px;
 
   backdrop-filter: blur(15px);
@@ -593,7 +706,10 @@ main {
 
 .floating-card:hover {
   transform: translateY(-5px);
-  border-color: rgba(255,0,140,.4);
+
+  border-color:
+    rgba(255,0,140,.4);
+
   box-shadow:
     0 15px 35px rgba(0,0,0,.25),
     0 0 25px rgba(255,0,140,.06);
@@ -610,7 +726,9 @@ main {
 
   border-radius: 15px;
 
-  background: rgba(255,0,140,.1);
+  background:
+    rgba(255,0,140,.1);
+
   color: var(--pink2);
 
   font-size: 18px;
@@ -618,13 +736,17 @@ main {
 
 .floating-card h3 {
   font-size: 12px;
+
   color: white;
 }
 
 .floating-card p {
   margin-top: 6px;
+
   font-size: 9px;
+
   line-height: 1.6;
+
   color: var(--muted);
 }
 
@@ -635,7 +757,10 @@ main {
 
 .events-container {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+
+  grid-template-columns:
+    repeat(2, 1fr);
+
   gap: 15px;
 }
 
@@ -643,7 +768,9 @@ main {
   overflow: hidden;
 
   background: var(--glass);
+
   border: 1px solid var(--border);
+
   border-radius: 25px;
 
   backdrop-filter: blur(15px);
@@ -659,7 +786,9 @@ main {
 .event-card > img {
   width: 100%;
   height: 210px;
+
   display: block;
+
   object-fit: cover;
 }
 
@@ -669,40 +798,54 @@ main {
 
 .event-badge {
   display: inline-block;
+
   padding: 5px 9px;
+
   border-radius: 8px;
 
-  background: rgba(255,0,140,.1);
+  background:
+    rgba(255,0,140,.1);
+
   color: var(--pink2);
 
   font-size: 7px;
+
   letter-spacing: 1px;
 }
 
 .event-content h3 {
   margin-top: 10px;
+
   color: white;
+
   font-size: 14px;
 }
 
 .event-content p {
   margin-top: 7px;
+
   color: var(--muted);
+
   font-size: 9px;
+
   line-height: 1.6;
 }
 
 .event-button {
   margin-top: 15px;
+
   padding: 11px 15px;
 
   border: 1px solid var(--border);
+
   border-radius: 12px;
 
   background: rgba(255,0,140,.07);
+
   color: white;
 
   cursor: pointer;
+
   font-size: 9px;
 
   transition: .25s;
@@ -710,12 +853,15 @@ main {
 
 .event-button:hover {
   background: rgba(255,0,140,.15);
+
   transform: translateY(-2px);
 }
 
 .generic-event {
   min-height: 100%;
+
   display: flex;
+
   flex-direction: column;
 }
 
@@ -725,11 +871,15 @@ main {
   display: grid;
   place-items: center;
 
-  background: radial-gradient(circle,
-    rgba(255,0,140,.14),
-    transparent 60%);
+  background:
+    radial-gradient(
+      circle,
+      rgba(255,0,140,.14),
+      transparent 60%
+    );
 
   color: var(--pink2);
+
   font-size: 45px;
 }
 
@@ -739,23 +889,30 @@ main {
 ===================================================== */
 
 .platforms-grid {
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns:
+    repeat(4, 1fr);
 }
 
 .platform-card {
   min-height: 125px;
+
   padding: 20px;
 
   display: flex;
+
   flex-direction: column;
+
   align-items: center;
   justify-content: center;
 
   text-align: center;
+
   gap: 6px;
 
   background: var(--glass);
+
   border: 1px solid var(--border);
+
   border-radius: 20px;
 
   transition: .3s;
@@ -763,22 +920,28 @@ main {
 
 .platform-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 15px 35px rgba(0,0,0,.2);
+
+  box-shadow:
+    0 15px 35px rgba(0,0,0,.2);
 }
 
 .platform-card i {
   font-size: 28px;
+
   color: var(--pink2);
+
   margin-bottom: 5px;
 }
 
 .platform-card strong {
   font-size: 11px;
+
   color: white;
 }
 
 .platform-card small {
   font-size: 8px;
+
   color: var(--muted);
 }
 
@@ -789,22 +952,29 @@ main {
 
 .social-floating {
   display: flex;
+
   flex-direction: column;
+
   gap: 12px;
 }
 
 .social-card {
   width: 100%;
+
   padding: 15px;
 
   display: flex;
+
   align-items: center;
+
   gap: 13px;
 
   text-decoration: none;
 
   background: var(--glass);
+
   border: 1px solid var(--border);
+
   border-radius: 18px;
 
   color: white;
@@ -814,7 +984,9 @@ main {
 
 .social-card:hover {
   transform: translateX(5px);
-  background: rgba(255,255,255,.07);
+
+  background:
+    rgba(255,255,255,.07);
 }
 
 .social-icon {
@@ -827,13 +999,17 @@ main {
   border-radius: 14px;
 
   background: rgba(255,0,140,.08);
+
   font-size: 20px;
+
   color: var(--pink2);
 }
 
 .social-card > div:nth-child(2) {
   flex: 1;
+
   display: flex;
+
   flex-direction: column;
 }
 
@@ -843,12 +1019,15 @@ main {
 
 .social-card small {
   margin-top: 2px;
+
   font-size: 8px;
+
   color: var(--muted);
 }
 
 .social-card > i {
   color: var(--muted);
+
   font-size: 11px;
 }
 
@@ -859,20 +1038,26 @@ main {
 
 .customer-service {
   margin-top: 15px;
+
   padding: 18px;
 
   display: flex;
+
   align-items: center;
+
   gap: 13px;
 
   background: var(--glass);
+
   border: 1px solid var(--border);
+
   border-radius: 20px;
 }
 
 .customer-icon {
   width: 48px;
   height: 48px;
+
   flex-shrink: 0;
 
   display: grid;
@@ -881,6 +1066,7 @@ main {
   border-radius: 15px;
 
   background: rgba(255,0,140,.1);
+
   color: var(--pink2);
 }
 
@@ -890,19 +1076,25 @@ main {
 
 .customer-service span {
   font-size: 7px;
+
   letter-spacing: 1px;
+
   color: var(--pink2);
 }
 
 .customer-service h3 {
   margin-top: 2px;
+
   font-size: 12px;
+
   color: white;
 }
 
 .customer-service p {
   margin-top: 2px;
+
   font-size: 8px;
+
   color: var(--muted);
 }
 
@@ -911,10 +1103,17 @@ main {
 
   border-radius: 11px;
 
-  background: linear-gradient(135deg, var(--pink), var(--violet));
+  background:
+    linear-gradient(
+      135deg,
+      var(--pink),
+      var(--violet)
+    );
+
   color: white;
 
   text-decoration: none;
+
   font-size: 8px;
 }
 
@@ -927,6 +1126,7 @@ main {
   position: fixed;
 
   left: 50%;
+
   bottom: 15px;
 
   transform: translateX(-50%);
@@ -934,39 +1134,51 @@ main {
   z-index: 9000;
 
   width: calc(100% - 30px);
+
   max-width: 650px;
 
   padding: 8px;
 
   display: flex;
+
   align-items: center;
   justify-content: space-around;
 
-  background: rgba(12,6,16,.88);
+  background:
+    rgba(12,6,16,.88);
+
   border: 1px solid var(--border);
+
   border-radius: 25px;
 
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
 
-  box-shadow: 0 15px 45px rgba(0,0,0,.5);
+  box-shadow:
+    0 15px 45px rgba(0,0,0,.5);
 }
 
 .nav-item {
   min-width: 65px;
+
   padding: 8px 10px;
 
   border: 0;
+
   border-radius: 16px;
 
   background: transparent;
+
   color: var(--muted);
 
   cursor: pointer;
 
   display: flex;
+
   flex-direction: column;
+
   align-items: center;
+
   gap: 4px;
 
   font-family: "Poppins", sans-serif;
@@ -983,9 +1195,13 @@ main {
 }
 
 .nav-item.active {
-  background: rgba(255,0,140,.12);
+  background:
+    rgba(255,0,140,.12);
+
   color: var(--pink2);
-  box-shadow: inset 0 0 20px rgba(255,0,140,.05);
+
+  box-shadow:
+    inset 0 0 20px rgba(255,0,140,.05);
 }
 
 .nav-item:active {
@@ -999,24 +1215,30 @@ main {
 
 footer {
   width: 100%;
+
   max-width: 1100px;
 
   margin: 30px auto 0;
+
   padding: 15px;
 
   display: flex;
+
   align-items: center;
   justify-content: space-between;
 
   border-top: 1px solid rgba(255,255,255,.06);
 
   color: var(--muted);
+
   font-size: 8px;
 }
 
 footer strong {
   color: var(--pink2);
+
   font-family: "Orbitron", sans-serif;
+
   font-size: 9px;
 }
 
@@ -1027,10 +1249,13 @@ footer strong {
 
 .auth-modal {
   position: fixed;
+
   inset: 0;
+
   z-index: 9990;
 
   display: none;
+
   align-items: center;
   justify-content: center;
 
@@ -1048,7 +1273,9 @@ footer strong {
 
 .auth-box {
   width: 100%;
+
   max-width: 400px;
+
   max-height: 90vh;
 
   overflow-y: auto;
@@ -1058,12 +1285,15 @@ footer strong {
   padding: 30px 25px;
 
   background:
-    linear-gradient(145deg,
+    linear-gradient(
+      145deg,
       rgba(255,0,140,.10),
-      rgba(139,0,255,.09)),
+      rgba(139,0,255,.09)
+    ),
     rgba(10,6,14,.97);
 
   border: 1px solid rgba(255,0,140,.25);
+
   border-radius: 30px;
 
   box-shadow:
@@ -1073,6 +1303,7 @@ footer strong {
 
 .auth-close {
   position: absolute;
+
   top: 14px;
   right: 14px;
 
@@ -1080,9 +1311,11 @@ footer strong {
   height: 35px;
 
   border: 1px solid rgba(255,255,255,.1);
+
   border-radius: 12px;
 
   background: rgba(255,255,255,.05);
+
   color: white;
 
   cursor: pointer;
@@ -1090,6 +1323,7 @@ footer strong {
 
 .auth-form-container {
   width: 100%;
+
   text-align: center;
 }
 
@@ -1104,7 +1338,13 @@ footer strong {
 
   border-radius: 22px;
 
-  background: linear-gradient(135deg, #ff008c, #8b00ff);
+  background:
+    linear-gradient(
+      135deg,
+      #ff008c,
+      #8b00ff
+    );
+
   color: white;
 
   font-size: 27px;
@@ -1116,14 +1356,19 @@ footer strong {
 
 .auth-form-container h2 {
   color: white;
+
   font-family: "Orbitron", sans-serif;
+
   font-size: 25px;
+
   margin: 6px 0;
 }
 
 .auth-form-container > p {
   color: var(--muted);
+
   font-size: 11px;
+
   margin-bottom: 18px;
 }
 
@@ -1134,6 +1379,7 @@ footer strong {
 
 .input-group {
   width: 100%;
+
   height: 48px;
 
   margin-bottom: 10px;
@@ -1141,14 +1387,17 @@ footer strong {
   position: relative;
 
   display: flex;
+
   align-items: center;
 }
 
 .input-group > i {
   position: absolute;
+
   left: 15px;
 
   color: var(--pink2);
+
   font-size: 12px;
 
   z-index: 2;
@@ -1161,14 +1410,17 @@ footer strong {
   padding: 0 15px 0 42px;
 
   border: 1px solid rgba(255,255,255,.09);
+
   border-radius: 14px;
 
   outline: none;
 
   background: rgba(255,255,255,.055);
+
   color: white;
 
   font-family: "Poppins", sans-serif;
+
   font-size: 11px;
 }
 
@@ -1178,7 +1430,9 @@ footer strong {
 
 .input-group input:focus {
   border-color: rgba(255,0,140,.5);
-  box-shadow: 0 0 20px rgba(255,0,140,.08);
+
+  box-shadow:
+    0 0 20px rgba(255,0,140,.08);
 }
 
 
@@ -1188,22 +1442,33 @@ footer strong {
 
 .auth-submit {
   width: 100%;
+
   min-height: 48px;
 
   margin-top: 4px;
 
   border: 0;
+
   border-radius: 14px;
 
   color: white;
 
-  background: linear-gradient(135deg, #ff008c, #9900ff);
-  box-shadow: 0 10px 25px rgba(255,0,140,.18);
+  background:
+    linear-gradient(
+      135deg,
+      #ff008c,
+      #9900ff
+    );
+
+  box-shadow:
+    0 10px 25px rgba(255,0,140,.18);
 
   cursor: pointer;
 
   font-family: "Poppins", sans-serif;
+
   font-size: 11px;
+
   font-weight: 600;
 
   transition: .25s;
@@ -1224,35 +1489,17 @@ footer strong {
 
 .auth-switch {
   color: var(--muted);
+
   font-size: 10px;
+
   margin-top: 18px;
 }
 
 .auth-switch button {
   border: 0;
+
   background: transparent;
 
   color: var(--pink2);
 
-  cursor: pointer;
-
-  font-family: "Poppins", sans-serif;
-  font-size: 10px;
-  font-weight: 600;
-
-  text-decoration: underline;
-}
-
-
-/* =====================================================
-   RESPONSIVE — TABLETTE (≤ 992px)
-===================================================== */
-
-@media (max-width: 992px) {
-
-  .floating-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .platforms-grid {
-    grid-template-c
+  cur
