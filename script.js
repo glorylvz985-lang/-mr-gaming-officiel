@@ -1,18 +1,17 @@
 /* =====================================================
    MR GAMING PRO
-   JAVASCRIPT
-   Acode + Firebase Authentication + Notifications
+   SCRIPT COMPLET
+   NAVIGATION + AUTH FIREBASE + NOTIFICATIONS
 ===================================================== */
 
 
 /* =====================================================
-   FIREBASE AUTHENTIFICATION
+   FIREBASE
 ===================================================== */
 
 import {
   initializeApp
 } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
-
 
 import {
   getAuth,
@@ -20,95 +19,50 @@ import {
   signInWithPopup,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  updateProfile,
   onAuthStateChanged,
   signOut
 } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
 
 
-/* =========================
-   CONFIG FIREBASE
-========================= */
-
 const FIREBASE_CONFIG = {
-
-  apiKey:
-    "AIzaSyBT7dBeqf2NyE1od-7ZREg6SwOlkMUbw0E",
-
-  authDomain:
-    "globoost.firebaseapp.com",
-
-  projectId:
-    "globoost",
-
-  storageBucket:
-    "globoost.firebasestorage.app",
-
-  messagingSenderId:
-    "386284505924",
-
-  appId:
-    "1:386284505924:web:ff47d077addeef77252511",
-
-  measurementId:
-    "G-4BC7Q37JH1"
-
+  apiKey: "AIzaSyBT7dBeqf2NyE1od-7ZREg6SwOlkMUbw0E",
+  authDomain: "globoost.firebaseapp.com",
+  projectId: "globoost",
+  storageBucket: "globoost.firebasestorage.app",
+  messagingSenderId: "386284505924",
+  appId: "1:386284505924:web:ff47d077addeef77252511",
+  measurementId: "G-4BC7Q37JH1"
 };
 
 
-/* =========================
-   INITIALISATION FIREBASE
-========================= */
-
 const firebaseApp =
-  initializeApp(
-    FIREBASE_CONFIG
-  );
-
+  initializeApp(FIREBASE_CONFIG);
 
 const auth =
-  getAuth(
-    firebaseApp
-  );
-
+  getAuth(firebaseApp);
 
 const googleProvider =
   new GoogleAuthProvider();
-
 
 
 /* =====================================================
    CHARGEMENT
 ===================================================== */
 
-window.addEventListener(
-  "load",
-  () => {
+window.addEventListener("load", () => {
 
-    setTimeout(
-      () => {
+  setTimeout(() => {
 
-        const loader =
-          document.getElementById(
-            "loader"
-          );
+    const loader =
+      document.getElementById("loader");
 
+    if (loader) {
+      loader.classList.add("hide");
+    }
 
-        if (loader) {
+  }, 1000);
 
-          loader.classList.add(
-            "hide"
-          );
-
-        }
-
-      },
-      1000
-    );
-
-  }
-);
-
+});
 
 
 /* =====================================================
@@ -117,70 +71,43 @@ window.addEventListener(
 
 function vibrate() {
 
-  if (
-    "vibrate" in navigator
-  ) {
-
+  if ("vibrate" in navigator) {
     navigator.vibrate(35);
-
   }
 
 }
 
 
+document.addEventListener("click", (event) => {
 
-/* Tous les boutons */
+  const button =
+    event.target.closest(
+      "button, .social-card, .customer-service a"
+    );
 
-document.addEventListener(
-  "click",
-  (event) => {
-
-    const element =
-      event.target.closest(
-        "button, .social-card, .customer-service a"
-      );
-
-
-    if (element) {
-
-      vibrate();
-
-    }
-
+  if (button) {
+    vibrate();
   }
-);
 
+});
 
 
 /* =====================================================
    NAVIGATION
 ===================================================== */
 
-function showPage(
-  pageName
-) {
+function showPage(pageName) {
 
   const pages =
-    document.querySelectorAll(
-      ".page"
-    );
-
+    document.querySelectorAll(".page");
 
   const navItems =
-    document.querySelectorAll(
-      ".nav-item"
-    );
+    document.querySelectorAll(".nav-item");
 
 
-  pages.forEach(
-    page => {
-
-      page.classList.remove(
-        "active-page"
-      );
-
-    }
-  );
+  pages.forEach(page => {
+    page.classList.remove("active-page");
+  });
 
 
   const selectedPage =
@@ -190,35 +117,19 @@ function showPage(
 
 
   if (selectedPage) {
-
-    selectedPage.classList.add(
-      "active-page"
-    );
-
+    selectedPage.classList.add("active-page");
   }
 
 
-  navItems.forEach(
-    item => {
+  navItems.forEach(item => {
 
-      item.classList.remove(
-        "active"
-      );
+    item.classList.remove("active");
 
-
-      if (
-        item.dataset.page ===
-        pageName
-      ) {
-
-        item.classList.add(
-          "active"
-        );
-
-      }
-
+    if (item.dataset.page === pageName) {
+      item.classList.add("active");
     }
-  );
+
+  });
 
 
   window.scrollTo({
@@ -236,95 +147,42 @@ function showPage(
 }
 
 
-
-/* =====================================================
-   PAGE INITIALE
-===================================================== */
-
 function loadInitialPage() {
 
   const hash =
-    window.location.hash
-      .replace(
-        "#",
-        ""
-      );
-
+    window.location.hash.replace("#", "");
 
   const allowedPages = [
-
     "accueil",
     "services",
     "evenements",
     "plateformes",
     "reseaux"
-
   ];
 
 
-  if (
-    allowedPages.includes(
-      hash
-    )
-  ) {
-
+  if (allowedPages.includes(hash)) {
     showPage(hash);
-
   } else {
-
-    showPage(
-      "accueil"
-    );
-
+    showPage("accueil");
   }
 
 }
 
 
-
 document.addEventListener(
   "DOMContentLoaded",
-  () => {
-
-    loadInitialPage();
-
-
-    /* Navigation */
-
-    document
-      .querySelectorAll(
-        ".nav-item"
-      )
-      .forEach(
-        item => {
-
-          item.addEventListener(
-            "click",
-            () => {
-
-              showPage(
-                item.dataset.page
-              );
-
-            }
-          );
-
-        }
-      );
-
-  }
+  loadInitialPage
 );
 
 
-
 /* =====================================================
-   ÉVÉNEMENT FC MOBILE
+   ÉVÉNEMENT
 ===================================================== */
 
 function openEvent() {
 
   vibrate();
-
 
   alert(
     "FC Mobile — Numéro Légendaire\n\n" +
@@ -334,23 +192,20 @@ function openEvent() {
 }
 
 
-
 /* =====================================================
-   INSTALLATION WEB APP
+   INSTALLATION PWA
 ===================================================== */
 
-let deferredPrompt =
-  null;
+let deferredPrompt = null;
 
 
 window.addEventListener(
   "beforeinstallprompt",
-  event => {
+  (event) => {
 
     event.preventDefault();
 
-    deferredPrompt =
-      event;
+    deferredPrompt = event;
 
     console.log(
       "Installation de MR GAMING PRO disponible."
@@ -358,7 +213,6 @@ window.addEventListener(
 
   }
 );
-
 
 
 async function installApp() {
@@ -377,22 +231,17 @@ async function installApp() {
 
   deferredPrompt.prompt();
 
-
   const result =
     await deferredPrompt.userChoice;
-
 
   console.log(
     "Installation :",
     result.outcome
   );
 
-
-  deferredPrompt =
-    null;
+  deferredPrompt = null;
 
 }
-
 
 
 window.addEventListener(
@@ -403,128 +252,90 @@ window.addEventListener(
       "MR GAMING PRO installé."
     );
 
-
-    deferredPrompt =
-      null;
+    deferredPrompt = null;
 
   }
 );
 
 
-
 /* =====================================================
-   AUTHENTIFICATION
+   AUTHENTIFICATION FIREBASE
 ===================================================== */
 
-
-/* =========================
-   ÉLÉMENTS HTML
-========================= */
-
 const authModal =
-  document.getElementById(
-    "auth-modal"
-  );
+  document.getElementById("auth-modal");
 
+const accountButton =
+  document.getElementById("account-button");
 
-const authButton =
-  document.getElementById(
-    "auth-button"
-  );
-
-
-const authClose =
-  document.getElementById(
-    "auth-close"
-  );
-
+const closeAuthButton =
+  document.getElementById("close-auth");
 
 const loginForm =
-  document.getElementById(
-    "login-form"
-  );
-
+  document.getElementById("login-form");
 
 const registerForm =
+  document.getElementById("register-form");
+
+const loginContainer =
   document.getElementById(
-    "register-form"
+    "login-form-container"
   );
 
-
-const accountForm =
+const registerContainer =
   document.getElementById(
-    "account-form"
+    "register-form-container"
   );
 
-
-const authMessage =
+const accountContainer =
   document.getElementById(
-    "auth-message"
+    "user-account-container"
   );
 
+const showRegisterButton =
+  document.getElementById("show-register");
+
+const showLoginButton =
+  document.getElementById("show-login");
+
+const logoutButton =
+  document.getElementById("logout-button");
+
+const loggedUserEmail =
+  document.getElementById("logged-user-email");
 
 
-/* =========================
-   MESSAGE
-========================= */
+/* =====================================================
+   MESSAGE AUTH
+===================================================== */
 
-function showAuthMessage(
-  message
-) {
+function showAuthMessage(message) {
 
-  if (!authMessage) {
-    return;
-  }
-
-
-  authMessage.textContent =
-    message;
+  alert(message);
 
 }
 
 
-
-function clearAuthMessage() {
-
-  if (!authMessage) {
-    return;
-  }
-
-
-  authMessage.textContent =
-    "";
-
-}
-
-
-
-/* =========================
-   OUVRIR
-========================= */
+/* =====================================================
+   OUVRIR LE COMPTE
+===================================================== */
 
 function openAuth() {
 
   vibrate();
 
+  if (!authModal) return;
 
-  if (!authModal) {
-    return;
-  }
-
-
-  authModal.classList.add(
-    "show"
-  );
+  authModal.classList.add("show");
 
 
-  clearAuthMessage();
+  const user =
+    auth.currentUser;
 
 
-  if (auth.currentUser) {
+  if (user) {
 
-    showAccount(
-      auth.currentUser
-    );
+    showAccount(user);
 
   } else {
 
@@ -535,137 +346,88 @@ function openAuth() {
 }
 
 
-
-/* =========================
+/* =====================================================
    FERMER
-========================= */
+===================================================== */
 
 function closeAuth() {
 
-  if (!authModal) {
-    return;
-  }
+  if (!authModal) return;
 
-
-  authModal.classList.remove(
-    "show"
-  );
-
-
-  clearAuthMessage();
+  authModal.classList.remove("show");
 
 }
 
 
-
-/* =========================
-   AFFICHER LOGIN
-========================= */
+/* =====================================================
+   AFFICHER CONNEXION
+===================================================== */
 
 function showLogin() {
 
-  clearAuthMessage();
+  if (loginContainer) {
+    loginContainer.style.display = "block";
+  }
 
+  if (registerContainer) {
+    registerContainer.style.display = "none";
+  }
 
-  loginForm.classList.remove(
-    "hidden"
-  );
-
-
-  registerForm.classList.add(
-    "hidden"
-  );
-
-
-  accountForm.classList.add(
-    "hidden"
-  );
+  if (accountContainer) {
+    accountContainer.style.display = "none";
+  }
 
 }
 
 
-
-/* =========================
+/* =====================================================
    AFFICHER INSCRIPTION
-========================= */
+===================================================== */
 
 function showRegister() {
 
-  clearAuthMessage();
+  if (loginContainer) {
+    loginContainer.style.display = "none";
+  }
 
+  if (registerContainer) {
+    registerContainer.style.display = "block";
+  }
 
-  loginForm.classList.add(
-    "hidden"
-  );
-
-
-  registerForm.classList.remove(
-    "hidden"
-  );
-
-
-  accountForm.classList.add(
-    "hidden"
-  );
+  if (accountContainer) {
+    accountContainer.style.display = "none";
+  }
 
 }
 
 
-
-/* =========================
+/* =====================================================
    AFFICHER COMPTE
-========================= */
+===================================================== */
 
-function showAccount(
-  user
-) {
+function showAccount(user) {
 
-  loginForm.classList.add(
-    "hidden"
-  );
+  if (loginContainer) {
+    loginContainer.style.display = "none";
+  }
 
+  if (registerContainer) {
+    registerContainer.style.display = "none";
+  }
 
-  registerForm.classList.add(
-    "hidden"
-  );
-
-
-  accountForm.classList.remove(
-    "hidden"
-  );
-
-
-  const accountName =
-    document.getElementById(
-      "account-name"
-    );
-
-
-  const accountEmail =
-    document.getElementById(
-      "account-email"
-    );
-
-
-  if (accountName) {
-
-    accountName.textContent =
-      user.displayName ||
-      "Utilisateur";
-
+  if (accountContainer) {
+    accountContainer.style.display = "block";
   }
 
 
-  if (accountEmail) {
+  if (loggedUserEmail) {
 
-    accountEmail.textContent =
-      user.email ||
-      "";
+    loggedUserEmail.textContent =
+      user.email || "Utilisateur connecté";
 
   }
 
 }
-
 
 
 /* =====================================================
@@ -674,25 +436,26 @@ function showAccount(
 
 async function loginWithEmail() {
 
-  vibrate();
+  const emailInput =
+    document.getElementById("login-email");
+
+  const passwordInput =
+    document.getElementById("login-password");
+
+
+  if (!emailInput || !passwordInput) {
+    return;
+  }
 
 
   const email =
-    document.getElementById(
-      "login-email"
-    ).value.trim();
-
+    emailInput.value.trim();
 
   const password =
-    document.getElementById(
-      "login-password"
-    ).value;
+    passwordInput.value;
 
 
-  if (
-    !email ||
-    !password
-  ) {
+  if (!email || !password) {
 
     showAuthMessage(
       "Remplis tous les champs."
@@ -717,27 +480,14 @@ async function loginWithEmail() {
     );
 
 
-    showAuthMessage(
-      "Connexion réussie."
-    );
+    closeAuth();
 
-
-    setTimeout(
-      () => {
-
-        closeAuth();
-
-      },
-      700
-    );
+    loginForm.reset();
 
 
   } catch (error) {
 
-    console.error(
-      error
-    );
-
+    console.error(error);
 
     let message =
       "Impossible de se connecter.";
@@ -751,10 +501,7 @@ async function loginWithEmail() {
       message =
         "Email ou mot de passe incorrect.";
 
-    }
-
-
-    if (
+    } else if (
       error.code ===
       "auth/user-not-found"
     ) {
@@ -762,10 +509,7 @@ async function loginWithEmail() {
       message =
         "Aucun compte avec cet email.";
 
-    }
-
-
-    if (
+    } else if (
       error.code ===
       "auth/wrong-password"
     ) {
@@ -773,10 +517,7 @@ async function loginWithEmail() {
       message =
         "Mot de passe incorrect.";
 
-    }
-
-
-    if (
+    } else if (
       error.code ===
       "auth/invalid-email"
     ) {
@@ -787,25 +528,11 @@ async function loginWithEmail() {
     }
 
 
-    if (
-      error.code ===
-      "auth/operation-not-allowed"
-    ) {
-
-      message =
-        "La connexion Email/Password n'est pas activée dans Firebase.";
-
-    }
-
-
-    showAuthMessage(
-      message
-    );
+    showAuthMessage(message);
 
   }
 
 }
-
 
 
 /* =====================================================
@@ -814,31 +541,41 @@ async function loginWithEmail() {
 
 async function registerWithEmail() {
 
-  vibrate();
+  const emailInput =
+    document.getElementById("register-email");
 
+  const passwordInput =
+    document.getElementById("register-password");
 
-  const name =
+  const confirmInput =
     document.getElementById(
-      "register-name"
-    ).value.trim();
-
-
-  const email =
-    document.getElementById(
-      "register-email"
-    ).value.trim();
-
-
-  const password =
-    document.getElementById(
-      "register-password"
-    ).value;
+      "register-confirm-password"
+    );
 
 
   if (
-    !name ||
+    !emailInput ||
+    !passwordInput ||
+    !confirmInput
+  ) {
+    return;
+  }
+
+
+  const email =
+    emailInput.value.trim();
+
+  const password =
+    passwordInput.value;
+
+  const confirmPassword =
+    confirmInput.value;
+
+
+  if (
     !email ||
-    !password
+    !password ||
+    !confirmPassword
   ) {
 
     showAuthMessage(
@@ -850,12 +587,21 @@ async function registerWithEmail() {
   }
 
 
-  if (
-    password.length < 6
-  ) {
+  if (password.length < 6) {
 
     showAuthMessage(
       "Le mot de passe doit contenir au moins 6 caractères."
+    );
+
+    return;
+
+  }
+
+
+  if (password !== confirmPassword) {
+
+    showAuthMessage(
+      "Les deux mots de passe ne correspondent pas."
     );
 
     return;
@@ -870,43 +616,21 @@ async function registerWithEmail() {
     );
 
 
-    const result =
-      await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-
-
-    await updateProfile(
-      result.user,
-      {
-        displayName: name
-      }
+    await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
     );
 
 
-    showAuthMessage(
-      "Compte créé avec succès."
-    );
+    closeAuth();
 
-
-    setTimeout(
-      () => {
-
-        closeAuth();
-
-      },
-      700
-    );
+    registerForm.reset();
 
 
   } catch (error) {
 
-    console.error(
-      error
-    );
-
+    console.error(error);
 
     let message =
       "Impossible de créer le compte.";
@@ -920,10 +644,7 @@ async function registerWithEmail() {
       message =
         "Cette adresse email est déjà utilisée.";
 
-    }
-
-
-    if (
+    } else if (
       error.code ===
       "auth/invalid-email"
     ) {
@@ -931,10 +652,7 @@ async function registerWithEmail() {
       message =
         "Adresse email invalide.";
 
-    }
-
-
-    if (
+    } else if (
       error.code ===
       "auth/weak-password"
     ) {
@@ -945,25 +663,11 @@ async function registerWithEmail() {
     }
 
 
-    if (
-      error.code ===
-      "auth/operation-not-allowed"
-    ) {
-
-      message =
-        "La connexion Email/Password n'est pas activée dans Firebase.";
-
-    }
-
-
-    showAuthMessage(
-      message
-    );
+    showAuthMessage(message);
 
   }
 
 }
-
 
 
 /* =====================================================
@@ -971,9 +675,6 @@ async function registerWithEmail() {
 ===================================================== */
 
 async function loginWithGoogle() {
-
-  vibrate();
-
 
   try {
 
@@ -988,30 +689,12 @@ async function loginWithGoogle() {
     );
 
 
-    showAuthMessage(
-      "Connexion réussie."
-    );
-
-
-    setTimeout(
-      () => {
-
-        closeAuth();
-
-      },
-      700
-    );
+    closeAuth();
 
 
   } catch (error) {
 
-    console.error(
-      error
-    );
-
-
-    let message =
-      "Impossible de se connecter avec Google.";
+    console.error(error);
 
 
     if (
@@ -1019,8 +702,7 @@ async function loginWithGoogle() {
       "auth/popup-closed-by-user"
     ) {
 
-      message =
-        "Connexion annulée.";
+      return;
 
     }
 
@@ -1030,42 +712,22 @@ async function loginWithGoogle() {
       "auth/popup-blocked"
     ) {
 
-      message =
-        "La fenêtre Google a été bloquée par le navigateur.";
+      showAuthMessage(
+        "La fenêtre Google a été bloquée par le navigateur."
+      );
 
-    }
-
-
-    if (
-      error.code ===
-      "auth/unauthorized-domain"
-    ) {
-
-      message =
-        "Ce domaine n'est pas autorisé dans Firebase.";
-
-    }
-
-
-    if (
-      error.code ===
-      "auth/operation-not-allowed"
-    ) {
-
-      message =
-        "La connexion Google n'est pas activée dans Firebase.";
+      return;
 
     }
 
 
     showAuthMessage(
-      message
+      "Impossible de se connecter avec Google."
     );
 
   }
 
 }
-
 
 
 /* =====================================================
@@ -1074,30 +736,16 @@ async function loginWithGoogle() {
 
 async function logoutUser() {
 
-  vibrate();
-
-
   try {
 
-    await signOut(
-      auth
-    );
+    await signOut(auth);
 
-
-    showAuthMessage(
-      "Déconnexion réussie."
-    );
-
-
-    showLogin();
+    closeAuth();
 
 
   } catch (error) {
 
-    console.error(
-      error
-    );
-
+    console.error(error);
 
     showAuthMessage(
       "Erreur lors de la déconnexion."
@@ -1108,42 +756,119 @@ async function logoutUser() {
 }
 
 
+/* =====================================================
+   FORMULAIRE CONNEXION
+===================================================== */
+
+loginForm?.addEventListener(
+  "submit",
+  (event) => {
+
+    event.preventDefault();
+
+    vibrate();
+
+    loginWithEmail();
+
+  }
+);
+
 
 /* =====================================================
-   ÉTAT UTILISATEUR
+   FORMULAIRE INSCRIPTION
+===================================================== */
+
+registerForm?.addEventListener(
+  "submit",
+  (event) => {
+
+    event.preventDefault();
+
+    vibrate();
+
+    registerWithEmail();
+
+  }
+);
+
+
+/* =====================================================
+   BOUTONS AUTH
+===================================================== */
+
+accountButton?.addEventListener(
+  "click",
+  openAuth
+);
+
+
+closeAuthButton?.addEventListener(
+  "click",
+  closeAuth
+);
+
+
+showRegisterButton?.addEventListener(
+  "click",
+  showRegister
+);
+
+
+showLoginButton?.addEventListener(
+  "click",
+  showLogin
+);
+
+
+logoutButton?.addEventListener(
+  "click",
+  logoutUser
+);
+
+
+/* =====================================================
+   CLIQUER EN DEHORS DU MODAL
+===================================================== */
+
+authModal?.addEventListener(
+  "click",
+  (event) => {
+
+    if (event.target === authModal) {
+      closeAuth();
+    }
+
+  }
+);
+
+
+/* =====================================================
+   ÉTAT FIREBASE
 ===================================================== */
 
 onAuthStateChanged(
   auth,
-  user => {
+  (user) => {
 
-    if (!authButton) {
-      return;
-    }
+    if (!accountButton) return;
 
 
     if (user) {
 
-      authButton.innerHTML =
-        '<i class="fa-solid fa-user-check"></i>' +
-        '<span>Mon compte</span>';
+      accountButton.innerHTML =
+        '<i class="fa-solid fa-user-check"></i>';
 
-
-      authButton.classList.add(
+      accountButton.classList.add(
         "connected"
       );
 
 
       if (
         authModal &&
-        authModal.classList.contains(
-          "show"
-        )
+        authModal.classList.contains("show")
       ) {
 
-        showAccount(
-          user
-        );
+        showAccount(user);
 
       }
 
@@ -1156,12 +881,10 @@ onAuthStateChanged(
 
     } else {
 
-      authButton.innerHTML =
-        '<i class="fa-solid fa-user"></i>' +
-        '<span>Connexion</span>';
+      accountButton.innerHTML =
+        '<i class="fa-solid fa-user"></i>';
 
-
-      authButton.classList.remove(
+      accountButton.classList.remove(
         "connected"
       );
 
@@ -1169,128 +892,6 @@ onAuthStateChanged(
 
   }
 );
-
-
-
-/* =====================================================
-   BOUTONS AUTH
-===================================================== */
-
-if (authButton) {
-
-  authButton.addEventListener(
-    "click",
-    openAuth
-  );
-
-}
-
-
-if (authClose) {
-
-  authClose.addEventListener(
-    "click",
-    closeAuth
-  );
-
-}
-
-
-document
-  .getElementById(
-    "show-register"
-  )
-  ?.addEventListener(
-    "click",
-    showRegister
-  );
-
-
-document
-  .getElementById(
-    "show-login"
-  )
-  ?.addEventListener(
-    "click",
-    showLogin
-  );
-
-
-document
-  .getElementById(
-    "login-submit"
-  )
-  ?.addEventListener(
-    "click",
-    loginWithEmail
-  );
-
-
-document
-  .getElementById(
-    "register-submit"
-  )
-  ?.addEventListener(
-    "click",
-    registerWithEmail
-  );
-
-
-document
-  .getElementById(
-    "google-login"
-  )
-  ?.addEventListener(
-    "click",
-    loginWithGoogle
-  );
-
-
-document
-  .getElementById(
-    "google-register"
-  )
-  ?.addEventListener(
-    "click",
-    loginWithGoogle
-  );
-
-
-document
-  .getElementById(
-    "logout-button"
-  )
-  ?.addEventListener(
-    "click",
-    logoutUser
-);
-
-
-
-/* =====================================================
-   FERMER MODAL EN DEHORS
-===================================================== */
-
-if (authModal) {
-
-  authModal.addEventListener(
-    "click",
-    event => {
-
-      if (
-        event.target ===
-        authModal
-      ) {
-
-        closeAuth();
-
-      }
-
-    }
-  );
-
-}
-
 
 
 /* =====================================================
@@ -1305,10 +906,6 @@ const NOTIFICATION_TOKEN_KEY =
   "mrGamingNotificationToken";
 
 
-/* =========================
-   NOTIFICATIONS
-========================= */
-
 async function enableNotifications() {
 
   const button =
@@ -1317,14 +914,10 @@ async function enableNotifications() {
     );
 
 
-  if (!button) {
-    return;
-  }
+  if (!button) return;
 
 
-  if (
-    !("Notification" in window)
-  ) {
+  if (!("Notification" in window)) {
 
     alert(
       "Les notifications ne sont pas prises en charge par ce navigateur."
@@ -1351,9 +944,7 @@ async function enableNotifications() {
 
   try {
 
-    button.disabled =
-      true;
-
+    button.disabled = true;
 
     button.innerHTML =
       '<i class="fa-solid fa-spinner fa-spin"></i>';
@@ -1363,19 +954,13 @@ async function enableNotifications() {
       await Notification.requestPermission();
 
 
-    if (
-      permission !==
-      "granted"
-    ) {
+    if (permission !== "granted") {
 
       alert(
         "Les notifications n'ont pas été autorisées."
       );
 
-
-      button.disabled =
-        false;
-
+      button.disabled = false;
 
       button.innerHTML =
         '<i class="fa-solid fa-bell"></i>' +
@@ -1396,9 +981,7 @@ async function enableNotifications() {
 
 
     const messaging =
-      getMessaging(
-        firebaseApp
-      );
+      getMessaging(firebaseApp);
 
 
     const registration =
@@ -1411,21 +994,16 @@ async function enableNotifications() {
       await getToken(
         messaging,
         {
-          vapidKey:
-            FCM_VAPID_KEY,
-
-          serviceWorkerRegistration:
-            registration
+          vapidKey: FCM_VAPID_KEY,
+          serviceWorkerRegistration: registration
         }
       );
 
 
     if (!token) {
-
       throw new Error(
         "Impossible de récupérer le token FCM."
       );
-
     }
 
 
@@ -1435,16 +1013,7 @@ async function enableNotifications() {
     );
 
 
-    console.log(
-      "FCM TOKEN :",
-      token
-    );
-
-
-    button.classList.add(
-      "enabled"
-    );
-
+    button.classList.add("enabled");
 
     button.innerHTML =
       '<i class="fa-solid fa-bell"></i>';
@@ -1457,18 +1026,16 @@ async function enableNotifications() {
 
     onMessage(
       messaging,
-      payload => {
+      (payload) => {
 
         console.log(
           "Notification reçue :",
           payload
         );
 
-
         const title =
           payload.notification?.title ||
           "MR GAMING PRO";
-
 
         const body =
           payload.notification?.body ||
@@ -1506,14 +1073,11 @@ async function enableNotifications() {
 
     alert(
       "Impossible d'activer les notifications.\n\n" +
-      "Erreur : " +
       error.message
     );
 
 
-    button.disabled =
-      false;
-
+    button.disabled = false;
 
     button.innerHTML =
       '<i class="fa-solid fa-bell"></i>' +
@@ -1522,7 +1086,6 @@ async function enableNotifications() {
   }
 
 }
-
 
 
 /* =====================================================
@@ -1539,9 +1102,7 @@ document.addEventListener(
       );
 
 
-    if (!button) {
-      return;
-    }
+    if (!button) return;
 
 
     button.addEventListener(
@@ -1559,8 +1120,7 @@ document.addEventListener(
     if (
       savedToken &&
       "Notification" in window &&
-      Notification.permission ===
-        "granted"
+      Notification.permission === "granted"
     ) {
 
       button.classList.add(
@@ -1573,12 +1133,20 @@ document.addEventListener(
 );
 
 
-
 /* =====================================================
-   FONCTIONS DISPONIBLES
+   FONCTIONS GLOBALES
 ===================================================== */
 
-window.showPage =
-  showPage;
+window.showPage = showPage;
+window.openEvent = openEvent;
+window.installApp = installApp;
 
-win
+window.openAuth = openAuth;
+window.closeAuth = closeAuth;
+window.showLogin = showLogin;
+window.showRegister = showRegister;
+
+window.loginWithEmail = loginWithEmail;
+window.registerWithEmail = registerWithEmail;
+window.loginWithGoogle = loginWithGoogle;
+window.logoutUser = logoutUser;
