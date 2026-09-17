@@ -1680,27 +1680,15 @@ body {
 
 .nav-item {
   flex: 1;
-
   min-height: 53px;
-
   border: 0;
-
   background: transparent;
-
   color: #8f8794;
-
   border-radius: 17px;
-
   cursor: pointer;
-
   display: flex;
-
   flex-direction: column;
-
   justify-content: center;
-
   align-items: center;
-
   gap: 4px;
-
-  font-family: "Poppins"
+  font-family: "Poppins", sans-serif
