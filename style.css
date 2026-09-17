@@ -1503,3 +1503,881 @@ footer strong {
   color: var(--pink2);
 
   cur
+  /* =====================================================
+   RESPONSIVE — TOUS LES ÉCRANS
+   MR GAMING PRO
+===================================================== */
+
+/* Évite les débordements horizontaux */
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+main,
+section,
+.page,
+.top-bar,
+.floating-hero,
+.floating-notice,
+.events-container,
+.floating-grid,
+.social-floating,
+.customer-service {
+  max-width: 100%;
+}
+
+/* Tous les éléments doivent pouvoir rétrécir */
+.floating-hero > *,
+.floating-notice > *,
+.event-card > *,
+.social-card > *,
+.customer-service > * {
+  min-width: 0;
+}
+
+/* Images toujours adaptées */
+img {
+  max-width: 100%;
+}
+
+
+/* =====================================================
+   ÉCRANS MOYENS — TABLETTES / PETITS PC
+===================================================== */
+
+@media (max-width: 900px) {
+
+  body {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .floating-hero {
+    padding: 28px;
+    gap: 25px;
+  }
+
+  .hero-logo {
+    width: 150px;
+    height: 150px;
+    border-radius: 35px;
+  }
+
+  .hero-logo img {
+    width: 105px;
+    height: 105px;
+  }
+
+  .hero-content h1 {
+    font-size: clamp(23px, 5vw, 38px);
+  }
+
+  .floating-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .platforms-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .events-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+
+/* =====================================================
+   TÉLÉPHONES
+===================================================== */
+
+@media (max-width: 700px) {
+
+  body {
+    padding: 10px 10px 105px;
+  }
+
+  /* HEADER */
+
+  .top-bar {
+    width: 100%;
+    margin-bottom: 12px;
+    padding: 10px;
+    border-radius: 17px;
+  }
+
+  .brand {
+    min-width: 0;
+    gap: 8px;
+  }
+
+  .brand img {
+    width: 38px;
+    height: 38px;
+    border-radius: 11px;
+  }
+
+  .brand strong {
+    font-size: 10px;
+  }
+
+  .brand span {
+    font-size: 7px;
+    letter-spacing: .7px;
+  }
+
+  .header-actions {
+    flex-shrink: 0;
+    gap: 6px;
+  }
+
+  .account-button,
+  .notification-button {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+  }
+
+
+  /* ACCUEIL */
+
+  .floating-hero {
+    width: 100%;
+    min-height: auto;
+
+    padding: 22px 17px;
+
+    flex-direction: column;
+
+    text-align: center;
+
+    gap: 20px;
+
+    border-radius: 25px;
+  }
+
+  .hero-logo {
+    width: 120px;
+    height: 120px;
+
+    border-radius: 30px;
+  }
+
+  .hero-logo img {
+    width: 85px;
+    height: 85px;
+
+    border-radius: 23px;
+  }
+
+  .hero-content {
+    width: 100%;
+  }
+
+  .status {
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+
+  .hero-content h1 {
+    width: 100%;
+
+    font-size: clamp(21px, 7vw, 31px);
+
+    line-height: 1.2;
+
+    word-break: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .hero-content p {
+    width: 100%;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    font-size: 11px;
+
+    line-height: 1.7;
+  }
+
+  .hero-buttons {
+    width: 100%;
+
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 8px;
+
+    margin-top: 18px;
+  }
+
+  .main-button,
+  .secondary-button {
+    width: 100%;
+    min-height: 44px;
+  }
+
+
+  /* NOTICE */
+
+  .floating-notice {
+    width: 100%;
+
+    padding: 14px;
+
+    gap: 11px;
+
+    border-radius: 18px;
+
+    align-items: flex-start;
+  }
+
+  .notice-icon {
+    width: 40px;
+    height: 40px;
+
+    border-radius: 12px;
+
+    flex-shrink: 0;
+  }
+
+  .floating-notice h3 {
+    font-size: 11px;
+  }
+
+  .floating-notice p {
+    font-size: 8px;
+    line-height: 1.5;
+  }
+
+
+  /* TITRES */
+
+  .section-title {
+    margin: 20px 0;
+  }
+
+  .section-title h2 {
+    font-size: clamp(21px, 7vw, 27px);
+  }
+
+  .section-title p {
+    font-size: 9px;
+    line-height: 1.5;
+  }
+
+
+  /* SERVICES */
+
+  .floating-grid {
+    width: 100%;
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 10px;
+  }
+
+  .floating-card {
+    width: 100%;
+
+    padding: 16px;
+
+    border-radius: 18px;
+  }
+
+  .card-icon {
+    width: 42px;
+    height: 42px;
+
+    margin-bottom: 11px;
+
+    border-radius: 12px;
+
+    font-size: 16px;
+  }
+
+  .floating-card h3 {
+    font-size: 10px;
+
+    line-height: 1.4;
+  }
+
+  .floating-card p {
+    font-size: 8px;
+
+    line-height: 1.5;
+  }
+
+
+  /* ÉVÉNEMENTS */
+
+  .events-container {
+    width: 100%;
+
+    grid-template-columns:
+      1fr;
+
+    gap: 12px;
+  }
+
+  .event-card {
+    width: 100%;
+
+    border-radius: 20px;
+  }
+
+  .event-card > img {
+    width: 100%;
+    height: auto;
+
+    min-height: 170px;
+
+    max-height: 230px;
+
+    object-fit: cover;
+  }
+
+  .event-placeholder {
+    min-height: 170px;
+  }
+
+  .event-content {
+    padding: 16px;
+  }
+
+  .event-content h3 {
+    font-size: 12px;
+
+    line-height: 1.4;
+  }
+
+  .event-content p {
+    font-size: 8px;
+  }
+
+  .event-button {
+    width: 100%;
+  }
+
+
+  /* PLATEFORMES */
+
+  .platforms-grid {
+    width: 100%;
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 10px;
+  }
+
+  .platform-card {
+    width: 100%;
+
+    min-height: 105px;
+
+    padding: 15px;
+
+    border-radius: 17px;
+  }
+
+  .platform-card i {
+    font-size: 24px;
+  }
+
+  .platform-card strong {
+    font-size: 10px;
+  }
+
+  .platform-card small {
+    font-size: 7px;
+  }
+
+
+  /* RÉSEAUX */
+
+  .social-floating {
+    width: 100%;
+    gap: 9px;
+  }
+
+  .social-card {
+    width: 100%;
+
+    padding: 12px;
+
+    gap: 10px;
+
+    border-radius: 16px;
+  }
+
+  .social-icon {
+    width: 40px;
+    height: 40px;
+
+    flex-shrink: 0;
+
+    border-radius: 12px;
+
+    font-size: 17px;
+  }
+
+  .social-card strong {
+    font-size: 10px;
+  }
+
+  .social-card small {
+    font-size: 7px;
+  }
+
+
+  /* SERVICE CLIENT */
+
+  .customer-service {
+    width: 100%;
+
+    padding: 14px;
+
+    gap: 10px;
+
+    border-radius: 17px;
+  }
+
+  .customer-icon {
+    width: 42px;
+    height: 42px;
+
+    border-radius: 12px;
+  }
+
+  .customer-service h3 {
+    font-size: 10px;
+  }
+
+  .customer-service p {
+    font-size: 7px;
+  }
+
+  .customer-service > a {
+    flex-shrink: 0;
+
+    padding: 9px 11px;
+
+    font-size: 7px;
+  }
+
+
+  /* NAVIGATION BASSE */
+
+  .floating-nav {
+    width: calc(100% - 20px);
+
+    bottom: 8px;
+
+    padding: 6px;
+
+    border-radius: 20px;
+  }
+
+  .nav-item {
+    min-width: 0;
+
+    flex: 1;
+
+    padding: 7px 3px;
+
+    border-radius: 13px;
+
+    gap: 3px;
+  }
+
+  .nav-item i {
+    font-size: 13px;
+  }
+
+  .nav-item span {
+    font-size: 6px;
+  }
+
+
+  /* FOOTER */
+
+  footer {
+    width: 100%;
+
+    margin-top: 25px;
+
+    padding: 13px 5px;
+
+    gap: 10px;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    text-align: center;
+  }
+}
+
+
+/* =====================================================
+   PETITS TÉLÉPHONES
+   380px ET MOINS
+===================================================== */
+
+@media (max-width: 380px) {
+
+  body {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  .top-bar {
+    padding: 8px;
+  }
+
+  .brand img {
+    width: 34px;
+    height: 34px;
+  }
+
+  .brand strong {
+    font-size: 9px;
+  }
+
+  .brand span {
+    font-size: 6px;
+  }
+
+  .account-button,
+  .notification-button {
+    width: 36px;
+    height: 36px;
+  }
+
+
+  /* SERVICES EN UNE COLONNE
+     pour les très petits écrans */
+
+  .floating-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .floating-card {
+    padding: 17px;
+  }
+
+  .platforms-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .hero-logo {
+    width: 105px;
+    height: 105px;
+  }
+
+  .hero-logo img {
+    width: 75px;
+    height: 75px;
+  }
+
+  .hero-content h1 {
+    font-size: 20px;
+  }
+
+  .hero-content p {
+    font-size: 10px;
+  }
+
+  .floating-notice {
+    padding: 12px;
+  }
+
+  .customer-service {
+    align-items: flex-start;
+  }
+
+  .customer-service > a {
+    padding: 8px 9px;
+  }
+
+  .nav-item span {
+    font-size: 5.5px;
+  }
+}
+
+
+/* =====================================================
+   TRÈS PETITS ÉCRANS
+   320px ET MOINS
+===================================================== */
+
+@media (max-width: 320px) {
+
+  .brand span {
+    display: none;
+  }
+
+  .header-actions {
+    gap: 4px;
+  }
+
+  .account-button,
+  .notification-button {
+    width: 34px;
+    height: 34px;
+  }
+
+  .floating-hero {
+    padding: 18px 12px;
+  }
+
+  .hero-content h1 {
+    font-size: 18px;
+  }
+
+  .main-button,
+  .secondary-button {
+    font-size: 9px;
+  }
+
+  .platform-card {
+    min-height: 95px;
+    padding: 10px;
+  }
+
+  .platform-card i {
+    font-size: 21px;
+  }
+
+  .platform-card strong {
+    font-size: 9px;
+  }
+
+  .platform-card small {
+    font-size: 6px;
+  }
+
+  .floating-nav {
+    width: calc(100% - 12px);
+  }
+
+  .nav-item {
+    padding-left: 1px;
+    padding-right: 1px;
+  }
+
+  .nav-item i {
+    font-size: 11px;
+  }
+
+  .nav-item span {
+    font-size: 5px;
+  }
+}
+
+
+/* =====================================================
+   AUTH — RESPONSIVE
+===================================================== */
+
+@media (max-width: 700px) {
+
+  .auth-modal {
+    padding: 12px;
+  }
+
+  .auth-box {
+    width: 100%;
+    max-width: 100%;
+
+    max-height: 92vh;
+
+    padding: 25px 18px;
+
+    border-radius: 24px;
+  }
+
+  .auth-logo {
+    width: 65px;
+    height: 65px;
+
+    margin-bottom: 14px;
+
+    border-radius: 19px;
+
+    font-size: 23px;
+  }
+
+  .auth-form-container h2 {
+    font-size: 21px;
+  }
+
+  .auth-form-container > p {
+    font-size: 9px;
+  }
+
+  .input-group {
+    height: 46px;
+  }
+
+  .input-group input {
+    font-size: 10px;
+  }
+
+  .auth-submit {
+    min-height: 46px;
+
+    font-size: 10px;
+  }
+
+  .auth-switch {
+    font-size: 9px;
+  }
+}
+
+
+/* =====================================================
+   AUTH — PETITS ÉCRANS
+===================================================== */
+
+@media (max-width: 380px) {
+
+  .auth-box {
+    padding: 22px 14px;
+
+    border-radius: 21px;
+  }
+
+  .auth-close {
+    width: 31px;
+    height: 31px;
+
+    top: 10px;
+    right: 10px;
+  }
+
+  .auth-logo {
+    width: 58px;
+    height: 58px;
+
+    border-radius: 17px;
+
+    font-size: 20px;
+  }
+
+  .auth-form-container h2 {
+    font-size: 19px;
+  }
+
+  .auth-form-container > p {
+    font-size: 8px;
+  }
+
+  .input-group {
+    height: 44px;
+  }
+}
+
+
+/* =====================================================
+   IOS / SAFARI
+===================================================== */
+
+@supports (-webkit-touch-callout: none) {
+
+  body {
+    min-height: -webkit-fill-available;
+  }
+
+  .floating-nav {
+    padding-bottom: max(6px, env(safe-area-inset-bottom));
+  }
+
+  .auth-modal {
+    padding-top: max(12px, env(safe-area-inset-top));
+    padding-bottom: max(12px, env(safe-area-inset-bottom));
+  }
+
+  input,
+  button {
+    -webkit-appearance: none;
+  }
+}
+
+
+/* =====================================================
+   ÉVITE LE ZOOM AUTOMATIQUE IOS SUR LES INPUTS
+===================================================== */
+
+@media (max-width: 700px) {
+
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+
+  .input-group input {
+    font-size: 16px !important;
+  }
+}
+
+
+/* =====================================================
+   EMPÊCHE LES LONGS TEXTES DE CASSER LA PAGE
+===================================================== */
+
+h1,
+h2,
+h3,
+p,
+strong,
+span,
+small,
+button,
+a {
+  overflow-wrap: anywhere;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  touch-action: manipulation;
+}
+
+
+/* =====================================================
+   ANTI-DÉBORDEMENT FINAL
+===================================================== */
+
+.floating-hero,
+.floating-notice,
+.floating-card,
+.event-card,
+.platform-card,
+.social-card,
+.customer-service,
+.auth-box {
+  max-width: 100%;
+  min-width: 0;
+}
+
+.event-content,
+.event-content h3,
+.event-content p,
+.customer-service,
+.customer-service > div,
+.social-card > div,
+.hero-content {
+  min-width: 0;
+}
