@@ -1,3 +1,10 @@
+/* =====================================================
+   MR GAMING PRO
+   STYLE.CSS
+   Compatible avec l'index.html fourni
+   Responsive Android / iPhone / Tablette / PC
+===================================================== */
+
 * {
   margin: 0;
   padding: 0;
@@ -18,17 +25,22 @@
   --text: #e9e3ee;
   --muted: #aaa1b1;
 
-  --glass: rgba(255,255,255,0.055);
-  --border: rgba(255,0,140,0.22);
+  --glass: rgba(255,255,255,.055);
+  --border: rgba(255,0,140,.22);
 }
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
   min-height: 100vh;
-  padding: 18px 15px 115px;
+
+  padding:
+    18px
+    15px
+    115px;
 
   background:
     radial-gradient(
@@ -48,12 +60,14 @@ body {
   font-family: "Poppins", sans-serif;
 
   overflow-x: hidden;
+
+  -webkit-tap-highlight-color: transparent;
 }
 
 
-/* =========================
+/* =====================================================
    ORBES
-========================= */
+===================================================== */
 
 .bg-orb {
   position: fixed;
@@ -102,7 +116,6 @@ body {
 }
 
 @keyframes orbFloat {
-
   from {
     transform: translateY(-20px);
   }
@@ -110,30 +123,33 @@ body {
   to {
     transform: translateY(30px);
   }
-
 }
 
 
-/* =========================
+/* =====================================================
    LOADER
-========================= */
+===================================================== */
 
 #loader {
   position: fixed;
 
   inset: 0;
 
+  width: 100%;
+  height: 100%;
+
   background: #050308;
 
-  z-index: 9999;
+  z-index: 99999;
 
   display: flex;
 
   justify-content: center;
-
   align-items: center;
 
-  transition: .6s ease;
+  transition:
+    opacity .6s ease,
+    visibility .6s ease;
 }
 
 #loader.hide {
@@ -143,6 +159,9 @@ body {
 
 .loader-box {
   text-align: center;
+
+  width: 100%;
+  padding: 20px;
 }
 
 .loader-box img {
@@ -189,6 +208,8 @@ body {
   font-size: 18px;
 
   letter-spacing: 2px;
+
+  color: white;
 }
 
 .loader-box p {
@@ -200,35 +221,37 @@ body {
 }
 
 @keyframes spin {
-
   to {
     transform: rotate(360deg);
   }
-
 }
 
 
-/* =========================
+/* =====================================================
    HEADER
-========================= */
+===================================================== */
 
 .top-bar {
   width: 100%;
   max-width: 1100px;
 
+  min-height: 68px;
+
   margin:
     0 auto
     25px;
 
-  min-height: 68px;
-
-  padding: 10px 14px;
+  padding:
+    10px
+    14px;
 
   display: flex;
 
   align-items: center;
 
   justify-content: space-between;
+
+  gap: 10px;
 
   background:
     rgba(10,6,14,.72);
@@ -251,17 +274,26 @@ body {
   z-index: 100;
 }
 
+
+/* =====================================================
+   BRAND
+===================================================== */
+
 .brand {
   display: flex;
 
   align-items: center;
 
   gap: 10px;
+
+  min-width: 0;
 }
 
 .brand img {
   width: 45px;
   height: 45px;
+
+  flex-shrink: 0;
 
   border-radius: 14px;
 
@@ -275,11 +307,15 @@ body {
 .brand strong {
   display: block;
 
-  font-family: "Orbitron", sans-serif;
+  font-family:
+    "Orbitron",
+    sans-serif;
 
   font-size: 12px;
 
   color: white;
+
+  white-space: nowrap;
 }
 
 .brand span {
@@ -292,12 +328,14 @@ body {
   color: var(--pink2);
 
   margin-top: 2px;
+
+  white-space: nowrap;
 }
 
 
-/* =========================
+/* =====================================================
    HEADER ACTIONS
-========================= */
+===================================================== */
 
 .header-actions {
   display: flex;
@@ -305,15 +343,20 @@ body {
   align-items: center;
 
   gap: 8px;
+
+  flex-shrink: 0;
 }
 
 
-/* CONNEXION */
+/* COMPTE */
 
-.auth-button {
+.account-button {
   min-height: 45px;
 
-  padding: 0 14px;
+  min-width: 45px;
+
+  padding:
+    0 14px;
 
   border:
     1px solid
@@ -328,22 +371,24 @@ body {
 
   cursor: pointer;
 
-  font-family: "Poppins", sans-serif;
+  font-family:
+    "Poppins",
+    sans-serif;
 
-  font-size: 10px;
-
-  font-weight: 600;
+  font-size: 16px;
 
   display: flex;
 
   align-items: center;
+
+  justify-content: center;
 
   gap: 7px;
 
   transition: .25s;
 }
 
-.auth-button:hover {
+.account-button:hover {
   transform: translateY(-3px);
 
   box-shadow:
@@ -351,12 +396,8 @@ body {
     rgba(255,0,140,.25);
 }
 
-.auth-button i {
+.account-button i {
   color: var(--pink2);
-}
-
-.auth-button.connected {
-  border-color: var(--pink);
 }
 
 
@@ -397,7 +438,8 @@ body {
 .notification-button.enabled {
   color: var(--pink2);
 
-  border-color: var(--pink);
+  border-color:
+    var(--pink);
 }
 
 .notification-dot {
@@ -419,343 +461,21 @@ body {
 }
 
 
-/* =========================
-   AUTHENTIFICATION
-========================= */
-
-.auth-modal {
-  position: fixed;
-
-  inset: 0;
-
-  z-index: 9000;
-
-  display: none;
-
-  align-items: center;
-
-  justify-content: center;
-
-  padding: 20px;
-
-  background:
-    rgba(0,0,0,.72);
-
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-}
-
-.auth-modal.show {
-  display: flex;
-}
-
-.auth-box {
-  width: 100%;
-
-  max-width: 400px;
-
-  max-height: 90vh;
-
-  overflow-y: auto;
-
-  position: relative;
-
-  padding: 30px 25px;
-
-  background:
-    linear-gradient(
-      145deg,
-      rgba(255,0,140,.10),
-      rgba(139,0,255,.09)
-    ),
-    rgba(10,6,14,.97);
-
-  border:
-    1px solid
-    rgba(255,0,140,.25);
-
-  border-radius: 30px;
-
-  box-shadow:
-    0 30px 100px
-    rgba(0,0,0,.75),
-    0 0 50px
-    rgba(255,0,140,.08);
-}
-
-.auth-close {
-  position: absolute;
-
-  top: 14px;
-  right: 14px;
-
-  width: 35px;
-  height: 35px;
-
-  border:
-    1px solid
-    rgba(255,255,255,.1);
-
-  border-radius: 12px;
-
-  background:
-    rgba(255,255,255,.05);
-
-  color: white;
-
-  cursor: pointer;
-}
-
-.auth-logo {
-  display: block;
-
-  width: 75px;
-  height: 75px;
-
-  margin:
-    0 auto
-    18px;
-
-  object-fit: cover;
-
-  border-radius: 22px;
-
-  box-shadow:
-    0 0 25px
-    rgba(255,0,140,.4),
-    0 0 45px
-    rgba(139,0,255,.2);
-}
-
-.auth-form {
-  text-align: center;
-}
-
-.auth-form.hidden {
-  display: none;
-}
-
-.auth-label {
-  color: var(--pink2);
-
-  font-size: 8px;
-
-  letter-spacing: 3px;
-}
-
-.auth-form h2 {
-  color: white;
-
-  font-family: "Orbitron", sans-serif;
-
-  font-size: 25px;
-
-  margin: 6px 0;
-}
-
-.auth-description {
-  color: var(--muted);
-
-  font-size: 11px;
-
-  margin-bottom: 18px;
-}
-
-.auth-form input {
-  width: 100%;
-
-  height: 48px;
-
-  margin-bottom: 10px;
-
-  padding: 0 15px;
-
-  border:
-    1px solid
-    rgba(255,255,255,.09);
-
-  border-radius: 14px;
-
-  outline: none;
-
-  background:
-    rgba(255,255,255,.055);
-
-  color: white;
-
-  font-family: "Poppins", sans-serif;
-
-  font-size: 11px;
-
-  transition: .25s;
-}
-
-.auth-form input::placeholder {
-  color: #817987;
-}
-
-.auth-form input:focus {
-  border-color:
-    rgba(255,0,140,.5);
-
-  box-shadow:
-    0 0 20px
-    rgba(255,0,140,.08);
-}
-
-.auth-main-button,
-.google-button,
-.logout-button {
-  width: 100%;
-
-  min-height: 48px;
-
-  border-radius: 14px;
-
-  cursor: pointer;
-
-  font-family: "Poppins", sans-serif;
-
-  font-size: 11px;
-
-  font-weight: 600;
-
-  transition: .25s;
-}
-
-.auth-main-button {
-  margin-top: 4px;
-
-  border: 0;
-
-  color: white;
-
-  background:
-    linear-gradient(
-      135deg,
-      #ff008c,
-      #9900ff
-    );
-
-  box-shadow:
-    0 10px 25px
-    rgba(255,0,140,.18);
-}
-
-.google-button {
-  margin-top: 10px;
-
-  color: white;
-
-  background:
-    rgba(255,255,255,.07);
-
-  border:
-    1px solid
-    rgba(255,255,255,.1);
-}
-
-.logout-button {
-  border: 0;
-
-  color: white;
-
-  background:
-    linear-gradient(
-      135deg,
-      #ff008c,
-      #9900ff
-    );
-}
-
-.auth-main-button:hover,
-.google-button:hover,
-.logout-button:hover {
-  transform: translateY(-3px);
-}
-
-.google-button i {
-  margin-right: 7px;
-}
-
-.auth-switch {
-  color: var(--muted);
-
-  font-size: 10px;
-
-  margin-top: 18px;
-}
-
-.auth-switch button {
-  border: 0;
-
-  background: transparent;
-
-  color: var(--pink2);
-
-  cursor: pointer;
-
-  font-family: "Poppins", sans-serif;
-
-  font-size: 10px;
-
-  font-weight: 600;
-}
-
-.auth-message {
-  min-height: 18px;
-
-  text-align: center;
-
-  color: var(--pink2);
-
-  font-size: 10px;
-
-  margin-top: 13px;
-}
-
-.account-icon {
-  width: 65px;
-  height: 65px;
-
-  margin:
-    15px auto;
-
-  display: grid;
-
-  place-items: center;
-
-  border-radius: 50%;
-
-  color: white;
-
-  font-size: 23px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #ff008c,
-      #8b00ff
-    );
-
-  box-shadow:
-    0 0 30px
-    rgba(255,0,140,.25);
-}
-
-
-/* =========================
+/* =====================================================
    PAGES
-========================= */
+===================================================== */
+
+main {
+  width: 100%;
+}
 
 .page {
   display: none;
 
   width: 100%;
-
   max-width: 1100px;
 
-  margin: auto;
+  margin: 0 auto;
 
   animation:
     pageIn
@@ -768,25 +488,29 @@ body {
 }
 
 @keyframes pageIn {
-
   from {
     opacity: 0;
-    transform: translateY(15px);
+
+    transform:
+      translateY(15px);
   }
 
   to {
     opacity: 1;
-    transform: translateY(0);
-  }
 
+    transform:
+      translateY(0);
+  }
 }
 
 
-/* =========================
+/* =====================================================
    HERO
-========================= */
+===================================================== */
 
 .floating-hero {
+  width: 100%;
+
   min-height: 430px;
 
   padding: 45px;
@@ -811,12 +535,13 @@ body {
   border-radius: 35px;
 
   box-shadow:
-    0 30px 80px
-    rgba(0,0,0,.5),
+    0 30px 80px rgba(0,0,0,.5),
     inset 0 0 50px
     rgba(255,0,140,.025);
 
   backdrop-filter: blur(18px);
+
+  overflow: hidden;
 }
 
 .hero-logo {
@@ -832,10 +557,8 @@ body {
   border-radius: 42px;
 
   box-shadow:
-    0 0 30px
-    rgba(255,0,140,.35),
-    0 0 80px
-    rgba(139,0,255,.18);
+    0 0 30px rgba(255,0,140,.35),
+    0 0 80px rgba(139,0,255,.18);
 
   animation:
     logoFloat
@@ -845,8 +568,7 @@ body {
 }
 
 @keyframes logoFloat {
-
-  0%, 100% {
+  0%,100% {
     transform:
       translateY(0)
       rotate(-1deg);
@@ -857,7 +579,10 @@ body {
       translateY(-12px)
       rotate(1deg);
   }
+}
 
+.hero-content {
+  min-width: 0;
 }
 
 .status {
@@ -867,7 +592,9 @@ body {
 
   gap: 7px;
 
-  padding: 7px 12px;
+  padding:
+    7px
+    12px;
 
   border:
     1px solid
@@ -901,7 +628,9 @@ body {
 }
 
 .hero-content h1 {
-  font-family: "Orbitron", sans-serif;
+  font-family:
+    "Orbitron",
+    sans-serif;
 
   font-size:
     clamp(
@@ -961,11 +690,15 @@ body {
 
   border-radius: 15px;
 
-  padding: 13px 18px;
+  padding:
+    13px
+    18px;
 
   cursor: pointer;
 
-  font-family: "Poppins", sans-serif;
+  font-family:
+    "Poppins",
+    sans-serif;
 
   font-weight: 600;
 
@@ -1000,7 +733,8 @@ body {
 
 .main-button:hover,
 .secondary-button:hover {
-  transform: translateY(-4px);
+  transform:
+    translateY(-4px);
 }
 
 .floating-notice {
@@ -1012,7 +746,9 @@ body {
 
   margin-top: 20px;
 
-  padding: 18px 20px;
+  padding:
+    18px
+    20px;
 
   background:
     rgba(255,255,255,.035);
@@ -1026,6 +762,8 @@ body {
   box-shadow:
     0 15px 40px
     rgba(0,0,0,.25);
+
+  min-width: 0;
 }
 
 .notice-icon {
@@ -1046,6 +784,8 @@ body {
       #ff008c,
       #8b00ff
     );
+
+  color: white;
 }
 
 .floating-notice h3 {
@@ -1061,9 +801,9 @@ body {
 }
 
 
-/* =========================
+/* =====================================================
    TITRES
-========================= */
+===================================================== */
 
 .section-title {
   text-align: center;
@@ -1082,13 +822,16 @@ body {
 }
 
 .section-title h2 {
-  font-family: "Orbitron", sans-serif;
+  font-family:
+    "Orbitron",
+    sans-serif;
 
   font-size: 28px;
 
   color: white;
 
-  margin: 7px 0;
+  margin:
+    7px 0;
 }
 
 .section-title p {
@@ -1098,9 +841,9 @@ body {
 }
 
 
-/* =========================
-   CARTES
-========================= */
+/* =====================================================
+   SERVICES
+===================================================== */
 
 .floating-grid {
   display: grid;
@@ -1132,10 +875,13 @@ body {
     rgba(0,0,0,.3);
 
   transition: .3s ease;
+
+  min-width: 0;
 }
 
 .floating-card:hover {
-  transform: translateY(-8px);
+  transform:
+    translateY(-8px);
 
   border-color:
     rgba(255,0,140,.35);
@@ -1188,9 +934,9 @@ body {
 }
 
 
-/* =========================
-   EVENTS
-========================= */
+/* =====================================================
+   EVENEMENTS
+===================================================== */
 
 .events-container {
   display: grid;
@@ -1221,7 +967,8 @@ body {
 }
 
 .event-card:hover {
-  transform: translateY(-7px);
+  transform:
+    translateY(-7px);
 
   border-color:
     rgba(255,0,140,.3);
@@ -1248,7 +995,9 @@ body {
 
   letter-spacing: 1px;
 
-  padding: 5px 9px;
+  padding:
+    5px
+    9px;
 
   border-radius: 50px;
 
@@ -1322,9 +1071,9 @@ body {
 }
 
 
-/* =========================
+/* =====================================================
    PLATEFORMES
-========================= */
+===================================================== */
 
 .platforms-grid {
   grid-template-columns:
@@ -1394,11 +1143,13 @@ body {
 }
 
 
-/* =========================
-   RÉSEAUX
-========================= */
+/* =====================================================
+   RESEAUX
+===================================================== */
 
 .social-floating {
+  width: 100%;
+
   max-width: 650px;
 
   margin: auto;
@@ -1417,7 +1168,9 @@ body {
 
   gap: 14px;
 
-  padding: 14px 16px;
+  padding:
+    14px
+    16px;
 
   text-decoration: none;
 
@@ -1437,10 +1190,13 @@ body {
     rgba(0,0,0,.3);
 
   transition: .3s;
+
+  min-width: 0;
 }
 
 .social-card:hover {
-  transform: translateX(7px);
+  transform:
+    translateX(7px);
 
   border-color:
     rgba(255,0,140,.35);
@@ -1449,6 +1205,8 @@ body {
 .social-icon {
   width: 45px;
   height: 45px;
+
+  flex-shrink: 0;
 
   display: grid;
 
@@ -1468,6 +1226,8 @@ body {
 
 .social-card div:nth-child(2) {
   flex: 1;
+
+  min-width: 0;
 }
 
 .social-card strong {
@@ -1486,12 +1246,14 @@ body {
   color: var(--muted);
 
   font-size: 11px;
+
+  flex-shrink: 0;
 }
 
 
-/* =========================
+/* =====================================================
    SERVICE CLIENT
-========================= */
+===================================================== */
 
 .customer-service {
   max-width: 650px;
@@ -1524,6 +1286,8 @@ body {
   box-shadow:
     0 15px 40px
     rgba(0,0,0,.3);
+
+  min-width: 0;
 }
 
 .customer-icon {
@@ -1544,10 +1308,14 @@ body {
       #ff008c,
       #8b00ff
     );
+
+  color: white;
 }
 
 .customer-service div:nth-child(2) {
   flex: 1;
+
+  min-width: 0;
 }
 
 .customer-service span {
@@ -1584,15 +1352,19 @@ body {
 
   border-radius: 12px;
 
-  padding: 9px 13px;
+  padding:
+    9px
+    13px;
 
   font-size: 10px;
+
+  flex-shrink: 0;
 }
 
 
-/* =========================
+/* =====================================================
    NAVIGATION
-========================= */
+===================================================== */
 
 .floating-nav {
   position: fixed;
@@ -1603,9 +1375,11 @@ body {
 
   bottom: 17px;
 
-  transform: translateX(-50%);
+  transform:
+    translateX(-50%);
 
-  width: min(94%, 600px);
+  width:
+    min(94%, 600px);
 
   padding: 8px;
 
@@ -1659,9 +1433,13 @@ body {
 
   gap: 4px;
 
-  font-family: "Poppins", sans-serif;
+  font-family:
+    "Poppins",
+    sans-serif;
 
   transition: .25s;
+
+  min-width: 0;
 }
 
 .nav-item i {
@@ -1670,6 +1448,8 @@ body {
 
 .nav-item span {
   font-size: 7px;
+
+  white-space: nowrap;
 }
 
 .nav-item.active {
@@ -1698,16 +1478,21 @@ body {
 }
 
 
-/* =========================
+/* =====================================================
    FOOTER
-========================= */
+===================================================== */
 
 footer {
+  width: 100%;
+
   text-align: center;
 
   margin:
     35px auto
     0;
+
+  padding:
+    0 10px;
 
   color: #716976;
 
@@ -1717,4 +1502,153 @@ footer {
 footer strong {
   display: block;
 
-  col
+  color: white;
+
+  margin-bottom: 3px;
+}
+
+
+/* =====================================================
+   MODAL AUTHENTIFICATION
+===================================================== */
+
+.auth-modal {
+  position: fixed;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  z-index: 9000;
+
+  display: none;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 20px;
+
+  background:
+    rgba(0,0,0,.72);
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  overflow: hidden;
+}
+
+.auth-modal.show {
+  display: flex;
+}
+
+.auth-box {
+  width: 100%;
+
+  max-width: 400px;
+
+  max-height: 90vh;
+
+  overflow-y: auto;
+
+  -webkit-overflow-scrolling: touch;
+
+  position: relative;
+
+  padding:
+    30px
+    25px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,0,140,.10),
+      rgba(139,0,255,.09)
+    ),
+    rgba(10,6,14,.97);
+
+  border:
+    1px solid
+    rgba(255,0,140,.25);
+
+  border-radius: 30px;
+
+  box-shadow:
+    0 30px 100px
+    rgba(0,0,0,.75),
+    0 0 50px
+    rgba(255,0,140,.08);
+}
+
+.auth-close {
+  position: absolute;
+
+  top: 14px;
+  right: 14px;
+
+  width: 35px;
+  height: 35px;
+
+  border:
+    1px solid
+    rgba(255,255,255,.1);
+
+  border-radius: 12px;
+
+  background:
+    rgba(255,255,255,.05);
+
+  color: white;
+
+  cursor: pointer;
+
+  font-size: 15px;
+}
+
+.auth-form-container {
+  width: 100%;
+
+  text-align: center;
+}
+
+.auth-logo {
+  width: 75px;
+  height: 75px;
+
+  margin:
+    0 auto
+    18px;
+
+  display: grid;
+
+  place-items: center;
+
+  border-radius: 22px;
+
+  color: white;
+
+  font-size: 27px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ff008c,
+      #8b00ff
+    );
+
+  box-shadow:
+    0 0 25px
+    rgba(255,0,140,.4),
+    0 0 45px
+    rgba(139,0,255,.2);
+}
+
+.auth-form-container h2 {
+  color: white;
+
+  font-family:
+    "Orbitron",
+    sans-serif;
+
+  fo
