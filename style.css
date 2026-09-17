@@ -1,3 +1,9 @@
+/* =====================================================
+   MR GAMING PRO
+   STYLE CSS COMPLET
+   Design original + Responsive tous écrans
+===================================================== */
+
 * {
   margin: 0;
   padding: 0;
@@ -48,6 +54,8 @@ body {
   font-family: "Poppins", sans-serif;
 
   overflow-x: hidden;
+
+  -webkit-text-size-adjust: 100%;
 }
 
 
@@ -102,7 +110,6 @@ body {
 }
 
 @keyframes orbFloat {
-
   from {
     transform: translateY(-20px);
   }
@@ -110,7 +117,6 @@ body {
   to {
     transform: translateY(30px);
   }
-
 }
 
 
@@ -200,11 +206,9 @@ body {
 }
 
 @keyframes spin {
-
   to {
     transform: rotate(360deg);
   }
-
 }
 
 
@@ -257,11 +261,15 @@ body {
   align-items: center;
 
   gap: 10px;
+
+  min-width: 0;
 }
 
 .brand img {
   width: 45px;
   height: 45px;
+
+  flex-shrink: 0;
 
   border-radius: 14px;
 
@@ -305,6 +313,8 @@ body {
   align-items: center;
 
   gap: 8px;
+
+  flex-shrink: 0;
 }
 
 
@@ -341,6 +351,8 @@ body {
   gap: 7px;
 
   transition: .25s;
+
+  white-space: nowrap;
 }
 
 .auth-button:hover {
@@ -365,6 +377,8 @@ body {
 .notification-button {
   width: 45px;
   height: 45px;
+
+  flex-shrink: 0;
 
   border:
     1px solid
@@ -443,6 +457,8 @@ body {
 
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+
+  overflow: hidden;
 }
 
 .auth-modal.show {
@@ -481,6 +497,8 @@ body {
     rgba(0,0,0,.75),
     0 0 50px
     rgba(255,0,140,.08);
+
+  -webkit-overflow-scrolling: touch;
 }
 
 .auth-close {
@@ -768,7 +786,6 @@ body {
 }
 
 @keyframes pageIn {
-
   from {
     opacity: 0;
     transform: translateY(15px);
@@ -778,7 +795,6 @@ body {
     opacity: 1;
     transform: translateY(0);
   }
-
 }
 
 
@@ -817,6 +833,8 @@ body {
     rgba(255,0,140,.025);
 
   backdrop-filter: blur(18px);
+
+  overflow: hidden;
 }
 
 .hero-logo {
@@ -845,7 +863,6 @@ body {
 }
 
 @keyframes logoFloat {
-
   0%, 100% {
     transform:
       translateY(0)
@@ -857,7 +874,6 @@ body {
       translateY(-12px)
       rotate(1deg);
   }
-
 }
 
 .status {
@@ -898,6 +914,10 @@ body {
   box-shadow:
     0 0 10px
     #ff2ca8;
+}
+
+.hero-content {
+  min-width: 0;
 }
 
 .hero-content h1 {
@@ -1026,6 +1046,8 @@ body {
   box-shadow:
     0 15px 40px
     rgba(0,0,0,.25);
+
+  min-width: 0;
 }
 
 .notice-icon {
@@ -1132,6 +1154,8 @@ body {
     rgba(0,0,0,.3);
 
   transition: .3s ease;
+
+  min-width: 0;
 }
 
 .floating-card:hover {
@@ -1360,6 +1384,8 @@ body {
   box-shadow:
     0 15px 35px
     rgba(0,0,0,.3);
+
+  min-width: 0;
 }
 
 .platform-card:hover {
@@ -1437,6 +1463,8 @@ body {
     rgba(0,0,0,.3);
 
   transition: .3s;
+
+  min-width: 0;
 }
 
 .social-card:hover {
@@ -1449,6 +1477,8 @@ body {
 .social-icon {
   width: 45px;
   height: 45px;
+
+  flex-shrink: 0;
 
   display: grid;
 
@@ -1468,12 +1498,18 @@ body {
 
 .social-card div:nth-child(2) {
   flex: 1;
+
+  min-width: 0;
 }
 
 .social-card strong {
   display: block;
 
   font-size: 13px;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
 }
 
 .social-card small {
@@ -1486,6 +1522,8 @@ body {
   color: var(--muted);
 
   font-size: 11px;
+
+  flex-shrink: 0;
 }
 
 
@@ -1524,6 +1562,8 @@ body {
   box-shadow:
     0 15px 40px
     rgba(0,0,0,.3);
+
+  min-width: 0;
 }
 
 .customer-icon {
@@ -1548,6 +1588,8 @@ body {
 
 .customer-service div:nth-child(2) {
   flex: 1;
+
+  min-width: 0;
 }
 
 .customer-service span {
@@ -1587,6 +1629,8 @@ body {
   padding: 9px 13px;
 
   font-size: 10px;
+
+  flex-shrink: 0;
 }
 
 
@@ -1659,62 +1703,4 @@ body {
 
   gap: 4px;
 
-  font-family: "Poppins", sans-serif;
-
-  transition: .25s;
-}
-
-.nav-item i {
-  font-size: 16px;
-}
-
-.nav-item span {
-  font-size: 7px;
-}
-
-.nav-item.active {
-  color: white;
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(255,0,140,.9),
-      rgba(139,0,255,.9)
-    );
-
-  box-shadow:
-    0 7px 22px
-    rgba(255,0,140,.22);
-
-  transform:
-    translateY(-4px);
-}
-
-.nav-item:not(.active):hover {
-  color: var(--pink2);
-
-  background:
-    rgba(255,255,255,.04);
-}
-
-
-/* =========================
-   FOOTER
-========================= */
-
-footer {
-  text-align: center;
-
-  margin:
-    35px auto
-    0;
-
-  color: #716976;
-
-  font-size: 8px;
-}
-
-footer strong {
-  display: block;
-
-  col
+  font-family: "Poppins"
