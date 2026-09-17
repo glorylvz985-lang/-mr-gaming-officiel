@@ -988,4 +988,331 @@ footer strong {
   .brand span {
     font-size: 7px;
   }
+}/* =====================================================
+   AJOUTS — RESPONSIVE UNIVERSEL + 16:9 + iOS + PC
+   (Ne modifie rien au-dessus, ajoute seulement)
+===================================================== */
+
+
+/* =====================================================
+   1. IMAGES ÉVÉNEMENTS : 16:9 PARFAIT
+   (Renforce ce qui existe déjà + fallback vieux navigateurs)
+===================================================== */
+
+.event-card > img,
+.event-placeholder {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+}
+
+@supports not (aspect-ratio: 16 / 9) {
+  .event-card {
+    position: relative;
+  }
+
+  .event-card > img {
+    height: 0;
+    padding-bottom: 56.25%; /* 16:9 */
+    position: relative;
+  }
+}
+
+.event-placeholder {
+  height: auto;
+  aspect-ratio: 16 / 9;
+}
+
+
+/* =====================================================
+   2. SUPPORT ENCOCHES iPHONE (safe-area)
+===================================================== */
+
+body {
+  padding-top: max(18px, env(safe-area-inset-top));
+  padding-left: max(15px, env(safe-area-inset-left));
+  padding-right: max(15px, env(safe-area-inset-right));
+  padding-bottom: max(115px, calc(115px + env(safe-area-inset-bottom)));
+}
+
+.floating-nav {
+  bottom: max(17px, env(safe-area-inset-bottom));
+}
+
+
+/* =====================================================
+   3. FIX iOS : empêche le zoom automatique sur les inputs
+===================================================== */
+
+@media (max-width: 768px) {
+  .auth-form input,
+  .auth-main-button,
+  .google-button,
+  .logout-button,
+  .auth-switch button {
+    font-size: 16px !important;
+  }
+}
+
+
+/* =====================================================
+   4. GRANDS ÉCRANS / PC (≥ 1200px)
+===================================================== */
+
+@media (min-width: 1200px) {
+  body {
+    padding: 30px 40px 130px;
+  }
+
+  .floating-hero {
+    padding: 55px;
+    gap: 65px;
+  }
+
+  .hero-logo img {
+    width: 220px;
+    height: 220px;
+  }
+
+  .floating-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .platforms-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .section-title h2 {
+    font-size: 32px;
+  }
+}
+
+
+/* =====================================================
+   5. TABLETTES (768px → 1024px)
+===================================================== */
+
+@media (min-width: 701px) and (max-width: 1024px) {
+  .floating-hero {
+    padding: 35px;
+    gap: 35px;
+  }
+
+  .hero-logo img {
+    width: 150px;
+    height: 150px;
+  }
+
+  .floating-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .platforms-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+
+/* =====================================================
+   6. PETITS TÉLÉPHONES (≤ 360px) — vieux Android
+===================================================== */
+
+@media (max-width: 360px) {
+
+  .brand div {
+    display: none;
+  }
+
+  .hero-content h1 {
+    font-size: 20px;
+  }
+
+  .hero-logo img {
+    width: 100px;
+    height: 100px;
+    border-radius: 25px;
+  }
+
+  .main-button,
+  .secondary-button {
+    width: 100%;
+  }
+
+  .section-title h2 {
+    font-size: 19px;
+  }
+
+  .nav-item span {
+    display: none;
+  }
+
+  .nav-item {
+    min-height: 46px;
+  }
+
+  .nav-item i {
+    font-size: 15px;
+  }
+}
+
+
+/* =====================================================
+   7. TRÈS PETITS ÉCRANS (≤ 320px) — iPhone SE, vieux Android
+===================================================== */
+
+@media (max-width: 320px) {
+
+  body {
+    padding: 10px 8px 100px;
+  }
+
+  .top-bar {
+    padding: 8px 10px;
+    border-radius: 18px;
+  }
+
+  .brand img {
+    width: 36px;
+    height: 36px;
+  }
+
+  .notification-button {
+    width: 38px;
+    height: 38px;
+    font-size: 14px;
+  }
+
+  .hero-content h1 {
+    font-size: 18px;
+  }
+
+  .hero-content p {
+    font-size: 10px;
+  }
+
+  .floating-card {
+    padding: 14px;
+  }
+
+  .floating-nav {
+    padding: 5px;
+    border-radius: 18px;
+  }
+}
+
+
+/* =====================================================
+   8. MODE PAYSAGE (téléphone tourné)
+===================================================== */
+
+@media (max-height: 500px) and (orientation: landscape) {
+
+  .floating-hero {
+    flex-direction: row;
+    padding: 20px;
+    gap: 20px;
+    min-height: auto;
+  }
+
+  .hero-logo img {
+    width: 90px;
+    height: 90px;
+    border-radius: 22px;
+  }
+
+  .hero-content h1 {
+    font-size: 20px;
+  }
+
+  .hero-content p {
+    margin: 10px 0 15px;
+  }
+
+  .floating-nav {
+    bottom: 5px;
+    padding: 5px;
+  }
+
+  .nav-item {
+    min-height: 42px;
+  }
+
+  .nav-item i {
+    font-size: 14px;
+  }
+}
+
+
+/* =====================================================
+   9. TRÈS GRANDS ÉCRANS (≥ 1600px)
+===================================================== */
+
+@media (min-width: 1600px) {
+
+  .top-bar,
+  .page,
+  footer {
+    max-width: 1200px;
+  }
+
+  .floating-hero {
+    min-height: 480px;
+  }
+
+  .hero-content h1 {
+    font-size: 52px;
+  }
+}
+
+
+/* =====================================================
+   10. ACCESSIBILITÉ : réduire les animations
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+
+/* =====================================================
+   11. AMÉLIORATION TACTILE (Android / iPhone)
+===================================================== */
+
+button,
+.social-card,
+.nav-item,
+.customer-service a {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+button:active,
+.social-card:active,
+.nav-item:active {
+  transform: scale(0.97);
+}
+
+
+/* =====================================================
+   12. ÉVITE LE DÉBORDEMENT HORIZONTAL PARTOUT
+===================================================== */
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
 }
