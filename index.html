@@ -12,40 +12,18 @@
 
   <meta name="theme-color" content="#ff008c">
 
-  <meta
-    name="mobile-web-app-capable"
-    content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="MR GAMING PRO">
 
-  <meta
-    name="apple-mobile-web-app-capable"
-    content="yes">
+  <meta name="google-site-verification" content="I-3uXsYYj9YB4lAAH1a_YCoVmEcMRwstVJE4vLmCDio">
+  <meta name="monetag" content="ec910b0475bc20b341babaa9d62f172e">
 
-  <meta
-    name="apple-mobile-web-app-status-bar-style"
-    content="black-translucent">
-
-  <meta
-    name="apple-mobile-web-app-title"
-    content="MR GAMING PRO">
-
-  <meta
-    name="google-site-verification"
-    content="I-3uXsYYj9YB4lAAH1a_YCoVmEcMRwstVJE4vLmCDio">
-
-  <meta
-    name="monetag"
-    content="ec910b0475bc20b341babaa9d62f172e">
-
-  <link
-    rel="icon"
-    href="https://i.ibb.co/Fq3Rn0N1/c536964c08ca2bee74c4a8b26f03926d.webp">
+  <link rel="icon" href="https://i.ibb.co/Fq3Rn0N1/c536964c08ca2bee74c4a8b26f03926d.webp">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-
-  <link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
-    crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link
     href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap"
@@ -118,7 +96,7 @@
 
     <div class="header-actions">
 
-      <!-- CONNEXION -->
+      <!-- BOUTON CONNEXION STYLÉ -->
       <button
         id="auth-button"
         class="auth-button"
@@ -175,7 +153,7 @@
         alt="MR GAMING PRO">
 
 
-      <!-- CONNEXION -->
+      <!-- ===== CONNEXION ===== -->
 
       <div
         id="login-form"
@@ -192,23 +170,29 @@
         </p>
 
 
-        <input
-          id="login-email"
-          type="email"
-          placeholder="Adresse email"
-          autocomplete="email">
+        <div class="input-group">
+          <i class="fa-solid fa-envelope"></i>
+          <input
+            id="login-email"
+            type="email"
+            placeholder="Adresse email"
+            autocomplete="email">
+        </div>
 
 
-        <input
-          id="login-password"
-          type="password"
-          placeholder="Mot de passe"
-          autocomplete="current-password">
+        <div class="input-group">
+          <i class="fa-solid fa-lock"></i>
+          <input
+            id="login-password"
+            type="password"
+            placeholder="Mot de passe"
+            autocomplete="current-password">
+        </div>
 
 
         <button
           id="login-submit"
-          class="auth-main-button"
+          class="auth-submit"
           type="button">
 
           <i class="fa-solid fa-right-to-bracket"></i>
@@ -248,7 +232,7 @@
 
 
 
-      <!-- INSCRIPTION -->
+      <!-- ===== INSCRIPTION ===== -->
 
       <div
         id="register-form"
@@ -265,30 +249,39 @@
         </p>
 
 
-        <input
-          id="register-name"
-          type="text"
-          placeholder="Ton nom"
-          autocomplete="name">
+        <div class="input-group">
+          <i class="fa-solid fa-user"></i>
+          <input
+            id="register-name"
+            type="text"
+            placeholder="Ton nom"
+            autocomplete="name">
+        </div>
 
 
-        <input
-          id="register-email"
-          type="email"
-          placeholder="Adresse email"
-          autocomplete="email">
+        <div class="input-group">
+          <i class="fa-solid fa-envelope"></i>
+          <input
+            id="register-email"
+            type="email"
+            placeholder="Adresse email"
+            autocomplete="email">
+        </div>
 
 
-        <input
-          id="register-password"
-          type="password"
-          placeholder="Mot de passe"
-          autocomplete="new-password">
+        <div class="input-group">
+          <i class="fa-solid fa-lock"></i>
+          <input
+            id="register-password"
+            type="password"
+            placeholder="Mot de passe"
+            autocomplete="new-password">
+        </div>
 
 
         <button
           id="register-submit"
-          class="auth-main-button"
+          class="auth-submit"
           type="button">
 
           <i class="fa-solid fa-user-plus"></i>
@@ -328,7 +321,7 @@
 
 
 
-      <!-- COMPTE CONNECTÉ -->
+      <!-- ===== COMPTE CONNECTÉ ===== -->
 
       <div
         id="account-form"
@@ -340,9 +333,7 @@
 
 
         <div class="account-icon">
-
           <i class="fa-solid fa-user-check"></i>
-
         </div>
 
 
@@ -355,6 +346,29 @@
           id="account-email"
           class="auth-description">
         </p>
+
+
+        <div class="account-stats">
+
+          <div class="stat-box">
+            <i class="fa-solid fa-gamepad"></i>
+            <strong>0</strong>
+            <small>Jeux</small>
+          </div>
+
+          <div class="stat-box">
+            <i class="fa-solid fa-trophy"></i>
+            <strong>0</strong>
+            <small>Événements</small>
+          </div>
+
+          <div class="stat-box">
+            <i class="fa-solid fa-star"></i>
+            <strong>1</strong>
+            <small>Niveau</small>
+          </div>
+
+        </div>
 
 
         <button
@@ -520,106 +534,40 @@
 
       <div class="floating-grid services-grid">
 
-
         <div class="floating-card service-card">
-
-          <div class="card-icon">
-
-            <i class="fa-solid fa-download"></i>
-
-          </div>
-
+          <div class="card-icon"><i class="fa-solid fa-download"></i></div>
           <h3>Installation de jeux</h3>
-
-          <p>
-            Installation et configuration de tes jeux.
-          </p>
-
+          <p>Installation et configuration de tes jeux.</p>
         </div>
 
-
         <div class="floating-card service-card">
-
-          <div class="card-icon">
-
-            <i class="fa-solid fa-mobile-screen"></i>
-
-          </div>
-
+          <div class="card-icon"><i class="fa-solid fa-mobile-screen"></i></div>
           <h3>Applications</h3>
-
-          <p>
-            Installation d'applications et outils gaming.
-          </p>
-
+          <p>Installation d'applications et outils gaming.</p>
         </div>
 
-
         <div class="floating-card service-card">
-
-          <div class="card-icon">
-
-            <i class="fa-solid fa-gamepad"></i>
-
-          </div>
-
+          <div class="card-icon"><i class="fa-solid fa-gamepad"></i></div>
           <h3>Jeux Android</h3>
-
-          <p>
-            Découvre des jeux compatibles avec Android.
-          </p>
-
+          <p>Découvre des jeux compatibles avec Android.</p>
         </div>
 
-
         <div class="floating-card service-card">
-
-          <div class="card-icon">
-
-            <i class="fa-solid fa-microchip"></i>
-
-          </div>
-
+          <div class="card-icon"><i class="fa-solid fa-microchip"></i></div>
           <h3>Émulateurs</h3>
-
-          <p>
-            Configuration d'émulateurs et jeux rétro.
-          </p>
-
+          <p>Configuration d'émulateurs et jeux rétro.</p>
         </div>
 
-
         <div class="floating-card service-card">
-
-          <div class="card-icon">
-
-            <i class="fa-solid fa-desktop"></i>
-
-          </div>
-
+          <div class="card-icon"><i class="fa-solid fa-desktop"></i></div>
           <h3>Jeux PC</h3>
-
-          <p>
-            Découvre et configure tes jeux PC.
-          </p>
-
+          <p>Découvre et configure tes jeux PC.</p>
         </div>
 
-
         <div class="floating-card service-card">
-
-          <div class="card-icon">
-
-            <i class="fa-solid fa-sliders"></i>
-
-          </div>
-
+          <div class="card-icon"><i class="fa-solid fa-sliders"></i></div>
           <h3>Configuration gaming</h3>
-
-          <p>
-            Optimisation de ton appareil pour jouer.
-          </p>
-
+          <p>Optimisation de ton appareil pour jouer.</p>
         </div>
 
       </div>
@@ -651,13 +599,11 @@
 
       <div class="events-container">
 
-
         <article class="event-card">
 
           <img
             src="https://i.ibb.co/RTNdyZWR/unnamed.webp"
             alt="FC Mobile">
-
 
           <div class="event-content">
 
@@ -665,17 +611,14 @@
               ÉVÉNEMENT
             </div>
 
-
             <h3>
               FC Mobile — Numéro Légendaire
             </h3>
-
 
             <p>
               Découvre l'événement et les nouveautés
               disponibles sur FC Mobile.
             </p>
-
 
             <button
               class="event-button"
@@ -702,18 +645,15 @@
 
           </div>
 
-
           <div class="event-content">
 
             <div class="event-badge">
               À VENIR
             </div>
 
-
             <h3>
               Tournoi Gaming
             </h3>
-
 
             <p>
               De nouveaux événements et tournois
@@ -753,92 +693,52 @@
 
       <div class="floating-grid platforms-grid">
 
-
         <div class="platform-card">
-
           <i class="fa-brands fa-android"></i>
-
           <strong>Android</strong>
-
           <small>Mobile</small>
-
         </div>
 
-
         <div class="platform-card">
-
           <i class="fa-brands fa-windows"></i>
-
           <strong>PC</strong>
-
           <small>Windows</small>
-
         </div>
 
-
         <div class="platform-card">
-
           <i class="fa-solid fa-gamepad"></i>
-
           <strong>PSP</strong>
-
           <small>PlayStation Portable</small>
-
         </div>
 
-
         <div class="platform-card">
-
           <i class="fa-solid fa-gamepad"></i>
-
           <strong>PS Vita</strong>
-
           <small>Portable</small>
-
         </div>
 
-
         <div class="platform-card">
-
           <i class="fa-brands fa-playstation"></i>
-
           <strong>PS3</strong>
-
           <small>PlayStation</small>
-
         </div>
 
-
         <div class="platform-card">
-
           <i class="fa-brands fa-playstation"></i>
-
           <strong>PS5</strong>
-
           <small>PlayStation</small>
-
         </div>
 
-
         <div class="platform-card">
-
           <i class="fa-brands fa-xbox"></i>
-
           <strong>Xbox</strong>
-
           <small>Microsoft</small>
-
         </div>
 
-
         <div class="platform-card">
-
           <i class="fa-solid fa-gamepad"></i>
-
           <strong>Switch</strong>
-
           <small>Nintendo</small>
-
         </div>
 
       </div>
@@ -870,7 +770,6 @@
 
       <div class="social-floating">
 
-
         <a
           href="https://youtube.com/@mgamingofficielle"
           target="_blank"
@@ -878,20 +777,13 @@
           class="social-card">
 
           <div class="social-icon">
-
             <i class="fa-brands fa-youtube"></i>
-
           </div>
-
 
           <div>
-
             <strong>YouTube</strong>
-
             <small>MR GAMING PRO</small>
-
           </div>
-
 
           <i class="fa-solid fa-arrow-up-right-from-square"></i>
 
@@ -906,20 +798,13 @@
           class="social-card">
 
           <div class="social-icon">
-
             <i class="fa-brands fa-telegram"></i>
-
           </div>
-
 
           <div>
-
             <strong>Telegram</strong>
-
             <small>Canal officiel</small>
-
           </div>
-
 
           <i class="fa-solid fa-arrow-up-right-from-square"></i>
 
@@ -934,20 +819,13 @@
           class="social-card">
 
           <div class="social-icon">
-
             <i class="fa-brands fa-tiktok"></i>
-
           </div>
-
 
           <div>
-
             <strong>TikTok</strong>
-
             <small>@m.rgaming.tuto</small>
-
           </div>
-
 
           <i class="fa-solid fa-arrow-up-right-from-square"></i>
 
@@ -962,20 +840,13 @@
           class="social-card">
 
           <div class="social-icon">
-
             <i class="fa-brands fa-whatsapp"></i>
-
           </div>
-
 
           <div>
-
             <strong>WhatsApp</strong>
-
             <small>Nous contacter</small>
-
           </div>
-
 
           <i class="fa-solid fa-arrow-up-right-from-square"></i>
 
@@ -987,24 +858,14 @@
       <div class="customer-service">
 
         <div class="customer-icon">
-
           <i class="fa-solid fa-headset"></i>
-
         </div>
-
 
         <div>
-
           <span>SERVICE CLIENT</span>
-
           <h3>Besoin d'aide ?</h3>
-
-          <p>
-            Contacte directement notre service client.
-          </p>
-
+          <p>Contacte directement notre service client.</p>
         </div>
-
 
         <a
           href="https://t.me/Dylan_gamers"
@@ -1029,14 +890,12 @@
 
   <nav class="floating-nav">
 
-
     <button
       class="nav-item active"
       data-page="accueil"
       type="button">
 
       <i class="fa-solid fa-house"></i>
-
       <span>Accueil</span>
 
     </button>
@@ -1048,7 +907,6 @@
       type="button">
 
       <i class="fa-solid fa-gamepad"></i>
-
       <span>Services</span>
 
     </button>
@@ -1060,7 +918,6 @@
       type="button">
 
       <i class="fa-solid fa-bolt"></i>
-
       <span>Événements</span>
 
     </button>
@@ -1072,7 +929,6 @@
       type="button">
 
       <i class="fa-solid fa-layer-group"></i>
-
       <span>Plateformes</span>
 
     </button>
@@ -1084,7 +940,6 @@
       type="button">
 
       <i class="fa-solid fa-share-nodes"></i>
-
       <span>Réseaux</span>
 
     </button>
@@ -1101,17 +956,11 @@
 
     <strong>MR GAMING PRO</strong>
 
-    <span>
-      © 2026 — Tous droits réservés
-    </span>
+    <span>© 2026 — Tous droits réservés</span>
 
   </footer>
 
 
-
-  <!-- IMPORTANT :
-       LE SCRIPT EST DANS script.js
-  -->
 
   <script
     type="module"
