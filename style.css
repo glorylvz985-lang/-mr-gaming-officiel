@@ -1,5 +1,6 @@
 /* =====================================================
-   MR GAMING PRO — STYLE COMPLET + RESPONSIVE
+   MR GAMING PRO — STYLE COMPLET + RESPONSIVE TOTAL
+   (Android · iPhone · Tablette · PC · APK WebView)
 ===================================================== */
 
 :root {
@@ -28,6 +29,7 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -46,7 +48,9 @@ body {
   overflow-x: hidden;
 }
 
-.hidden { display: none !important; }
+.hidden {
+  display: none !important;
+}
 
 
 /* =====================================================
@@ -126,7 +130,9 @@ body {
   font-size: 10px;
 }
 
-@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
 
 
 /* =====================================================
@@ -141,6 +147,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 8px;
+  flex-wrap: nowrap;
   background: rgba(255,255,255,.045);
   border: 1px solid var(--border);
   border-radius: 20px;
@@ -153,6 +161,8 @@ body {
   display: flex;
   align-items: center;
   gap: 10px;
+  min-width: 0;
+  flex: 1;
 }
 
 .brand img {
@@ -160,17 +170,23 @@ body {
   height: 42px;
   border-radius: 13px;
   object-fit: cover;
+  flex-shrink: 0;
 }
 
 .brand div {
   display: flex;
   flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .brand strong {
   font-family: "Orbitron", sans-serif;
   font-size: 12px;
   color: white;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .brand span {
@@ -178,12 +194,16 @@ body {
   font-size: 8px;
   letter-spacing: 1px;
   color: var(--pink2);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .header-actions {
   display: flex;
   align-items: center;
   gap: 8px;
+  flex-shrink: 0;
 }
 
 
@@ -207,6 +227,7 @@ body {
   gap: 8px;
   box-shadow: 0 8px 20px rgba(255,0,140,.25);
   transition: .25s;
+  white-space: nowrap;
 }
 
 .auth-button:hover {
@@ -243,6 +264,7 @@ body {
   color: white;
   cursor: pointer;
   transition: .25s;
+  flex-shrink: 0;
 }
 
 .notification-button:hover {
@@ -250,7 +272,9 @@ body {
   box-shadow: 0 8px 25px rgba(255,0,140,.25);
 }
 
-.notification-button i { color: var(--pink2); }
+.notification-button i {
+  color: var(--pink2);
+}
 
 .notification-dot {
   position: absolute;
@@ -274,12 +298,18 @@ main {
   margin: 0 auto;
 }
 
-.page { display: none; animation: pageIn .35s ease; }
-.page.active-page { display: block; }
+.page {
+  display: none;
+  animation: pageIn .35s ease;
+}
+
+.page.active-page {
+  display: block;
+}
 
 @keyframes pageIn {
   from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 
@@ -295,7 +325,9 @@ main {
   align-items: center;
   gap: 35px;
   background:
-    linear-gradient(135deg, rgba(255,0,140,.09), rgba(139,0,255,.08)),
+    linear-gradient(135deg,
+      rgba(255,0,140,.09),
+      rgba(139,0,255,.08)),
     var(--glass);
   border: 1px solid var(--border);
   border-radius: 30px;
@@ -311,7 +343,10 @@ main {
   display: grid;
   place-items: center;
   border-radius: 45px;
-  background: linear-gradient(135deg, rgba(255,0,140,.16), rgba(139,0,255,.16));
+  background:
+    linear-gradient(135deg,
+      rgba(255,0,140,.16),
+      rgba(139,0,255,.16));
   border: 1px solid rgba(255,0,140,.2);
   box-shadow: 0 0 40px rgba(255,0,140,.12);
 }
@@ -396,7 +431,9 @@ main {
 }
 
 .main-button:hover,
-.secondary-button:hover { transform: translateY(-3px); }
+.secondary-button:hover {
+  transform: translateY(-3px);
+}
 
 
 /* =====================================================
@@ -427,23 +464,45 @@ main {
   color: var(--pink2);
 }
 
-.floating-notice h3 { font-size: 12px; color: white; }
-.floating-notice p { margin-top: 3px; font-size: 9px; color: var(--muted); }
+.floating-notice h3 {
+  font-size: 12px;
+  color: white;
+}
+
+.floating-notice p {
+  margin-top: 3px;
+  font-size: 9px;
+  color: var(--muted);
+}
 
 
 /* =====================================================
    SECTION TITLES
 ===================================================== */
 
-.section-title { margin: 25px 0; text-align: center; }
-.section-title span { font-size: 8px; color: var(--pink2); letter-spacing: 2px; }
+.section-title {
+  margin: 25px 0;
+  text-align: center;
+}
+
+.section-title span {
+  font-size: 8px;
+  color: var(--pink2);
+  letter-spacing: 2px;
+}
+
 .section-title h2 {
   margin-top: 5px;
   font-family: "Orbitron", sans-serif;
   font-size: 26px;
   color: white;
 }
-.section-title p { margin-top: 5px; font-size: 10px; color: var(--muted); }
+
+.section-title p {
+  margin-top: 5px;
+  font-size: 10px;
+  color: var(--muted);
+}
 
 
 /* =====================================================
@@ -491,8 +550,17 @@ main {
   font-size: 18px;
 }
 
-.floating-card h3 { font-size: 12px; color: white; }
-.floating-card p { margin-top: 6px; font-size: 9px; line-height: 1.6; color: var(--muted); }
+.floating-card h3 {
+  font-size: 12px;
+  color: white;
+}
+
+.floating-card p {
+  margin-top: 6px;
+  font-size: 9px;
+  line-height: 1.6;
+  color: var(--muted);
+}
 
 
 /* =====================================================
@@ -515,7 +583,9 @@ main {
   transition: .3s;
 }
 
-.event-card:hover { transform: translateY(-5px); }
+.event-card:hover {
+  transform: translateY(-5px);
+}
 
 .event-card > img {
   width: 100%;
@@ -524,7 +594,9 @@ main {
   object-fit: cover;
 }
 
-.event-content { padding: 20px; }
+.event-content {
+  padding: 20px;
+}
 
 .event-badge {
   display: inline-block;
@@ -536,8 +608,18 @@ main {
   letter-spacing: 1px;
 }
 
-.event-content h3 { margin-top: 10px; color: white; font-size: 14px; }
-.event-content p { margin-top: 7px; color: var(--muted); font-size: 9px; line-height: 1.6; }
+.event-content h3 {
+  margin-top: 10px;
+  color: white;
+  font-size: 14px;
+}
+
+.event-content p {
+  margin-top: 7px;
+  color: var(--muted);
+  font-size: 9px;
+  line-height: 1.6;
+}
 
 .event-button {
   margin-top: 15px;
@@ -556,13 +638,19 @@ main {
   transform: translateY(-2px);
 }
 
-.generic-event { min-height: 100%; display: flex; flex-direction: column; }
+.generic-event {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
 
 .event-placeholder {
   min-height: 210px;
   display: grid;
   place-items: center;
-  background: radial-gradient(circle, rgba(255,0,140,.14), transparent 60%);
+  background: radial-gradient(circle,
+    rgba(255,0,140,.14),
+    transparent 60%);
   color: var(--pink2);
   font-size: 45px;
 }
@@ -572,7 +660,9 @@ main {
    PLATFORMS
 ===================================================== */
 
-.platforms-grid { grid-template-columns: repeat(4, 1fr); }
+.platforms-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
 
 .platform-card {
   min-height: 125px;
@@ -589,17 +679,37 @@ main {
   transition: .3s;
 }
 
-.platform-card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,.2); }
-.platform-card i { font-size: 28px; color: var(--pink2); margin-bottom: 5px; }
-.platform-card strong { font-size: 11px; color: white; }
-.platform-card small { font-size: 8px; color: var(--muted); }
+.platform-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0,0,0,.2);
+}
+
+.platform-card i {
+  font-size: 28px;
+  color: var(--pink2);
+  margin-bottom: 5px;
+}
+
+.platform-card strong {
+  font-size: 11px;
+  color: white;
+}
+
+.platform-card small {
+  font-size: 8px;
+  color: var(--muted);
+}
 
 
 /* =====================================================
    SOCIAL
 ===================================================== */
 
-.social-floating { display: flex; flex-direction: column; gap: 12px; }
+.social-floating {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
 
 .social-card {
   width: 100%;
@@ -615,7 +725,10 @@ main {
   transition: .3s;
 }
 
-.social-card:hover { transform: translateX(5px); background: rgba(255,255,255,.07); }
+.social-card:hover {
+  transform: translateX(5px);
+  background: rgba(255,255,255,.07);
+}
 
 .social-icon {
   width: 45px;
@@ -626,12 +739,31 @@ main {
   background: rgba(255,0,140,.08);
   font-size: 20px;
   color: var(--pink2);
+  flex-shrink: 0;
 }
 
-.social-card > div:nth-child(2) { flex: 1; display: flex; flex-direction: column; }
-.social-card strong { font-size: 11px; }
-.social-card small { margin-top: 2px; font-size: 8px; color: var(--muted); }
-.social-card > i { color: var(--muted); font-size: 11px; }
+.social-card > div:nth-child(2) {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.social-card strong {
+  font-size: 11px;
+}
+
+.social-card small {
+  margin-top: 2px;
+  font-size: 8px;
+  color: var(--muted);
+}
+
+.social-card > i {
+  color: var(--muted);
+  font-size: 11px;
+  flex-shrink: 0;
+}
 
 
 /* =====================================================
@@ -660,10 +792,28 @@ main {
   color: var(--pink2);
 }
 
-.customer-service > div:nth-child(2) { flex: 1; }
-.customer-service span { font-size: 7px; letter-spacing: 1px; color: var(--pink2); }
-.customer-service h3 { margin-top: 2px; font-size: 12px; color: white; }
-.customer-service p { margin-top: 2px; font-size: 8px; color: var(--muted); }
+.customer-service > div:nth-child(2) {
+  flex: 1;
+  min-width: 0;
+}
+
+.customer-service span {
+  font-size: 7px;
+  letter-spacing: 1px;
+  color: var(--pink2);
+}
+
+.customer-service h3 {
+  margin-top: 2px;
+  font-size: 12px;
+  color: white;
+}
+
+.customer-service p {
+  margin-top: 2px;
+  font-size: 8px;
+  color: var(--muted);
+}
 
 .customer-service > a {
   padding: 10px 14px;
@@ -672,6 +822,8 @@ main {
   color: white;
   text-decoration: none;
   font-size: 8px;
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 
@@ -715,8 +867,13 @@ main {
   transition: .25s;
 }
 
-.nav-item i { font-size: 14px; }
-.nav-item span { font-size: 7px; }
+.nav-item i {
+  font-size: 14px;
+}
+
+.nav-item span {
+  font-size: 7px;
+}
 
 .nav-item.active {
   background: rgba(255,0,140,.12);
@@ -724,7 +881,9 @@ main {
   box-shadow: inset 0 0 20px rgba(255,0,140,.05);
 }
 
-.nav-item:active { transform: scale(.92); }
+.nav-item:active {
+  transform: scale(.92);
+}
 
 
 /* =====================================================
@@ -768,7 +927,9 @@ footer strong {
   -webkit-backdrop-filter: blur(12px);
 }
 
-.auth-modal.show { display: flex; }
+.auth-modal.show {
+  display: flex;
+}
 
 .auth-box {
   width: 100%;
@@ -778,7 +939,9 @@ footer strong {
   position: relative;
   padding: 30px 25px;
   background:
-    linear-gradient(145deg, rgba(255,0,140,.10), rgba(139,0,255,.09)),
+    linear-gradient(145deg,
+      rgba(255,0,140,.10),
+      rgba(139,0,255,.09)),
     rgba(10,6,14,.97);
   border: 1px solid rgba(255,0,140,.25);
   border-radius: 30px;
@@ -800,7 +963,10 @@ footer strong {
   cursor: pointer;
 }
 
-.auth-form { width: 100%; text-align: center; }
+.auth-form {
+  width: 100%;
+  text-align: center;
+}
 
 .auth-logo {
   width: 75px;
@@ -812,6 +978,7 @@ footer strong {
   background: linear-gradient(135deg, #ff008c, #8b00ff);
   color: white;
   font-size: 27px;
+  object-fit: cover;
   box-shadow:
     0 0 25px rgba(255,0,140,.4),
     0 0 45px rgba(139,0,255,.2);
@@ -873,7 +1040,9 @@ footer strong {
   font-size: 12px;
 }
 
-.input-group input::placeholder { color: #817987; }
+.input-group input::placeholder {
+  color: #817987;
+}
 
 .input-group input:focus {
   border-color: rgba(255,0,140,.5);
@@ -901,44 +1070,14 @@ footer strong {
   transition: .25s;
 }
 
-.auth-submit:hover { transform: translateY(-3px); }
-.auth-submit:active { transform: scale(.98); }
+.auth-submit:hover {
+  transform: translateY(-3px);
+}
+
+.auth-submit:active {
+  transform: scale(.98);
+}
 
 
 .google-button {
-  width: 100%;
-  min-height: 46px;
-  margin-top: 10px;
-  border: 1px solid rgba(255,255,255,.12);
-  border-radius: 14px;
-  background: rgba(255,255,255,.05);
-  color: white;
-  cursor: pointer;
-  font-family: "Poppins", sans-serif;
-  font-size: 11px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  transition: .25s;
-}
-
-.google-button:hover { background: rgba(255,255,255,.09); transform: translateY(-2px); }
-.google-button i { color: #ea4335; }
-
-
-.auth-switch {
-  color: var(--muted);
-  font-size: 10px;
-  margin-top: 18px;
-}
-
-.auth-switch button {
-  border: 0;
-  background: transparent;
-  color: var(--pink2);
-  cursor: pointer;
-  font-family: "Poppins", sans-serif;
-  font-size: 10px;
-  font-weight: 600;
-  text-decoration: underline;
+  widt
