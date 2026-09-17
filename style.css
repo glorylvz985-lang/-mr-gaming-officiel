@@ -315,6 +315,30 @@ main {
 
 
 /* =====================================================
+   ALIGNEMENT GLOBAL DES PAGES
+===================================================== */
+
+#page-accueil,
+#page-services,
+#page-evenements,
+#page-plateformes,
+#page-reseaux {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#page-accueil > *,
+#page-services > *,
+#page-evenements > *,
+#page-plateformes > *,
+#page-reseaux > * {
+  width: 100%;
+}
+
+
+/* =====================================================
    HERO
 ===================================================== */
 
@@ -442,6 +466,7 @@ main {
 ===================================================== */
 
 .floating-notice {
+  width: 100%;
   margin-top: 15px;
   padding: 18px;
   display: flex;
@@ -482,7 +507,9 @@ main {
 ===================================================== */
 
 .section-title {
-  margin: 25px 0;
+  width: 100%;
+  max-width: 800px;
+  margin: 25px auto;
   text-align: center;
 }
 
@@ -511,10 +538,10 @@ main {
 ===================================================== */
 
 .floating-grid {
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 15px;
-  width: 100%;
 }
 
 
@@ -523,7 +550,12 @@ main {
 ===================================================== */
 
 .floating-card {
+  width: 100%;
+  min-height: 160px;
   padding: 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   background: var(--glass);
   border: 1px solid var(--border);
   border-radius: 22px;
@@ -566,14 +598,14 @@ main {
 
 
 /* =====================================================
-   EVENTS (image en 16/9)
+   EVENTS (image 16:9)
 ===================================================== */
 
 .events-container {
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 15px;
-  width: 100%;
 }
 
 .event-card {
@@ -592,7 +624,6 @@ main {
   transform: translateY(-5px);
 }
 
-/* ✅ IMAGE EN 16:9 */
 .event-card > img {
   width: 100%;
   aspect-ratio: 16 / 9;
@@ -651,7 +682,6 @@ main {
   flex-direction: column;
 }
 
-/* ✅ PLACEHOLDER EN 16:9 */
 .event-placeholder {
   width: 100%;
   aspect-ratio: 16 / 9;
@@ -675,6 +705,7 @@ main {
 }
 
 .platform-card {
+  width: 100%;
   min-height: 125px;
   padding: 20px;
   display: flex;
@@ -716,10 +747,12 @@ main {
 ===================================================== */
 
 .social-floating {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 12px;
-  width: 100%;
 }
 
 .social-card {
@@ -782,7 +815,9 @@ main {
 ===================================================== */
 
 .customer-service {
-  margin-top: 15px;
+  width: 100%;
+  max-width: 800px;
+  margin: 15px auto 0;
   padding: 18px;
   display: flex;
   align-items: center;
@@ -790,7 +825,6 @@ main {
   background: var(--glass);
   border: 1px solid var(--border);
   border-radius: 20px;
-  width: 100%;
 }
 
 .customer-icon {
@@ -1046,33 +1080,4 @@ footer strong {
   border: 1px solid rgba(255,255,255,.09);
   border-radius: 14px;
   outline: none;
-  background: rgba(255,255,255,.055);
-  color: white;
-  font-family: "Poppins", sans-serif;
-  font-size: 12px;
-}
-
-.input-group input::placeholder {
-  color: #817987;
-}
-
-.input-group input:focus {
-  border-color: rgba(255,0,140,.5);
-  box-shadow: 0 0 20px rgba(255,0,140,.08);
-}
-
-
-/* =====================================================
-   AUTH BUTTONS
-===================================================== */
-
-.auth-submit {
-  width: 100%;
-  min-height: 48px;
-  margin-top: 4px;
-  border: 0;
-  border-radius: 14px;
-  color: white;
-  background: linear-gradient(135deg, #ff008c, #9900ff);
-  box-shadow: 0 10px 25px rgba(255,0,140,.18);
-  curso
+  background: rgba(255,2
