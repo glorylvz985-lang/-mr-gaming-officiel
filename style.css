@@ -1081,3 +1081,155 @@ footer strong {
   border-radius: 14px;
   outline: none;
   background: rgba(255,2
+
+/* =====================================================
+   CORRECTION URGENTE — HERO QUI DÉBORDE SUR MOBILE
+===================================================== */
+
+/* Empêche tout débordement horizontal */
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+main,
+.page,
+.floating-hero,
+.floating-notice,
+.floating-grid,
+.events-container,
+.social-floating,
+.customer-service {
+  max-width: 100%;
+  overflow: hidden;
+}
+
+/* ---------- MOBILE (≤ 768px) : HERO EN COLONNE ---------- */
+
+@media (max-width: 768px) {
+
+  .floating-hero {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    padding: 22px 16px !important;
+    gap: 16px !important;
+    min-height: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+  }
+
+  .hero-logo {
+    width: 110px !important;
+    height: 110px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .hero-logo img {
+    width: 78px !important;
+    height: 78px !important;
+  }
+
+  .hero-content {
+    width: 100% !important;
+    max-width: 100% !important;
+    text-align: center !important;
+    overflow: hidden !important;
+  }
+
+  .hero-content h1 {
+    font-size: 20px !important;
+    line-height: 1.25 !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    white-space: normal !important;
+    max-width: 100% !important;
+  }
+
+  .hero-content p {
+    font-size: 11px !important;
+    line-height: 1.6 !important;
+    max-width: 100% !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+  }
+
+  .status {
+    font-size: 8px !important;
+    justify-content: center !important;
+    max-width: 100% !important;
+  }
+
+  .hero-buttons {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 8px !important;
+  }
+
+  .main-button,
+  .secondary-button {
+    width: 100% !important;
+    max-width: 320px !important;
+    justify-content: center !important;
+    white-space: normal !important;
+    text-align: center !important;
+  }
+}
+
+/* ---------- PETIT MOBILE (≤ 480px) ---------- */
+
+@media (max-width: 480px) {
+
+  .floating-hero {
+    padding: 18px 14px !important;
+    gap: 14px !important;
+    border-radius: 20px !important;
+  }
+
+  .hero-content h1 {
+    font-size: 17px !important;
+  }
+
+  .hero-content p {
+    font-size: 10.5px !important;
+  }
+
+  .hero-logo {
+    width: 95px !important;
+    height: 95px !important;
+  }
+
+  .hero-logo img {
+    width: 68px !important;
+    height: 68px !important;
+  }
+}
+
+/* ---------- TRÈS PETIT (≤ 360px) ---------- */
+
+@media (max-width: 360px) {
+
+  .hero-content h1 {
+    font-size: 15px !important;
+  }
+
+  .hero-content p {
+    font-size: 10px !important;
+  }
+
+  .hero-logo {
+    width: 85px !important;
+    height: 85px !important;
+  }
+
+  .hero-logo img {
+    width: 60px !important;
+    height: 60px !important;
+  }
+}
