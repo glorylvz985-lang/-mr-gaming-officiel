@@ -331,7 +331,7 @@
 
 
   /* =====================================================
-     GOOGLE — 2 méthodes (Popup Web + Redirect APK)
+     GOOGLE — Popup (Web) + Redirect (APK)
   ===================================================== */
 
   function loginWithGoogle() {
@@ -349,8 +349,6 @@
                     (window.navigator.standalone !== undefined) ||
                     /FBAN|FBAV|Instagram|Line|WhatsApp/i.test(navigator.userAgent);
 
-    // WebView / APK → redirect
-    // Navigateur normal → popup
     if (isWebView) {
 
       window.__auth.signInWithRedirect(window.__googleProvider)
@@ -373,7 +371,6 @@
 
           if (error.code === "auth/popup-closed-by-user") return;
           if (error.code === "auth/popup-blocked") {
-            // Fallback redirect si popup bloquée
             window.__auth.signInWithRedirect(window.__googleProvider);
             return;
           }
@@ -442,8 +439,7 @@
 
 
   /* =====================================================
-     CHARGEMENT DYNAMIQUE FIREBASE (COMPAT MODE)
-     Compatible WebView Android / iOS / Web
+     FIREBASE — Chargement dynamique COMPAT
   ===================================================== */
 
   var FIREBASE_CONFIG = {
@@ -476,10 +472,8 @@
       window.__auth = firebase.auth();
       window.__googleProvider = new firebase.auth.GoogleAuthProvider();
 
-      /* Email link nécessite parfois ça */
       window.__auth.useDeviceLanguage();
 
-      /* Gérer la redirection Google après retour (APK) */
       window.__auth.getRedirectResult()
         .then(function (result) {
           if (result && result.user) {
@@ -490,7 +484,6 @@
           console.error("Erreur redirect Google :", error);
         });
 
-      /* État utilisateur */
       window.__auth.onAuthStateChanged(function (user) {
 
         if (!authButton) return;
@@ -527,7 +520,6 @@
   }
 
 
-  /* Charger Firebase compat (v9 — compatible WebView) */
   loadScript(
     "https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js",
     function () {
